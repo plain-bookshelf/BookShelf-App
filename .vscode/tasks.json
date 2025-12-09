@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Kill Existing Metro/Node",
+      "type": "shell",
+      "command": "taskkill /F /IM node.exe || echo no node",
+      "presentation": {
+        "panel": "shared",
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Start Metro",
+      "type": "shell",
+      "command": "cmd /c npx react-native start --reset-cache",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "panel": "shared",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Run Android",
+      "type": "shell",
+      "command": "cmd /c npx react-native run-android",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "panel": "shared",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "ADB Logcat",
+      "type": "shell",
+      "command": "cmd /c adb logcat *:S ReactNative:V ReactNativeJS:V",
+      "presentation": {
+        "panel": "shared",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "DEV ALL (Metro + Android + Logcat)",
+      "dependsOn": [
+        "Kill Existing Metro/Node",
+        "Start Metro",
+        "Run Android",
+        "ADB Logcat"
+      ],
+      "dependsOrder": "parallel"
+    }
+  ]
+}
