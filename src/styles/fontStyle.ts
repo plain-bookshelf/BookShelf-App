@@ -1,3 +1,4 @@
+/** 공통 fontStyle */
 export const fontStyle = {
   semiBold24: {
     size: "24px",
@@ -72,3 +73,6 @@ export const fontStyle = {
     weight: 400
   },
 }
+
+/** props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
+export type FontKey = keyof typeof fontStyle;
