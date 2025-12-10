@@ -1,12 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View, Text } from 'react-native';
+import RootNavigator from '@/navigation/RootNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar, useColorScheme } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -17,24 +11,11 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <View style={{ 
-        flex: 1, 
-        backgroundColor: 'white', 
-        justifyContent: 'center', 
-        alignItems: 'center'
-      }}>
-        <Text style={{ fontSize: 40, color: 'black' }}>
-          시우 바보
-        </Text>
-      </View>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
