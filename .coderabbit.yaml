@@ -16,3 +16,7 @@ reviews:
   suggested_reviewers: true
   auto_assign_reviewers: true
   review_status: true
+
+tests:
+  suggest: false
+  generate: false
