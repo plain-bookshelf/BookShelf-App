@@ -1,8 +1,9 @@
+import Button from "@/components/button/Button";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-/**AuthStack과 MainStack 구별용 NativeStack */
+/** AuthStack과 MainStack 구별용 NativeStack */
 export default function RootNavigator() {
   return(
     <Stack.Navigator>
