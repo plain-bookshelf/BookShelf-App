@@ -3,12 +3,16 @@ language: "ko-KR"
 reviews:
   profile: "chill"
   level: basic
-  enable_auto_review: true
-  on_default_branch_only: false
+
+  auto_review:
+    enabled: true
+    on_default_branch_only: false
+    triggers:
+      - pull_request
+
   high_level_summary: true
   sequence_diagrams: true
   assess_linked_issues: true
   suggested_reviewers: true
   auto_assign_reviewers: true
-  auto_review_on:
-    - pull_request
+  review_status: true
