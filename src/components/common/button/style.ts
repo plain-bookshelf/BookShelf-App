@@ -26,6 +26,5 @@ export const ButtonContainer = styled.View<BtnProps>`
 
 export const ButtonText = styled.Text<{ font: FontKey }>`
   color: ${colorStyle.defaultWhite};
-  font-size: ${({ font }) => fontStyle[font].size};
-  font-weight: ${({ font }) => fontStyle[font].weight};
+  ${({ font: type }) => fontStyle[type]}; 
 `
