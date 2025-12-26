@@ -1,6 +1,6 @@
 import Typography from "@/components/common/typography/Typography"
 import * as S from "./style"
-import { Image } from "react-native"
+import { Image, Keyboard, TouchableWithoutFeedback } from "react-native"
 import icon_input_error from "@/assets/icon_input_error.png"
 import { useState } from "react"
 
@@ -15,6 +15,7 @@ interface AuthInputProps {
 }
 
 /**
+ * 항상 상위 컴포넌트에 KeyboardDismiss를 둘 것
  * @param label input label 입력
  * @param placeholder input placeholder 입력
  * @param size input wdith 결정 small, large 중 선택
@@ -28,6 +29,7 @@ export default function AuthInput({ label, placeholder, size, isError, warningMe
  const [isFocused, setIsFocused] = useState(false);
 
   return(
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <S.InputBox>
       <Typography children={label} font="semiBold18" color="defaultBlack" />
       <S.Input
@@ -46,5 +48,6 @@ export default function AuthInput({ label, placeholder, size, isError, warningMe
         </S.ErrorContainer>
       }
     </S.InputBox>
+    </TouchableWithoutFeedback>
   )
 }

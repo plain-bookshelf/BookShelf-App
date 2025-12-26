@@ -27,8 +27,9 @@ export const Input = styled.TextInput.attrs({
   ${( fontStyle.regular16 )};
   width: ${({ size }) => INPUT_WIDTH_MAP[size]}px;
   height: 48px;
+  background-color: ${( colorStyle.inputBarGray )};
   border-width: 1px;
-  border-color: ${({ isFocused, isError }) => isFocused ? colorStyle.defaultGreen : isError ? colorStyle.defaultRed : colorStyle.defaultBlack};
+  border-color: ${({ isFocused, isError }) => isFocused ? colorStyle.defaultGreen : isError ? colorStyle.defaultRed : colorStyle.inputBarGray};
   border-radius: 8px;
   align-items: center;
   padding-left: 12px;

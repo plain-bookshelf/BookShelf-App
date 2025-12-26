@@ -11,7 +11,9 @@ export const colorStyle = {
   whiteBackground: "#FDFDFD",
   chatBackground: "#EAEAEA",
   appBarGray: "#A7A7A7",
+  inputBarGray: "#F4F4F4",
   darkGreen: "#00AA62",
+  
 } as const;
 
 /** props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
