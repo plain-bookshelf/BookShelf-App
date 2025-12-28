@@ -12,6 +12,7 @@ export const colorStyle = {
   chatBackground: "#EAEAEA",
   appBarGray: "#A7A7A7",
   inputBarGray: "#F4F4F4",
+  ButtonBackgroundGray: "#F5F5F5",
   darkGreen: "#00AA62",
   
 } as const;

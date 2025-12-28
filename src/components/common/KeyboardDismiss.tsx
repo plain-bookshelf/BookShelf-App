@@ -6,7 +6,7 @@ type Props = {
 
 export default function KeyboardDismiss({ children }: Props) {
   return (
-    <TouchableWithoutFeedback style={{ flex: 1 }} onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       {children}
     </TouchableWithoutFeedback>
   );

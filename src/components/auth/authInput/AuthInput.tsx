@@ -31,7 +31,7 @@ export default function AuthInput({ label, placeholder, size, isError, warningMe
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <S.InputBox>
-      <Typography children={label} font="semiBold18" color="defaultBlack" />
+      {label.length !== 0 && <Typography children={label} font='semiBold18' color='defaultBlack' />}
       <S.Input
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -44,7 +44,7 @@ export default function AuthInput({ label, placeholder, size, isError, warningMe
       {isError && !isFocused &&
         <S.ErrorContainer size={size}>
           <Image source={icon_input_error} style={{width: 17, height: 17}} />
-          <Typography children={warningMessage} font="regular16" color="defaultRed" />
+          <Typography children={warningMessage} font='regular16' color='defaultRed' />
         </S.ErrorContainer>
       }
     </S.InputBox>
