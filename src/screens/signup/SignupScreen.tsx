@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { Screen } from "react-native-screens";
+import { useState } from "react"
 import SignupHeader from "./SignupHeader";
 import IdStep from "./steps/IdStep";
 import ContentLayout from "./ContentLayout";
 import ActionLayout from "./ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import { View } from "react-native";
-import Button from "@/components/common/button/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PasswordStep from "./steps/PasswordStep";
 
 export default function Signup() {
   const [step, setStep] = useState(2);
@@ -39,13 +37,15 @@ function StepContent({ step, form, setForm}: StepContentProps) {
     case 1:
       return(
         <ContentLayout>
-          <IdStep />
+          <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} /> {/* 최신 상태 유지를 위해 onChange에 함수형으로 넘김*/}
         </ContentLayout>
       )
 
     case 2:
       return(
-        <></>
+        <ContentLayout>
+          <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} />
+        </ContentLayout>
       )
     default:
       break;
