@@ -1,12 +1,5 @@
-import Typography from "@/components/common/typography/Typography";
-import AuthInput from "@/components/auth/authInput/AuthInput";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useState } from "react";
-import { View } from "react-native";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import IdStep from "@/screens/signup/steps/IdStep";
-import SignupHeader from "@/screens/signup/SignupHeader";
-import ContentLayout from "@/screens/signup/ContentLayout";
 import Signup from "@/screens/signup/SignupScreen";
 
 const Stack = createNativeStackNavigator();
@@ -25,7 +18,6 @@ export default function RootNavigator() {
 }
 
 function temp() {
-  const [name, setName] = useState("");
 
   return(
     <>
