@@ -14,7 +14,7 @@ export const colorStyle = {
   inputBarGray: "#F4F4F4",
   ButtonBackgroundGray: "#F5F5F5",
   darkGreen: "#00AA62",
-  
+  timerRed: "#FF4E4E",
 } as const;
 
 /** props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
