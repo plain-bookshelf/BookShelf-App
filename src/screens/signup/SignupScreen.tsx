@@ -6,10 +6,11 @@ import ActionLayout from "./ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PasswordStep from "./steps/PasswordStep";
+import EmailStep from "./steps/EmailStep";
 
 export default function Signup() {
   const [step, setStep] = useState(2);
-  const [form, setForm] = useState({id: '', email: '', password: ''});
+  const [form, setForm] = useState({id: '', email: '', password: '', school: ''});
 
   const handlePrev = () => setStep((s) => s - 1);
   const handleNext = () => setStep((s) => s + 1);
@@ -28,8 +29,8 @@ export default function Signup() {
 
 interface StepContentProps {
   step: number,
-  form: {id: string, email: string, password: string},
-  setForm: (form: {id: string, email: string, password: string}) => void
+  form: {id: string, email: string, password: string, school: string},
+  setForm: (form: {id: string, email: string, password: string, school: string}) => void
 }
 
 function StepContent({ step, form, setForm}: StepContentProps) {
@@ -45,6 +46,13 @@ function StepContent({ step, form, setForm}: StepContentProps) {
       return(
         <ContentLayout>
           <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} />
+        </ContentLayout>
+      )
+
+    case 3:
+      return(
+        <ContentLayout>
+          <EmailStep value={form.email} onChange={(text: string) => setForm({...form, email: text})} />
         </ContentLayout>
       )
     default:
