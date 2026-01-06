@@ -3,10 +3,10 @@ import * as S from "./style"
 import { Pressable } from "react-native"
 
 interface ButtonProps {
-  size: S.BtnSize,
-  font: FontKey,
-  label: string,
-  onPress?: () => void,
+  font: FontKey;
+  label: string;
+  onPress?: () => void;
+  isValid: boolean;
 }
 
 /**
@@ -16,11 +16,11 @@ interface ButtonProps {
  * @param onPress 버튼 클릭 시 실행할 함수 입력
  * @returns pressed 까지 적용된 버튼 생성
  */
-export default function Button({ size, font, label, onPress }: ButtonProps) {
+export default function Button({ font, label, onPress, isValid }: ButtonProps) {
   return(
-    <Pressable onPress={onPress}>
+    <Pressable disabled={!isValid} onPress={onPress}>
       {({ pressed }) => (
-        <S.ButtonContainer size={size} isPressed={pressed}>
+        <S.ButtonContainer isPressed={pressed} isVaild={isValid}>
          <S.ButtonText font={font}>{label}</S.ButtonText>
         </S.ButtonContainer>
       )}

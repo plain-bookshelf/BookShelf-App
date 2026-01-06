@@ -7,7 +7,6 @@ import { useState } from "react"
 interface AuthInputProps {
   label: string,
   placeholder: string,
-  size: S.InputSize,
   isError: boolean,
   warningMessage: string,
   value: string,
@@ -25,7 +24,7 @@ interface AuthInputProps {
  * @param onChangeText input 현재 value 변경
  * @returns label과 input을 담은 하나의 요소로 반환
  */
-export default function AuthInput({ label, placeholder, size, isError, warningMessage, value, onChangeText }: AuthInputProps) {
+export default function AuthInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
  const [isFocused, setIsFocused] = useState(false);
 
   return(
@@ -35,14 +34,13 @@ export default function AuthInput({ label, placeholder, size, isError, warningMe
       <S.Input
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        size={size}
         placeholder={placeholder}
         isError={isError} value={value}
         isFocused={isFocused}
         onChangeText={onChangeText}
       />
       {isError && !isFocused &&
-        <S.ErrorContainer size={size}>
+        <S.ErrorContainer>
           <Image source={icon_input_error} style={{width: 17, height: 17}} />
           <Typography children={warningMessage} font='regular16' color='defaultRed' />
         </S.ErrorContainer>
