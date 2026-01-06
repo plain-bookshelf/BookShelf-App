@@ -2,15 +2,7 @@ import { colorStyle } from "@/styles/colorStyle";
 import { fontStyle } from "@/styles/fontStyle";
 import styled from "styled-components/native";
 
-const INPUT_WIDTH_MAP = {
-  small: 240,
-  large: 364,
-} as const
-
-export type InputSize = keyof typeof INPUT_WIDTH_MAP;
-
 interface InputProps {
-  size: InputSize;
   isError?: boolean,
   isFocused?: boolean,
 }
@@ -25,7 +17,7 @@ export const Input = styled.TextInput.attrs({
 })<InputProps>`
   color: ${( colorStyle.defaultBlack )};
   ${( fontStyle.regular16 )};
-  width: ${({ size }) => INPUT_WIDTH_MAP[size]}px;
+  width: 100%;
   height: 48px;
   background-color: ${( colorStyle.inputBarGray )};
   border-width: 1px;
@@ -38,7 +30,7 @@ export const Input = styled.TextInput.attrs({
 export const ErrorContainer = styled.View<InputProps>`
   flex-direction: row;
   align-items: center;
-  width: ${({ size }) => INPUT_WIDTH_MAP[size]}px;
+  width: 100%;
   gap: 6px;
   padding-left: 2px;
 `

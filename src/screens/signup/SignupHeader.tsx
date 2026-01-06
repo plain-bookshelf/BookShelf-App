@@ -10,7 +10,7 @@ interface SignupHeaderProps {
 export default function SignupHeader({ step, onPrev }: SignupHeaderProps) {
   
   return(
-    <View style={{ flexDirection: "row", alignItems: "center", gap: 326, marginBottom: 24 }}>
+    <View style={{ width: '100%', flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
       <Pressable onPress={onPrev}>
         <Image source={btn_previous_default} style={{ width: 10, height: 17}} />
       </Pressable>
