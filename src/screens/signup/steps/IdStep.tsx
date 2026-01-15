@@ -17,10 +17,18 @@ export default function IdStep({ value, onChange, setIsStepValid }: IdStepProps)
     }
   }, [value])
 
+  useEffect(() => {
+    if(value){
+    setIsStepValid(true);
+    } else{
+      setIsStepValid(false);
+    }
+  }, [])
+
   return(
     <>
-      <Typography children='아이디를 생성하세요.' font='semiBold24' color='defaultBlack' />
-      <AuthInput label='' placeholder='아이디를 입력해주세요.' isError={false} warningMessage="이미 존재하는 아이디입니다." value={value} onChangeText={onChange} />
+      <Typography children='아이디를 생성하세요.' font='medium24' color='defaultBlack' />
+      <AuthInput label='회원가입하고 책마루에 가입하세요!' placeholder='이메일 또는 아이디 생성' isError={false} warningMessage="이미 존재하는 아이디입니다." value={value} onChangeText={onChange} />
     </>
   )
 }

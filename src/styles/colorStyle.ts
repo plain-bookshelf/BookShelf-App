@@ -15,6 +15,7 @@ export const colorStyle = {
   ButtonBackgroundGray: "#F5F5F5",
   darkGreen: "#00AA62",
   timerRed: "#FF4E4E",
+  labelGray: "#777777",
 } as const;
 
 /** props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

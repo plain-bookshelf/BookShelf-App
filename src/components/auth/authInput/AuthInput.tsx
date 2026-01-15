@@ -30,7 +30,7 @@ export default function AuthInput({ label, placeholder, isError, warningMessage,
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <S.InputBox>
-      {label.length !== 0 && <Typography children={label} font='semiBold18' color='defaultBlack' />}
+      {label.length !== 0 && <Typography children={label} font='regular18' color='labelGray' />}
       <S.Input
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

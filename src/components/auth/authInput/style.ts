@@ -9,7 +9,7 @@ interface InputProps {
 
 export const InputBox = styled.View`
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
 `
 
 export const Input = styled.TextInput.attrs({
