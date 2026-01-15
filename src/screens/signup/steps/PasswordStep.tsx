@@ -12,12 +12,20 @@ export default function PasswordStep({ value, onChange, setIsStepValid }: Passwo
   const [checkPassword, setCheckPassword] = useState(value);
 
   useEffect(() => {
-    if(value === checkPassword){
+    if(value === checkPassword && value.trim().length !== 0){
     setIsStepValid(true);
     } else{
       setIsStepValid(false);
     }
   }, [ ,value, checkPassword])
+
+  useEffect(() => {
+    if(value === checkPassword){
+    setIsStepValid(true);
+    } else{
+      setIsStepValid(false);
+    }
+  }, [])
 
   return(
     <>
