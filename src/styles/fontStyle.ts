@@ -25,6 +25,11 @@ export const fontStyle = {
     font-weight: 600;
   `,
 
+  medium28: `
+    font-size: 28px;
+    font-weight: 500;
+  `,
+
   medium24: `
     font-size: 24px;
     font-weight: 500;
