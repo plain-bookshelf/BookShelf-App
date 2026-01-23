@@ -7,7 +7,9 @@ export const AuthInputContainer = styled.View`
 
 export const Timer = styled.View`
   position: absolute;
+  justify-self: flex-end;
   justify-content: center;
   height: 48px;
   right: 20px;
+  top: 40px;
 `
