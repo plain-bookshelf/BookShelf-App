@@ -13,6 +13,7 @@ export default function Signup() {
   const [step, setStep] = useState(1);
   const prevStepRef = useRef(1);
   const [form, setForm] = useState({id: '', email: '', password: '', school: '', verificationCode: ''});
+  const [isEmail, setIsEmail] = useState(false);
   const [isStepValid, setIsStepValid] = useState(false);
 
   useEffect(() => {
@@ -29,10 +30,10 @@ export default function Signup() {
   return(
     <KeyboardDismiss>
       <AuthLayout>
-        <>
+        <>  
           <SignupHeader step={step} onPrev={handlePrev} />
           <ActionLayout label={step !== 5 ? '다음' : '완료'} onNext={handleNext} isValid={isStepValid}>
-            <StepContent step={step} form={form} setForm={setForm} setIsStepValid={setIsStepValid} />
+            <StepContent step={step} form={form} setForm={setForm} setIsStepValid={setIsStepValid} isEmail={isEmail} setIsEmail={setIsEmail} />
           </ActionLayout>
         </>
      </AuthLayout>
@@ -43,24 +44,29 @@ export default function Signup() {
 interface StepContentProps {
   step: number,
   form: {id: string, email: string, password: string, school: string, verificationCode: string},
-  setForm: (form: {id: string, email: string, password: string, school: string, verificationCode: string}) => void
-  setIsStepValid: (isStepValid: boolean) => void
+  setForm: (form: {id: string, email: string, password: string, school: string, verificationCode: string}) => void,
+  setIsStepValid: (isStepValid: boolean) => void,
+  isEmail: boolean,
+  setIsEmail: (isEmail: boolean) => void
 }
 
-function StepContent({ step, form, setForm, setIsStepValid }: StepContentProps) {
+function StepContent({ step, form, setForm, setIsStepValid, isEmail, setIsEmail }: StepContentProps) {
   switch (step) {
     case 1:
       return(
         <ContentLayout>
-          <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} setIsStepValid={setIsStepValid} /> {/* 최신 상태 유지를 위해 onChange에 함수형으로 넘김*/}
+          <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} setIsStepValid={setIsStepValid} setIsEmail={setIsEmail} />
         </ContentLayout>
       )
 
     case 2:
       return(
         <ContentLayout>
-          <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} />
-        </ContentLayout>
+          {!isEmail ?
+            <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} /> :
+            <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
+          }
+          </ContentLayout>
       )
 
     case 3:
