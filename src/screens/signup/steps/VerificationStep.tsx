@@ -21,9 +21,9 @@ export default function VerificationStep({ value, onChange, setIsStepValid }: Ve
 
   return(
     <>
-      <Typography children='인증번호를 입력하세요.' font='semiBold24' color='defaultBlack' />
+      <Typography children='인증번호 입력' font='medium28' color='defaultBlack' />
       <S.AuthInputContainer>
-        <AuthInput label='' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
+        <AuthInput label='회원가입하고 책마루에 가입하세요!' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
         <S.Timer>
           <Typography children='5:00' font='regular14' color='timerRed' />
         </S.Timer>
