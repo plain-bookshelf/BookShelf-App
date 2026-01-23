@@ -10,7 +10,7 @@ interface EmailStepProps {
 
 export default function EmailStep({ value, onChange, setIsStepValid }: EmailStepProps) {
   /* 우선은 함수 내부에서 쓰고 나중에 더 쓰일 곳이 많아서 utils로 빼도 괜찮을 듯 */
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  const emailRegex = /^[A-Za-z0-9](?:[A-Za-z0-9._%+-]{0,62}[A-Za-z0-9])?@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
   const emailIsError = !emailRegex.test(value) && value !== '';
 
   useEffect(() => {
