@@ -16,7 +16,7 @@ export default function ActionLayout({ children, label, onNext, isValid }: Actio
       <View style={{ flex: 1}}>
         {children}
       </View>
-      <Button size='large' font='semiBold18' label={label} onPress={onNext} isValid={isValid} />
+      <Button font='semiBold18' label={label} onPress={onNext} isValid={isValid} />
     </View>
   )
 }
