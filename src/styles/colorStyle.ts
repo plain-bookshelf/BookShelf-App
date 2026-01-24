@@ -17,7 +17,9 @@ export const colorStyle = {
   timerRed: "#FF4E4E",
   labelGray: "#777777",
   recommandIdBackground: "#262626",
-  recommandIdText: "#B5B5B5",
+  recommandIdText: "#C1C1C1",
+  resend: "#FF4444",
+  resendText: "#868686",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

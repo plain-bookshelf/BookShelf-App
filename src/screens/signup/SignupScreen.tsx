@@ -87,11 +87,6 @@ function StepContent({ step, form, setForm, setIsStepValid, isEmail, setIsEmail 
       return(
         <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} />
       )
-
-    case 3:
-      return(
-        <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
-      )
     default:
       break;
   }
