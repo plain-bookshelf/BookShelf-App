@@ -9,15 +9,15 @@ export default function RootNavigator() {
   return(
     <Stack.Navigator>
       <Stack.Screen
-        name="home"
-        component={temp}
+        name="Home"
+        component={Temp}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   )
 }
 
-function temp() {
+function Temp() {
 
   return(
     <>

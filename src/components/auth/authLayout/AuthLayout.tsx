@@ -1,3 +1,4 @@
+import { View } from "react-native";
 import * as S from "./style"
 
 interface AuthLayoutProps{
@@ -7,9 +8,7 @@ interface AuthLayoutProps{
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return(
     <S.LayoutContainer>
-      <S.InnerLayout>
-        {children}
-      </S.InnerLayout>
+         {children}
     </S.LayoutContainer>
   )
 }
