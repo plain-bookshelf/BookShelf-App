@@ -1,4 +1,4 @@
-/** 공통 colorStyle */
+/* 공통 colorStyle */
 export const colorStyle = {
   defaultWhite: "#FFFFFF",
   defaultBlack: "#000000",
@@ -16,7 +16,9 @@ export const colorStyle = {
   darkGreen: "#00AA62",
   timerRed: "#FF4E4E",
   labelGray: "#777777",
+  recommandIdBackground: "#262626",
+  recommandIdText: "#B5B5B5",
 } as const;
 
-/** props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
+/* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
 export type ColorKey = keyof typeof colorStyle;
