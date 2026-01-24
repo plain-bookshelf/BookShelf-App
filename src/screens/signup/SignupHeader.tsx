@@ -8,13 +8,14 @@ interface SignupHeaderProps {
 }
 
 export default function SignupHeader({ step, onPrev }: SignupHeaderProps) {
+  const nowStep = Math.floor(step);
   
   return(
-    <View style={{ width: '100%', flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+    <View style={{ width: '100%', flexDirection: "row", alignItems: "center", justifyContent: "space-between", height: 40, marginBottom: 16 }}>
       <Pressable onPress={onPrev}>
         <Image source={btn_previous_default} style={{ width: 10, height: 17}} />
       </Pressable>
-      <Typography children={`${step}/5`} font='regular20' color='appBarGray' />
+      <Typography children={`${nowStep}/5`} font='medium16' color='defaultBlack' />
     </View>
   )
 }
