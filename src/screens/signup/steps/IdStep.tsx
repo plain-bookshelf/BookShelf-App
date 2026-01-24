@@ -61,7 +61,7 @@ export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: 
             <Typography children='이런 아이디는 어떠세요?' font='semiBold14' color='recommandIdText' />
             <Typography children={recommandId} font='semiBold16' color='defaultWhite' decoration={true} />
             <ClickText>
-              <Typography children='이런 아이디는 어떠세요?' font='regular12' color='recommandIdText' />
+              <Typography children='클릭하여 바로 입력' font='regular12' color='defaultGray' />
             </ClickText>
           </RecommandIdContainer>
         </Pressable>
@@ -72,7 +72,6 @@ export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: 
 
 const Continaer = styled.View`
   flex: 1;
-  gap: 4px;
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 30px;
@@ -80,6 +79,7 @@ const Continaer = styled.View`
 
 const RecommandIdContainer = styled.View`
   box-sizing: border-box;
+  flex-direction: column;
   width: 100%;
   height: 80px;
   background-color: ${( colorStyle.recommandIdBackground )};
@@ -89,5 +89,4 @@ const RecommandIdContainer = styled.View`
 
 const ClickText = styled.View`
   align-items: flex-end;
-  justify-self: flex-end;
 `
