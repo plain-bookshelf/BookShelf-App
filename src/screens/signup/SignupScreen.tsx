@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import SignupHeader from "./SignupHeader";
 import IdStep from "./steps/IdStep";
-import ContentLayout from "./ContentLayout";
 import ActionLayout from "./ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
@@ -76,30 +75,22 @@ function StepContent({ step, form, setForm, setIsStepValid, isEmail, setIsEmail 
   switch (step) {
     case 1:
       return(
-        <ContentLayout>
-          <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} setIsStepValid={setIsStepValid} setIsEmail={setIsEmail} />
-        </ContentLayout>
+        <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} setIsStepValid={setIsStepValid} setIsEmail={setIsEmail} />
       )
 
     case 1.5:
       return(
-        <ContentLayout>
-          <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
-        </ContentLayout>
+        <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
       )
 
     case 2:
       return(
-        <ContentLayout>
-          <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} />
-        </ContentLayout>
+        <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} />
       )
 
     case 3:
       return(
-        <ContentLayout>
-          <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
-        </ContentLayout>
+        <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={setIsStepValid} />
       )
     default:
       break;

@@ -6,6 +6,7 @@ interface TypographyProps {
   children: string,
   font: FontKey,
   color: ColorKey,
+  decoration?: boolean,
 }
 
 /**
@@ -14,8 +15,8 @@ interface TypographyProps {
  * @param color colorStyle 에 있는 style 중 하나 선택
  * @returns 스타일 적용된 Text 생성
  */
-export default function Typography({ children, font, color }: TypographyProps) {
+export default function Typography({ children, font, color, decoration = false }: TypographyProps) {
   return(
-    <S.StyledText font={font} color={color}>{children}</S.StyledText>
+    <S.StyledText font={font} color={color} decoration={decoration}>{children}</S.StyledText>
   )
 }
