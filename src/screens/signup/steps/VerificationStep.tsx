@@ -14,13 +14,14 @@ interface VerificationStepProps {
 export default function VerificationStep({ value, onChange, setIsStepValid }: VerificationStepProps) {
 
   useEffect(() => {
-    if(value){
-    setIsStepValid(true);
-    } else{
-      setIsStepValid(false);
+    if(value.trim().length !== 0){
+      setIsStepValid(true)
+    }
+    else{
+      setIsStepValid(false)
     }
   }, [value])
-
+  
   return(
     <Continaer>
       <ContentLayout>
