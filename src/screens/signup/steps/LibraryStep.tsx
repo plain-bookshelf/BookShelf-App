@@ -12,14 +12,15 @@ interface LibraryStepProps {
   setIsStepValid: (isStepValid: boolean) => void,
 }
 
-export default function Library({ value, onChange, setIsStepValid }: LibraryStepProps) {
+export default function LibraryStep({ value, onChange, setIsStepValid }: LibraryStepProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    if(value){
-    setIsStepValid(true);
-    } else{
-      setIsStepValid(false);
+    if(value.trim().length !== 0){
+      setIsStepValid(true)
+    }
+    else{
+      setIsStepValid(false)
     }
   }, [value])
 

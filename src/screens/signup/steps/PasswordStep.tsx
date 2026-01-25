@@ -18,16 +18,8 @@ export default function PasswordStep({ value, onChange, setIsStepValid }: Passwo
     } else{
       setIsStepValid(false);
     }
-  }, [ ,value, checkPassword])
-
-  useEffect(() => {
-    if(value === checkPassword){
-    setIsStepValid(true);
-    } else{
-      setIsStepValid(false);
-    }
-  }, [])
-
+  }, [value, checkPassword])
+  
   return(
     <ContentLayout>
       <Typography children='비밀번호 생성' font='medium28' color='defaultBlack' />
