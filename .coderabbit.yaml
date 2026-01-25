@@ -6,9 +6,12 @@ reviews:
 
   auto_review:
     enabled: true
-    on_default_branch_only: false
     triggers:
       - pull_request
+
+  review_branches:
+    include:
+      - "**"
 
   high_level_summary: true
   sequence_diagrams: true
