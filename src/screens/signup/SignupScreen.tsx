@@ -7,6 +7,7 @@ import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
 import AuthLayout from "@/components/auth/authLayout/AuthLayout";
 import Library from "./steps/LibraryStep";
+import CompletionStep from "./steps/CompletionStep";
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -16,7 +17,10 @@ export default function Signup() {
   const [isStepValid, setIsStepValid] = useState(false);
 
   useEffect(() => {
-    if(prevStepRef.current < step){
+    if(step === 4){
+      setIsStepValid(true);
+    }
+    else if(prevStepRef.current < step){
       setIsStepValid(false);
     }
 
@@ -54,7 +58,7 @@ export default function Signup() {
       <AuthLayout>
         <>  
           <SignupHeader step={step} onPrev={handlePrev} />
-          <ActionLayout label={step !== 3 ? '다음' : '완료'} onNext={handleNext} isValid={isStepValid}>
+          <ActionLayout label={step < 3 ? '다음' : step === 3 ? '완료' : '로그인하러 가기'} onNext={handleNext} isValid={isStepValid}>
             <StepContent step={step} form={form} setForm={setForm} setIsStepValid={setIsStepValid} setIsEmail={setIsEmail} />
           </ActionLayout>
         </>
@@ -92,7 +96,10 @@ function StepContent({ step, form, setForm, setIsStepValid, setIsEmail }: StepCo
       return(
         <Library value={form.Library} onChange={(text: string) => setForm({...form, Library: text})} setIsStepValid={setIsStepValid} />
       )
+
     default:
-      break;
+      return(
+        <CompletionStep />
+      );
   }
 }

@@ -15,7 +15,7 @@ export default function SignupHeader({ step, onPrev }: SignupHeaderProps) {
       <Pressable onPress={onPrev}>
         <Image source={btn_previous_default} style={{ width: 10, height: 17}} />
       </Pressable>
-      <Typography children={`${nowStep}/3`} font='medium16' color='defaultBlack' />
+      {step !== 4 && <Typography children={`${nowStep}/3`} font='medium16' color='defaultBlack' />}
     </View>
   )
 }
