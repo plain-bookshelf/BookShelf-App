@@ -6,11 +6,12 @@ import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
 import AuthLayout from "@/components/auth/authLayout/AuthLayout";
+import Library from "./steps/LibraryStep";
 
 export default function Signup() {
   const [step, setStep] = useState(1);
   const prevStepRef = useRef(1);
-  const [form, setForm] = useState({id: '', email: '', password: '', school: '', verificationCode: ''});
+  const [form, setForm] = useState({id: '', email: '', password: '', school: '', verificationCode: '', Library: ''});
   const [isEmail, setIsEmail] = useState(false);
   const [isStepValid, setIsStepValid] = useState(false);
 
@@ -53,8 +54,8 @@ export default function Signup() {
       <AuthLayout>
         <>  
           <SignupHeader step={step} onPrev={handlePrev} />
-          <ActionLayout label={step !== 5 ? '다음' : '완료'} onNext={handleNext} isValid={isStepValid}>
-            <StepContent step={step} form={form} setForm={setForm} setIsStepValid={setIsStepValid} isEmail={isEmail} setIsEmail={setIsEmail} />
+          <ActionLayout label={step !== 3 ? '다음' : '완료'} onNext={handleNext} isValid={isStepValid}>
+            <StepContent step={step} form={form} setForm={setForm} setIsStepValid={setIsStepValid} setIsEmail={setIsEmail} />
           </ActionLayout>
         </>
      </AuthLayout>
@@ -64,14 +65,13 @@ export default function Signup() {
 
 interface StepContentProps {
   step: number,
-  form: {id: string, email: string, password: string, school: string, verificationCode: string},
-  setForm: (form: {id: string, email: string, password: string, school: string, verificationCode: string}) => void,
+  form: {id: string, email: string, password: string, school: string, verificationCode: string, Library: string},
+  setForm: (form: {id: string, email: string, password: string, school: string, verificationCode: string, Library: string}) => void,
   setIsStepValid: (isStepValid: boolean) => void,
-  isEmail: boolean,
   setIsEmail: (isEmail: boolean) => void
 }
 
-function StepContent({ step, form, setForm, setIsStepValid, isEmail, setIsEmail }: StepContentProps) {
+function StepContent({ step, form, setForm, setIsStepValid, setIsEmail }: StepContentProps) {
   switch (step) {
     case 1:
       return(
@@ -86,6 +86,11 @@ function StepContent({ step, form, setForm, setIsStepValid, isEmail, setIsEmail 
     case 2:
       return(
         <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={setIsStepValid} />
+      )
+
+    case 3:
+      return(
+        <Library value={form.Library} onChange={(text: string) => setForm({...form, Library: text})} setIsStepValid={setIsStepValid} />
       )
     default:
       break;
