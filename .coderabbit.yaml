@@ -6,9 +6,12 @@ reviews:
 
   auto_review:
     enabled: true
-    on_default_branch_only: false
     triggers:
       - pull_request
+
+  review_branches:
+    include:
+      - "**"
 
   high_level_summary: true
   sequence_diagrams: true
@@ -16,7 +19,3 @@ reviews:
   suggested_reviewers: true
   auto_assign_reviewers: true
   review_status: true
-
-tests:
-  suggest: false
-  generate: false
