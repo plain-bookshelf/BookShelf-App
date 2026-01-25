@@ -4,7 +4,7 @@ import ContentLayout from "../ContentLayout";
 import icon_search_default from "@/assets/icon_search-_default.png"
 import { colorStyle } from "@/styles/colorStyle";
 import { fontStyle } from "@/styles/fontStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface LibraryStepProps {
   value: string,
@@ -14,6 +14,14 @@ interface LibraryStepProps {
 
 export default function Library({ value, onChange, setIsStepValid }: LibraryStepProps) {
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if(value){
+    setIsStepValid(true);
+    } else{
+      setIsStepValid(false);
+    }
+  }, [value])
 
     return(
       <>
