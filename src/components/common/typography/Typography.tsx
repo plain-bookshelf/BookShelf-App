@@ -10,10 +10,13 @@ interface TypographyProps {
 }
 
 /**
- * @param children 화면에 표시 될 Text 입력
- * @param font fontStyle 에 있는 style 중 하나 선택
- * @param color colorStyle 에 있는 style 중 하나 선택
- * @returns 스타일 적용된 Text 생성
+ * Render text with the specified font, color, and optional decoration.
+ *
+ * @param children - The text content to display
+ * @param font - A key from `fontStyle` selecting the font to apply
+ * @param color - A key from `colorStyle` selecting the color to apply
+ * @param decoration - Whether to apply text decoration (defaults to `false`)
+ * @returns The styled Text element that renders `children` with the given styles
  */
 export default function Typography({ children, font, color, decoration = false }: TypographyProps) {
   return(

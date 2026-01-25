@@ -9,6 +9,14 @@ interface PasswordStepProps {
   setIsStepValid: (isStepValid: boolean) => void;
 }
 
+/**
+ * Renders the password creation step with password and confirmation inputs and reports validity.
+ *
+ * @param value - The current password string shown in the primary input
+ * @param onChange - Callback invoked with the new password when the primary input changes
+ * @param setIsStepValid - Callback invoked with `true` when the password is non-empty and matches the confirmation, otherwise `false`
+ * @returns The JSX element containing the password and confirmation inputs for the signup flow
+ */
 export default function PasswordStep({ value, onChange, setIsStepValid }: PasswordStepProps) {
   const [checkPassword, setCheckPassword] = useState(value);
 

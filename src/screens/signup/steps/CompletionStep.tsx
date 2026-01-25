@@ -1,6 +1,11 @@
 import Typography from "@/components/common/typography/Typography";
 import ContentLayout from "../ContentLayout";
 
+/**
+ * Displays the signup completion screen with a success title and a guidance subtitle.
+ *
+ * @returns The JSX element for the completion step UI.
+ */
 export default function CompletionStep() {
   return(
     <ContentLayout>

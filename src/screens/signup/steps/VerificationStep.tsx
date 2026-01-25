@@ -11,6 +11,14 @@ interface VerificationStepProps {
   setIsStepValid: (isStepValid: boolean) => void;
 }
 
+/**
+ * Render the verification code input step used during signup.
+ *
+ * @param value - Current verification code input value
+ * @param onChange - Called with the new input text when the user changes the value
+ * @param setIsStepValid - Called with `true` when `value.trim().length > 0`, otherwise called with `false`
+ * @returns A React element containing the verification input, countdown timer, and resend controls
+ */
 export default function VerificationStep({ value, onChange, setIsStepValid }: VerificationStepProps) {
 
   useEffect(() => {

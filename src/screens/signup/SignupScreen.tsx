@@ -9,6 +9,16 @@ import AuthLayout from "@/components/auth/authLayout/AuthLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
 
+/**
+ * Render the multi-step signup screen and manage its navigation and form state.
+ *
+ * Manages current step progression (including an intermediate verification step), a shared form object
+ * (id, email, password, school, verificationCode, Library), an email-mode flag, and per-step validity.
+ * Composes SignupHeader, ActionLayout, and the step-specific content (Id, Verification, Password, Library,
+ * Completion) inside AuthLayout and KeyboardDismiss.
+ *
+ * @returns The Signup screen React element
+ */
 export default function Signup() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({id: '', email: '', password: '', school: '', verificationCode: '', Library: ''});
@@ -72,6 +82,23 @@ interface StepContentProps {
   updateStepValid: (index: number, value: boolean) => void
 }
 
+/**
+ * Render the child component that corresponds to the current signup step.
+ *
+ * Renders:
+ * - 1 → IdStep
+ * - 1.5 → VerificationStep
+ * - 2 → PasswordStep
+ * - 3 → LibraryStep
+ * - default → CompletionStep
+ *
+ * @param step - Current step identifier; may be 1, 1.5, 2, 3, or another value for the completion view
+ * @param form - Shared form state object (id, email, password, school, verificationCode, Library)
+ * @param setForm - State setter for updating the shared form object
+ * @param setIsEmail - Setter used by IdStep to mark whether the identifier is an email
+ * @param updateStepValid - Callback to update per-step validity tracking; invoked with the step key and a boolean validity flag
+ * @returns The JSX element for the active step
+ */
 function StepContent({ step, form, setForm, setIsEmail, updateStepValid }: StepContentProps) {
   switch (step) {
     case 1:

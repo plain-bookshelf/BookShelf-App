@@ -7,6 +7,13 @@ interface SignupHeaderProps {
   onPrev: () => void,
 }
 
+/**
+ * Renders the signup header with a back button and an optional step indicator.
+ *
+ * @param step - Current signup progress; displayed as `Math.floor(step)/3`. The indicator is omitted when `step` equals 4.
+ * @param onPrev - Callback invoked when the back button is pressed.
+ * @returns A React element containing a back button and, unless `step` is 4, a step indicator formatted as `N/3`.
+ */
 export default function SignupHeader({ step, onPrev }: SignupHeaderProps) {
   const nowStep = Math.floor(step);
   

@@ -14,15 +14,15 @@ interface AuthInputProps {
 }
 
 /**
- * 항상 상위 컴포넌트에 KeyboardDismiss를 둘 것
- * @param label input label 입력
- * @param placeholder input placeholder 입력
- * @param size input wdith 결정 small, large 중 선택
- * @param isError 현재 warningMessage 띄울지 여부
- * @param warningMessage 띄울 경고 메세지
- * @param value input 현재 value
- * @param onChangeText input 현재 value 변경
- * @returns label과 input을 담은 하나의 요소로 반환
+ * Render a labeled text input that tracks focus and shows an error row when applicable.
+ *
+ * @param label - Text displayed above the input; omitted when empty
+ * @param placeholder - Placeholder text shown inside the input
+ * @param isError - When `true`, the warning message and error icon are rendered while the input is not focused
+ * @param warningMessage - Error message text shown next to the error icon when `isError` is `true` and the input is blurred
+ * @param value - Current input value
+ * @param onChangeText - Callback invoked with the updated text when the input changes
+ * @returns A React element containing the optional label, the input, and a conditional error row (icon + message)
  */
 export default function AuthInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
  const [isFocused, setIsFocused] = useState(false);

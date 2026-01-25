@@ -4,7 +4,11 @@ import Signup from "@/screens/signup/SignupScreen";
 
 const Stack = createNativeStackNavigator();
 
-/** AuthStack과 MainStack 구별용 NativeStack */
+/**
+ * Native stack used to separate authentication and main app navigation flows.
+ *
+ * @returns A Stack.Navigator element containing the "Home" screen (rendered by Temp) with the header hidden.
+ */
 export default function RootNavigator() {
   return(
     <Stack.Navigator>
@@ -17,6 +21,11 @@ export default function RootNavigator() {
   )
 }
 
+/**
+ * Renders the signup screen wrapped in a keyboard-dismiss wrapper.
+ *
+ * @returns A React element that displays `Signup` inside `KeyboardDismiss`.
+ */
 function Temp() {
 
   return(

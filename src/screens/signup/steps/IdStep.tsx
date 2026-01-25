@@ -13,6 +13,17 @@ interface IdStepProps {
   setIsEmail: (isEmail: boolean) => void,
 }
 
+/**
+ * Render the signup step UI for creating an email or username, including an input, heading, and an optional clickable recommended ID.
+ *
+ * Updates the parent step validity via `setIsStepValid` when the trimmed input length is greater than zero, and updates `setIsEmail` by testing the input against an email regular expression. When the recommended ID is tapped, the input is replaced with the preset recommended ID.
+ *
+ * @param value - Current input value shown in the step
+ * @param onChange - Called with a new value when the input changes
+ * @param setIsStepValid - Called with `true` or `false` to indicate whether the step is valid based on the input
+ * @param setIsEmail - Called with `true` if the input matches the component's email pattern, `false` otherwise
+ * @returns A JSX element containing the title, AuthInput, and an optional recommended-ID suggestion block
+ */
 export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: IdStepProps) {
   const recommandId = 'Bookmaru0713';
   const [isRecommand, setIsRecommand] = useState(true);

@@ -10,11 +10,11 @@ interface ButtonProps {
 }
 
 /**
- * @param size small, middle, large 중에 버튼 크기 선택
- * @param font fontStyle 에 있는 style 중 하나 선택
- * @param label 버튼 내에 들어갈 Text 입력
- * @param onPress 버튼 클릭 시 실행할 함수 입력
- * @returns pressed 까지 적용된 버튼 생성
+ * Render a button that displays a label using the selected font and disables itself when not valid.
+ *
+ * @param font - Key selecting which font style to apply to the label
+ * @param isValid - When `false`, the button is disabled and will not call `onPress`
+ * @returns A Pressable button element that applies pressed-state and validity styling and displays the label
  */
 export default function Button({ font, label, onPress, isValid }: ButtonProps) {
   return(

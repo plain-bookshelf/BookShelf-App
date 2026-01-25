@@ -12,6 +12,17 @@ interface LibraryStepProps {
   setIsStepValid: (isStepValid: boolean) => void,
 }
 
+/**
+ * Render a signup step that lets the user enter their affiliated library.
+ *
+ * Calls `setIsStepValid(true)` when `value.trim().length` is greater than 0 and
+ * `setIsStepValid(false)` when the trimmed `value` is empty.
+ *
+ * @param value - Current text value of the library input
+ * @param onChange - Callback invoked with the new text when the input changes
+ * @param setIsStepValid - Callback to mark the step as valid (`true`) or invalid (`false`)
+ * @returns The JSX element for the library input step
+ */
 export default function LibraryStep({ value, onChange, setIsStepValid }: LibraryStepProps) {
   const [isFocused, setIsFocused] = useState(false);
 
