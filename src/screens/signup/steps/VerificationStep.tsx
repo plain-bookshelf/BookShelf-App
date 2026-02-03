@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import AuthInput from "@/components/auth/authInput/AuthInput"
+import DefaultInput from "@/components/auth/authInput/DefaultInput"
 import Typography from "@/components/common/typography/Typography"
 import { useEffect } from "react";
 import ContentLayout from '../ContentLayout';
@@ -27,7 +27,7 @@ export default function VerificationStep({ value, onChange, setIsStepValid }: Ve
       <ContentLayout>
         <Typography children='인증번호 입력' font='medium28' color='defaultBlack' />
         <AuthInputContainer>
-          <AuthInput label='회원가입하고 책마루에 가입하세요!' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
+          <DefaultInput label='회원가입하고 책마루에 가입하세요!' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
           <Timer>
             <Typography children='5:00' font='regular14' color='timerRed' />
           </Timer>

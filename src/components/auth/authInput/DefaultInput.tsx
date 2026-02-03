@@ -24,7 +24,7 @@ interface AuthInputProps {
  * @param onChangeText input 현재 value 변경
  * @returns label과 input을 담은 하나의 요소로 반환
  */
-export default function AuthInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
+export default function DefaultInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
  const [isFocused, setIsFocused] = useState(false);
 
   return(
