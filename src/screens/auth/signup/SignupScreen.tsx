@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react"
-import SignupHeader from "./SignupHeader";
+import SignupHeader from "./layout/SignupHeader";
 import IdStep from "./steps/IdStep";
-import ActionLayout from "./ActionLayout";
+import ActionLayout from "./layout/ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
-import AuthLayout from "@/components/auth/authLayout/AuthLayout";
+import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
 
@@ -52,14 +52,14 @@ export default function Signup() {
 
   return(
     <KeyboardDismiss>
-      <AuthLayout>
+      <AuthStepLayout>
         <>  
           <SignupHeader step={step} onPrev={handlePrev} />
           <ActionLayout label={step < 3 ? '다음' : step === 3 ? '완료' : '로그인하러 가기'} onNext={handleNext} isValid={stepValid} step={step}>
             <StepContent step={step} form={form} setForm={setForm} setIsEmail={setIsEmail} updateStepValid={updateStepValid} />
           </ActionLayout>
         </>
-     </AuthLayout>
+     </AuthStepLayout>
     </KeyboardDismiss>
   )
 }

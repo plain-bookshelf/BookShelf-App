@@ -16,7 +16,7 @@ export default function SignupHeader({ step, onPrev }: SignupHeaderProps) {
         <Image source={btn_previous_default} style={{ width: 10, height: 17}} />
       </Pressable>
       {/* TODO: 최대 step 지정 후 isShowStep 이런 식으로 step 보여주기 여부로 변경 필요함 */}
-      {step < 4 && <Typography children={`${nowStep}/3`} font='medium16' color='defaultBlack' />}
+      {step < 4 && <Typography children={`${nowStep} / 3`} font='medium16' color='defaultBlack' />}
     </View>
   )
 }

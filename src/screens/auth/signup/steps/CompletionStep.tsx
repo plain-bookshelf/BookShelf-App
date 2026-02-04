@@ -1,5 +1,5 @@
 import Typography from "@/components/common/typography/Typography";
-import ContentLayout from "../ContentLayout";
+import ContentLayout from "../layout/ContentLayout";
 
 export default function CompletionStep() {
   return(
