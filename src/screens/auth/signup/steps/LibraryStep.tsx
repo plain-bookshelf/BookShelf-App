@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import Typography from "@/components/common/typography/Typography";
-import ContentLayout from "../ContentLayout";
+import ContentLayout from "../layout/ContentLayout";
 import icon_search_default from "@/assets/icon_search-_default.png"
 import { colorStyle } from "@/styles/colorStyle";
 import { fontStyle } from "@/styles/fontStyle";
@@ -71,7 +71,7 @@ const Input = styled.TextInput.attrs({
   height: 48px;
   background-color: ${( colorStyle.inputBarGray )};
   border-width: 1px;
-  border-color: ${({ isFocused, isError }) => isFocused ? colorStyle.defaultGreen : isError ? colorStyle.defaultRed : colorStyle.inputBarGray};
+  border-color: ${({ isFocused, isError }) => isFocused ? colorStyle.defaultBlack : isError ? colorStyle.defaultRed : colorStyle.inputBarGray};
   border-radius: 8px;
   align-items: center;
   padding-left: 44px;
