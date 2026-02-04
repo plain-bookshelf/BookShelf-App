@@ -20,6 +20,9 @@ export const colorStyle = {
   recommandIdText: "#C1C1C1",
   resend: "#FF4444",
   resendText: "#868686",
+  lineGray: "#C8C8C8",
+  socialLoginTitle: "#737373",
+  socialLoginBorder: "#A4A4A4"
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
