@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import DefaultInput from "@/components/auth/authInput/DefaultInput"
 import Typography from "@/components/common/typography/Typography"
 import { useEffect } from "react";
-import ContentLayout from '../ContentLayout';
+import ContentLayout from '../layout/ContentLayout';
 import { Text } from 'react-native';
 
 interface VerificationStepProps {
