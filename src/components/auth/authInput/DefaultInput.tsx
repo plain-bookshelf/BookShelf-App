@@ -14,7 +14,6 @@ interface AuthInputProps {
 }
 
 /**
- * 항상 상위 컴포넌트에 KeyboardDismiss를 둘 것
  * @param label input label 입력
  * @param placeholder input placeholder 입력
  * @param size input wdith 결정 small, large 중 선택
@@ -28,7 +27,6 @@ export default function DefaultInput({ label, placeholder, isError, warningMessa
  const [isFocused, setIsFocused] = useState(false);
 
   return(
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <S.InputBox>
       {label.length !== 0 && <Typography children={label} font='regular18' color='labelGray' />}
       <S.Input
@@ -46,6 +44,5 @@ export default function DefaultInput({ label, placeholder, isError, warningMessa
         </S.ErrorContainer>
       }
     </S.InputBox>
-    </TouchableWithoutFeedback>
   )
 }
