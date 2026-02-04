@@ -28,7 +28,7 @@ interface AuthInputProps {
  */
 export default function PasswordInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
  const [isFocused, setIsFocused] = useState(false);
- const [passwordIsShow, setPasswordIsShow] = useState(true);
+ const [passwordIsShow, setPasswordIsShow] = useState(false);
  const passwordImage = passwordIsShow ? btn_passwordShow_true : btn_passwordShow_false;
 
   return(
