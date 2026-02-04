@@ -1,6 +1,6 @@
 import Typography from "@/components/common/typography/Typography"
 import { useEffect, useState } from "react"
-import ContentLayout from "../ContentLayout";
+import ContentLayout from "../layout/ContentLayout";
 import PasswordInput from "@/components/auth/authInput/PasswordInput";
 
 interface PasswordStepProps {
