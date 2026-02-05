@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 interface UseSignupStepControlParams {
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
-  isEmail: boolean;
+  isEmail?: boolean;
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
 }
 

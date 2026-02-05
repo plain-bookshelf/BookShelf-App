@@ -3,13 +3,13 @@ import { useEffect, useState } from "react"
 import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import PasswordInput from "@/components/auth/authInput/PasswordInput";
 
-interface PasswordStepProps {
+interface ResetPasswordStepProps {
   value: string;
   onChange: (text: string) => void;
   setIsStepValid: (isStepValid: boolean) => void;
 }
 
-export default function PasswordStep({ value, onChange, setIsStepValid }: PasswordStepProps) {
+export default function ResetPasswordStep({ value, onChange, setIsStepValid }: ResetPasswordStepProps) {
   const [checkPassword, setCheckPassword] = useState(value);
 
   useEffect(() => {
@@ -18,12 +18,12 @@ export default function PasswordStep({ value, onChange, setIsStepValid }: Passwo
     } else{
       setIsStepValid(false);
     }
-  }, [value, checkPassword])
+  }, [value, checkPassword]);
   
   return(
     <ContentLayout>
-      <Typography children='비밀번호 생성' font='medium28' color='defaultBlack' />
-      <PasswordInput label='회원가입하고 책마루에 가입하세요' placeholder='10자리 ~ 20자리, 영문, 특수문자 포함' isError={false} warningMessage="" value={value} onChangeText={onChange} />
+      <Typography children='비밀번호 찾기' font='medium28' color='defaultBlack' />
+      <PasswordInput label='비밀번호를 잃어버리셨나요?' placeholder='새 비밀번호 입력' isError={false} warningMessage="" value={value} onChangeText={onChange} />
       <PasswordInput label='' placeholder='비밀번호 재입력' isError={value.length > 0 && value !== checkPassword} warningMessage="비밀번호가 일치하지 않습니다." value={checkPassword} onChangeText={setCheckPassword} />
     </ContentLayout>
   )

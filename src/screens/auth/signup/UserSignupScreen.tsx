@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react"
-import SignupHeader from "./layout/SignupHeader";
+import StepHeader from "../../../components/auth/authLayout/AuthStepComponentLayout/StepHeader";
 import IdStep from "./steps/IdStep";
-import ActionLayout from "./layout/ActionLayout";
+import ActionLayout from "../../../components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
-import { SignupForm, StepContentProps } from "./steps/step.type";
-import { useSignupStepControl } from "./hooks/useSignupStepControl";
+import { SignupForm, StepContentProps } from "@/types/index";
+import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 
 export default function UserSignupScreen() {
   const [step, setStep] = useState(1);
@@ -22,7 +22,7 @@ export default function UserSignupScreen() {
     <KeyboardDismiss>
       <AuthStepLayout>
         <>  
-          <SignupHeader step={step} maxStep={3} onPrev={handlePrev} />
+          <StepHeader step={step} maxStep={3} onPrev={handlePrev} />
           <ActionLayout label={step < 3 ? '다음' : step === 3 ? '완료' : '로그인하러 가기'} onNext={handleNext} isValid={stepValid} step={step}>
             <StepContent step={step} form={form} setForm={setForm} setIsEmail={setIsEmail} updateStepValid={updateStepValid} />
           </ActionLayout>
