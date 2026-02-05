@@ -14,8 +14,9 @@ export default function EmailStep({ value, onChange, setIsStepValid }: AdminCode
   const [isEmail, setIsEmail] = useState(false);
 
   useEffect(() => {
-    setIsEmail(isValidEmail(value))
-    setIsStepValid(isEmail)
+    const isValid = isValidEmail(value)
+    setIsEmail(isValid)
+    setIsStepValid(isValid)
   }, [value])
   
   return(
