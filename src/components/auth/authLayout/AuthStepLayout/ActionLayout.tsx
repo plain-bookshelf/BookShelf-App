@@ -1,7 +1,5 @@
 import Button from "@/components/common/button/Button"
-import { Children, ReactNode } from "react"
 import { View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
 
 interface ActionLayoutProps {
   children: React.ReactNode;
