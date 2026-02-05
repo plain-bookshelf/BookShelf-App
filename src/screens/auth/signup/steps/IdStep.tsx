@@ -5,6 +5,7 @@ import { colorStyle } from "@/styles/colorStyle";
 import { useEffect, useState } from "react";
 import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import { Pressable } from "react-native";
+import { isValidEmail } from "@/utils/isValidEmail";
 
 interface IdStepProps {
   value: string,
@@ -17,9 +18,6 @@ export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: 
   const recommandId = 'Bookmaru0713';
   const [isRecommand, setIsRecommand] = useState(true);
 
-  /* 우선 IdStep에서만 쓰는데 나중에 쓰는 곳 더 생기면 utills로 빼도 괜찮지 않을까 싶음 */
-  const emailRegex = /^[A-Za-z0-9](?:[A-Za-z0-9._%+-]{0,62}[A-Za-z0-9])?@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
-
   useEffect(() => {
     if(value.trim().length !== 0){
       setIsStepValid(true)
@@ -31,7 +29,7 @@ export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: 
 
   /* 정규 표현식으로 ID인지 Email인지 검사 */
   useEffect(() => {
-    const isEmail = emailRegex.test(value);
+    const isEmail = isValidEmail(value)
     setIsEmail(isEmail);
   }, [value])
 
