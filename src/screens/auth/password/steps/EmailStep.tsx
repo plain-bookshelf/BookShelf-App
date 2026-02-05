@@ -4,13 +4,13 @@ import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/
 import DefaultInput from "@/components/auth/authInput/DefaultInput";
 import { isValidEmail } from "@/utils/isValidEmail";
 
-interface AdminCodeStepStepProps {
+interface EmailStepProps {
   value: string;
   onChange: (text: string) => void;
   setIsStepValid: (isStepValid: boolean) => void;
 }
 
-export default function EmailStep({ value, onChange, setIsStepValid }: AdminCodeStepStepProps) {
+export default function EmailStep({ value, onChange, setIsStepValid }: EmailStepProps) {
   const [isEmail, setIsEmail] = useState(false);
 
   useEffect(() => {
