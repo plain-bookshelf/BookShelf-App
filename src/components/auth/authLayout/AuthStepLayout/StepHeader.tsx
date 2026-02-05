@@ -8,7 +8,7 @@ interface SignupHeaderProps {
   onPrev: () => void,
 }
 
-export default function SignupHeader({ step, maxStep, onPrev }: SignupHeaderProps) {
+export default function StepHeader({ step, maxStep, onPrev }: SignupHeaderProps) {
   const nowStep = Math.floor(step);
   
   return(
