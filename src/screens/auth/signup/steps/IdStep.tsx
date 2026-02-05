@@ -3,7 +3,7 @@ import DefaultInput from "@/components/auth/authInput/DefaultInput";
 import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
 import { useEffect, useState } from "react";
-import ContentLayout from "../layout/ContentLayout";
+import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import { Pressable } from "react-native";
 
 interface IdStepProps {
