@@ -9,7 +9,7 @@ import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
 import { SignupForm, StepContentProps } from "@/types/index";
-import { useSignupStepControl } from "./hooks/useSignupStepControl";
+import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 
 export default function UserSignupScreen() {
   const [step, setStep] = useState(1);

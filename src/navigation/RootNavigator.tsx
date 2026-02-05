@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
+import T from "@/screens/auth/password/FindPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ function Temp() {
   return(
     <>
     <KeyboardDismiss>
-      <AdminSignupScreen />
+      <T />
     </KeyboardDismiss>
     </>
   )
