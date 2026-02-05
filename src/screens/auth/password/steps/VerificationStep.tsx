@@ -16,6 +16,9 @@ interface VerificationStepProps {
 
 export default function VerificationStep({ value, onChange, email, onChangeEmail, setIsStepValid }: VerificationStepProps) {
   const [isEmail, setIsEmail] = useState(true);
+  useEffect(() => {
+    setIsStepValid(false);
+  }, [])
 
   useEffect(() => {
     if(value.trim().length !== 0 && isEmail){
@@ -24,12 +27,11 @@ export default function VerificationStep({ value, onChange, email, onChangeEmail
     else{
       setIsStepValid(false);
     }
-  }, [value])
+  }, [value, isEmail])
 
   useEffect(() => {
     const isValid = isValidEmail(email);
     setIsEmail(isValid);
-    setIsStepValid(isEmail);
   }, [email])
   
   return(
