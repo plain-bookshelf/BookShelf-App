@@ -8,53 +8,21 @@ import VerificationStep from "./steps/VerificationStep";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
+import { SignupForm, StepContentProps } from "./steps/step.type";
+import { useSignupStepControl } from "./hooks/useSignupStepControl";
 
-export default function Signup() {
+export default function UserSignupScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState({id: '', email: '', password: '', school: '', verificationCode: '', Library: ''});
+  const [form, setForm] = useState<SignupForm>({id: '', email: '', password: '', school: '', verificationCode: '', library: ''});
   const [isEmail, setIsEmail] = useState(false);
   const [stepValid, setStepValid] = useState([false, false, false, false, true]);
-
-  const updateStepValid = (index: number, valid: boolean) => {
-    setStepValid(prev => {
-      const next = [...prev];
-      next[index] = valid;
-      return next;
-    });
-  };
-
-
-  const handlePrev = () => {
-    if(step === 1.5 && isEmail){
-      setStep((s) => s - 0.5);
-      return;
-    }
-    else if(step === 2 && isEmail){
-      setStep((s) => s - 0.5);
-      return;
-    }
-
-    if(step < 2){
-      /* 나중에 login / signup 페이지로 넘기도록 해야함 */
-      return;
-    }
-
-    setStep((s) => s - 1)
-  };
-  const handleNext = () => {
-    if(isEmail){
-      setStep((s) => s + 0.5);
-      return;
-    }
-
-    setStep((s) => s + 1)
-  };
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, setStep, isEmail, setStepValid })
 
   return(
     <KeyboardDismiss>
       <AuthStepLayout>
         <>  
-          <SignupHeader step={step} onPrev={handlePrev} />
+          <SignupHeader step={step} maxStep={3} onPrev={handlePrev} />
           <ActionLayout label={step < 3 ? '다음' : step === 3 ? '완료' : '로그인하러 가기'} onNext={handleNext} isValid={stepValid} step={step}>
             <StepContent step={step} form={form} setForm={setForm} setIsEmail={setIsEmail} updateStepValid={updateStepValid} />
           </ActionLayout>
@@ -62,14 +30,6 @@ export default function Signup() {
      </AuthStepLayout>
     </KeyboardDismiss>
   )
-}
-
-interface StepContentProps {
-  step: number,
-  form: {id: string, email: string, password: string, school: string, verificationCode: string, Library: string},
-  setForm: (form: {id: string, email: string, password: string, school: string, verificationCode: string, Library: string}) => void,
-  setIsEmail: (isEmail: boolean) => void,
-  updateStepValid: (index: number, value: boolean) => void
 }
 
 function StepContent({ step, form, setForm, setIsEmail, updateStepValid }: StepContentProps) {
@@ -91,7 +51,7 @@ function StepContent({ step, form, setForm, setIsEmail, updateStepValid }: StepC
 
     case 3:
       return(
-        <Library value={form.Library} onChange={(text: string) => setForm({...form, Library: text})} setIsStepValid={(valid) => updateStepValid(3, valid)} />
+        <Library value={form.library} onChange={(text: string) => setForm({...form, library: text})} setIsStepValid={(valid) => updateStepValid(3, valid)} />
       )
 
     default:
