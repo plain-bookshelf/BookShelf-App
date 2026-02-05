@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import AuthHome from "@/screens/auth/authHome/AuthHome";
+import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ function Temp() {
   return(
     <>
     <KeyboardDismiss>
-      <AuthHome />
+      <AdminSignupScreen />
     </KeyboardDismiss>
     </>
   )
