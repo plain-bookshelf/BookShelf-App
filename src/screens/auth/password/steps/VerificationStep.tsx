@@ -1,33 +1,46 @@
 import styled from 'styled-components/native';
 import DefaultInput from "@/components/auth/authInput/DefaultInput"
 import Typography from "@/components/common/typography/Typography"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ContentLayout from '@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout';
 import { Text } from 'react-native';
+import { isValidEmail } from '@/utils/isValidEmail';
 
 interface VerificationStepProps {
   value: string;
   onChange: (text: string) => void;
+  email: string;
+  onChangeEmail: (text: string) => void
   setIsStepValid: (isStepValid: boolean) => void;
 }
 
-export default function VerificationStep({ value, onChange, setIsStepValid }: VerificationStepProps) {
+export default function VerificationStep({ value, onChange, email, onChangeEmail, setIsStepValid }: VerificationStepProps) {
+  const [isEmail, setIsEmail] = useState(true);
+  useEffect(() => {
+    setIsStepValid(false);
+  }, [])
 
   useEffect(() => {
-    if(value.trim().length !== 0){
-      setIsStepValid(true)
+    if(value.trim().length !== 0 && isEmail){
+      setIsStepValid(true);
     }
     else{
-      setIsStepValid(false)
+      setIsStepValid(false);
     }
-  }, [value])
+  }, [value, isEmail])
+
+  useEffect(() => {
+    const isValid = isValidEmail(email);
+    setIsEmail(isValid);
+  }, [email])
   
   return(
     <Continaer>
       <ContentLayout>
-        <Typography children='인증번호 입력' font='medium28' color='defaultBlack' />
+        <Typography children='비밀번호 찾기' font='medium28' color='defaultBlack' />
+        <DefaultInput label='비밀번호를 잃어버리셨나요?' placeholder='이메일 입력' isError={email.length > 0 && !isEmail} warningMessage='올바르지 않은 이메일입니다.' value={email} onChangeText={onChangeEmail} />
         <AuthInputContainer>
-          <DefaultInput label='회원가입하고 책마루에 가입하세요!' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
+          <DefaultInput label='' placeholder='인증번호를 입력해주세요.' isError={false} warningMessage="올바르지 않은 인증번호입니다." value={value} onChangeText={onChange} />
           <Timer>
             <Typography children='5:00' font='regular14' color='timerRed' />
           </Timer>
@@ -66,5 +79,4 @@ const Timer = styled.View`
   justify-content: center;
   height: 48px;
   right: 20px;
-  top: 40px;
 `

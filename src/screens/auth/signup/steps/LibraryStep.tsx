@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import Typography from "@/components/common/typography/Typography";
-import ContentLayout from "../layout/ContentLayout";
+import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import icon_search_default from "@/assets/icon_search-_default.png"
 import { colorStyle } from "@/styles/colorStyle";
 import { fontStyle } from "@/styles/fontStyle";
