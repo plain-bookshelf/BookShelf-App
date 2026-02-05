@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react"
-import StepHeader from "../../../components/auth/authLayout/AuthStepLayout/StepHeader";
+import StepHeader from "../../../components/auth/authLayout/AuthStepComponentLayout/StepHeader";
 import IdStep from "./steps/IdStep";
-import ActionLayout from "../../../components/auth/authLayout/AuthStepLayout/ActionLayout";
+import ActionLayout from "../../../components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
-import { SignupForm, StepContentProps } from "./steps/step.type";
+import { SignupForm, StepContentProps } from "@/types/index";
 import { useSignupStepControl } from "./hooks/useSignupStepControl";
 
 export default function UserSignupScreen() {
