@@ -28,8 +28,8 @@ interface AuthInputProps {
  */
 export default function PasswordInput({ label, placeholder, isError, warningMessage, value, onChangeText }: AuthInputProps) {
  const [isFocused, setIsFocused] = useState(false);
- const [passwordIsShow, setPasswordIsShow] = useState(false);
- const passwordImage = passwordIsShow ? btn_passwordShow_true : btn_passwordShow_false;
+ const [passwordIsSecure, setPasswordIsSecure] = useState(true);
+ const passwordImage = passwordIsSecure ? btn_passwordShow_false : btn_passwordShow_true;
 
   return(
     <S.InputBox>
@@ -42,9 +42,9 @@ export default function PasswordInput({ label, placeholder, isError, warningMess
           isError={isError} value={value}
           isFocused={isFocused}
           onChangeText={onChangeText}
-          secureTextEntry={passwordIsShow}
+          secureTextEntry={passwordIsSecure}
         />
-        <ShowButton onPress={() => setPasswordIsShow(pre => !pre)}>
+        <ShowButton onPress={() => setPasswordIsSecure(pre => !pre)}>
           <Image source={passwordImage} style={{ width: 20, height: 20 }} />
         </ShowButton>
       </PasswordBox>
