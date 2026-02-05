@@ -11,7 +11,7 @@ import btn_kakaoLogin_default from "@/assets/btn_kakao-login_default.png"
 import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
 import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 
-export default function AuthHome() {
+export default function AuthHomeScreen() {
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
