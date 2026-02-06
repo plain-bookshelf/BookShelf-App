@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import T from "@/screens/auth/password/FindPasswordScreen";
+import T from "@/screens/auth/Id/FindIdScreen";
 
 const Stack = createNativeStackNavigator();
 
