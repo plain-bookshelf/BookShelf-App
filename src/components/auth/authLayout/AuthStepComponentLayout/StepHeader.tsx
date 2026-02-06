@@ -1,6 +1,8 @@
 import { Image, Pressable, View } from "react-native";
 import btn_previous_default from "@/assets/btn_previous_default.png"
 import Typography from "@/components/common/typography/Typography";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNav } from "@/navigation/type";
 
 interface SignupHeaderProps {
   step?: number,
@@ -9,11 +11,12 @@ interface SignupHeaderProps {
 }
 
 export default function StepHeader({ step = 0, maxStep = 3, onPrev }: SignupHeaderProps) {
+  const navigation = useNavigation<AuthNav>();
   const nowStep = Math.floor(step);
   
   return(
     <View style={{ width: '100%', flexDirection: "row", alignItems: "center", justifyContent: "space-between", height: 40, marginBottom: 16 }}>
-      <Pressable onPress={onPrev} >
+      <Pressable onPress={step !== 1 ? onPrev : () => navigation.goBack()} >
         <Image source={btn_previous_default} style={{ width: 24, height: 24}} />
       </Pressable>
       {/* TODO: 최대 step 지정 후 isShowStep 이런 식으로 step 보여주기 여부로 변경 필요함 */}
