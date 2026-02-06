@@ -16,7 +16,7 @@ export default function UserSignupScreen() {
   const [form, setForm] = useState<SignupForm>({id: '', email: '', password: '', school: '', verificationCode: '', library: ''});
   const [isEmail, setIsEmail] = useState(false);
   const [stepValid, setStepValid] = useState([false, false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, setStep, isEmail, setStepValid })
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 3, setStep, isEmail, setStepValid })
 
   return(
     <KeyboardDismiss>

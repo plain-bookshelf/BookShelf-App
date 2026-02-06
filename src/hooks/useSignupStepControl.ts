@@ -1,13 +1,18 @@
+import { AuthNav } from '@/navigation/type';
+import { useNavigation } from '@react-navigation/native';
 import { Dispatch, SetStateAction } from 'react';
 
 interface UseSignupStepControlParams {
   step: number;
+  maxStep: number;
   setStep: Dispatch<SetStateAction<number>>;
   isEmail?: boolean;
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
 }
 
-export function useSignupStepControl({ step, setStep, isEmail, setStepValid }: UseSignupStepControlParams) {
+export function useSignupStepControl({ step, maxStep, setStep, isEmail, setStepValid }: UseSignupStepControlParams) {
+  const navigation = useNavigation<AuthNav>();
+
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
       const next = [...prev];
@@ -34,7 +39,10 @@ export function useSignupStepControl({ step, setStep, isEmail, setStepValid }: U
   };
 
   const handleNext = () => {
-    if (isEmail) {
+    if(step === maxStep + 1){
+      navigation.navigate('AuthHome');
+    }
+    else if (isEmail) {
       setStep(s => s + 0.5);
       return;
     }
