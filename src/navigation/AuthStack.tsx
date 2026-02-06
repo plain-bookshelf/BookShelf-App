@@ -5,8 +5,9 @@ import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
 import UserSignupScreen from "@/screens/auth/signup/UserSignupScreen";
 import SignupRoleSelectScreen from "@/screens/auth/SignupRoleSelectScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AuthStackParamList } from "./type";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 export default function AuthStack() {
   return(
@@ -16,7 +17,7 @@ export default function AuthStack() {
       <Stack.Screen name="UserSignup" component={UserSignupScreen} />
       <Stack.Screen name="AdminSignup" component={AdminSignupScreen} />
       <Stack.Screen name="FindPassword" component={FindPasswordScreen} />
-      <Stack.Screen name="FindName" component={FindIdScreen} />
+      <Stack.Screen name="FindId" component={FindIdScreen} />
     </Stack.Navigator>
   )
 }
