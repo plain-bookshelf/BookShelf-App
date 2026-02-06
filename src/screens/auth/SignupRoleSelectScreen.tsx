@@ -42,7 +42,7 @@ export default function SignupRoleSelectScreen() {
     <AuthStepLayout>
       <>
         <StepHeader onPrev={() => {}} />
-        <ActionLayout label='다음' onNext={() => {}} isValid={[isStudent || isAdmin]} step={0}>
+        <ActionLayout label='다음' onNext={() => {}} isValid={[isStudent || isAdmin]} step={1}>
           <Container>
             <TitleBox>
               <Typography children='회원가입' font='medium28' color='defaultBlack' />
