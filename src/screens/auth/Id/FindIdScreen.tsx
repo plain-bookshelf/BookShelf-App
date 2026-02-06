@@ -13,7 +13,7 @@ export default function FindIdScreen() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FindForm>({email: '', verificationCode: ''});
   const [stepValid, setStepValid] = useState([false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, setStep, setStepValid })
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 2, setStep, setStepValid })
   const labels = ['인증코드 발송', '다음', '로그인으로 돌아가기']
 
   return(

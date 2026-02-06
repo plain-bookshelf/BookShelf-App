@@ -9,12 +9,17 @@ import btn_admin_default from "@/assets/btn_role-admin_default.png"
 import btn_admin_selected from "@/assets/btn_role-admin_selected.png"
 import { Image, Pressable } from "react-native";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNav } from "@/navigation/type";
+import { Navigate } from "react-router-dom";
 
 export default function SignupRoleSelectScreen() {
   const [isStudent, setIsStudent] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const studentButton = isStudent ? btn_student_selected : btn_student_default;
   const adminBtnButton = isAdmin ? btn_admin_selected : btn_admin_default;
+
+  const navigation = useNavigation<AuthNav>();
 
   const handleRoleSlect = (role: string) => {
     if(role === 'student'){
@@ -41,8 +46,8 @@ export default function SignupRoleSelectScreen() {
   return(
     <AuthStepLayout>
       <>
-        <StepHeader onPrev={() => {}} />
-        <ActionLayout label='다음' onNext={() => {}} isValid={[isStudent || isAdmin]} step={1}>
+        <StepHeader onPrev={() => navigation.goBack()} />
+        <ActionLayout label='다음' onNext={() => navigation.navigate(isStudent ? 'UserSignup' : 'AdminSignup')} isValid={[isStudent || isAdmin]} step={1}>
           <Container>
             <TitleBox>
               <Typography children='회원가입' font='medium28' color='defaultBlack' />

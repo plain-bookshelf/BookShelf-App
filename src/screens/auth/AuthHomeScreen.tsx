@@ -10,13 +10,25 @@ import Button from "@/components/common/button/Button";
 import btn_kakaoLogin_default from "@/assets/btn_kakao-login_default.png"
 import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
 import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AuthNav, AuthStackParamList } from "@/navigation/type";
 
 export default function AuthHomeScreen() {
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
-  const menus = [{title: '회원가입', onPress: () => {}}, {title: '아이디 찾기', onPress: () => {}}, {title: '비밀번호 찾기', onPress: () => {}}];
-  const socialLoginButtons = [{button: btn_kakaoLogin_default, onPress: () => {}}, {button: btn_naverLogin_default, onPress: () => {}}, {button: btn_googleLogin_default, onPress: () => {}}]
+  const navigation = useNavigation<AuthNav>();
+  const menus = [
+    {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
+    {title: '아이디 찾기', onPress: () => navigation.navigate('FindPassword')},
+    {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindId')}
+  ];
+  const socialLoginButtons = [
+    {button: btn_kakaoLogin_default, onPress: () => {}},
+    {button: btn_naverLogin_default, onPress: () => {}},
+    {button: btn_googleLogin_default, onPress: () => {}}
+  ];
 
   useEffect(() => {
     if(loginId.trim().length !== 0 && loginPassword.trim().length !== 0){

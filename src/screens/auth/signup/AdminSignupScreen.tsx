@@ -17,7 +17,7 @@ export default function AdminSignupScreen() {
   const [form, setForm] = useState<AdminSignupForm>({id: '', email: '', password: '', school: '', verificationCode: '', library: '', adminCode: ''});
   const [isEmail, setIsEmail] = useState(false);
   const [stepValid, setStepValid] = useState([false, false, false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, setStep, isEmail, setStepValid })
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, isEmail, setStepValid })
 
   return(
     <KeyboardDismiss>
