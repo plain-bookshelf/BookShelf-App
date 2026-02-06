@@ -12,12 +12,13 @@ import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
 import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthStackParamList } from "@/navigation/type";
+import { AuthNav, AuthStackParamList } from "@/navigation/type";
 
 export default function AuthHomeScreen() {
   const [loginId, setLoginId] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
+  const navigation = useNavigation<AuthNav>();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
     {title: '아이디 찾기', onPress: () => navigation.navigate('FindPassword')},
@@ -28,8 +29,6 @@ export default function AuthHomeScreen() {
     {button: btn_naverLogin_default, onPress: () => {}},
     {button: btn_googleLogin_default, onPress: () => {}}
   ];
-  type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
-  const navigation = useNavigation<AuthNav>();
 
   useEffect(() => {
     if(loginId.trim().length !== 0 && loginPassword.trim().length !== 0){
