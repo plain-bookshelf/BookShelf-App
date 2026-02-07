@@ -7,6 +7,7 @@ export type AuthStackParamList = {
   AdminSignup: undefined;
   FindPassword: undefined;
   FindId: undefined;
+  Onboarding: undefined;
 };
 
 export type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
