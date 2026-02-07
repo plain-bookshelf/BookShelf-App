@@ -54,7 +54,7 @@ export default function AuthHomeScreen() {
           <DefaultInput label='' placeholder='이메일 또는 아이디 입력' isError={false} warningMessage='' value={loginId} onChangeText={setLoginId} />
           <PasswordInput label='' placeholder='비밀번호 입력' isError={false} warningMessage='' value={loginPassword} onChangeText={setLoginPassword} />
         </InputBox>
-        <Button font='semiBold16' label='로그인' onPress={() => {}} isValid={loginFormIsValid} />
+        <Button font='semiBold16' label='로그인' onPress={() => navigation.navigate('Onboarding')} isValid={loginFormIsValid} />
       </LoginForm>
 
       <MenuContainer>

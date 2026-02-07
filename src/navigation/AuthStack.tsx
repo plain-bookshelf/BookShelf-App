@@ -1,11 +1,12 @@
 import AuthHomeScreen from "@/screens/auth/AuthHomeScreen";
-import FindIdScreen from "@/screens/auth/Id/FindIdScreen";
+import FindIdScreen from "@/screens/auth/id/FindIdScreen";
 import FindPasswordScreen from "@/screens/auth/password/FindPasswordScreen";
 import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
 import UserSignupScreen from "@/screens/auth/signup/UserSignupScreen";
 import SignupRoleSelectScreen from "@/screens/auth/SignupRoleSelectScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AuthStackParamList } from "./type";
+import OnboardingScreen from "@/screens/auth/onboarding/OnboardingScreen";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -18,6 +19,7 @@ export default function AuthStack() {
       <Stack.Screen name="AdminSignup" component={AdminSignupScreen} />
       <Stack.Screen name="FindPassword" component={FindPasswordScreen} />
       <Stack.Screen name="FindId" component={FindIdScreen} />
+      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
     </Stack.Navigator>
   )
 }

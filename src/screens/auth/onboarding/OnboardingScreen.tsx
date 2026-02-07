@@ -4,6 +4,7 @@ import ActionLayout from "../../../components/auth/authLayout/AuthStepComponentL
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
+import IntroStep from "./steps/IntroStep";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
@@ -29,7 +30,7 @@ export default function OnboardingScreen() {
     <KeyboardDismiss>
       <AuthStepLayout>
         <>  
-          <StepHeader step={step} maxStep={3} onPrev={handlePrev} />
+          <StepHeader step={step} maxStep={4} onPrev={handlePrev} />
           <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step}>
             <StepContent step={step} form={form} setForm={setForm} updateStepValid={updateStepValid} />
           </ActionLayout>
@@ -65,7 +66,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
   switch (step) {
     case 1:
       return(
-        <></>
+        <IntroStep />
       )
 
     case 1.5:
