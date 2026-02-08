@@ -7,6 +7,7 @@ import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 import IntroStep from "./steps/IntroStep";
 import { View } from "react-native";
 import GenreSelectionStep from "./steps/GenreSelectionStep";
+import ReadingTimeStep from "./steps/ReadingTimeStep";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
@@ -46,7 +47,7 @@ function StepContent({ step, updateStepValid }: StepContentProps) {
 
     case 3:
       return(
-        <></>
+        <ReadingTimeStep setIsStepValid={(valid) => updateStepValid(3, valid)} />
       )
 
     default:
