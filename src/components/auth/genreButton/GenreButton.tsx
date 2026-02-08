@@ -1,19 +1,17 @@
 import Typography from "@/components/common/typography/Typography";
 import { GenreButtonBox } from "./style";
-import { useState } from "react";
 
 interface GenreButtonProps {
   isSelected: boolean;
   genre: string;
+  onPress: () => void
 }
 
-export default function GenreButton({ isSelected, genre: Genre }: GenreButtonProps) {
-  const [genreIsSelected, SetGenreIsSelected] = useState(isSelected);
-  console.log(genreIsSelected)
+export default function GenreButton({ isSelected, genre, onPress }: GenreButtonProps) {
 
   return(
-    <GenreButtonBox isSelected={genreIsSelected} onPress={() => SetGenreIsSelected(prev => !prev)} >
-      <Typography children={Genre} font='medium16' color='defaultBlack' />
+    <GenreButtonBox isSelected={isSelected} onPress={onPress} >
+      <Typography children={genre} font='medium16' color='defaultBlack' />
     </GenreButtonBox>
   )
 }
