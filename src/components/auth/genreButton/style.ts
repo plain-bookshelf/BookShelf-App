@@ -1,5 +1,5 @@
 import { colorStyle } from "@/styles/colorStyle";
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 
 interface GernreButtonBoxProps {
   isSelected: boolean

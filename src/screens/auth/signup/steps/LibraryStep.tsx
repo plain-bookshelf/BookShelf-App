@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 import Typography from "@/components/common/typography/Typography";
 import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import icon_search_default from "@/assets/icon_search-_default.png"
@@ -37,7 +37,9 @@ export default function LibraryStep({ value, onChange, setIsStepValid }: Library
                 onBlur={() => setIsFocused(false)}
                 isFocused={isFocused}
                 value={value}
-                onChangeText={onChange} />
+                onChangeText={onChange}
+                placeholderTextColor={colorStyle.defaultGray}
+              />
               <SearchIcon source={icon_search_default} />
             </InputBox>
           </InputContainer>
@@ -62,9 +64,7 @@ const InputBox = styled.View`
   align-items: center;
 `
 
-const Input = styled.TextInput.attrs({
-  placeholderTextColor: `${( colorStyle.defaultGray )}`
-})<InputProps>`
+const Input = styled.TextInput<InputProps>`
   color: ${( colorStyle.defaultBlack )};
   ${( fontStyle.regular16 )};
   width: 100%;

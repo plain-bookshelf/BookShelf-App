@@ -1,4 +1,4 @@
-import styled from "styled-components/native"
+import styled from "@emotion/native"
 import Typography from "@/components/common/typography/Typography"
 import * as S from "./style"
 import { Image, Pressable } from "react-native"

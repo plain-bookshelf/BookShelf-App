@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
 import Typography from "@/components/common/typography/Typography";
 import GenreButton from "@/components/auth/genreButton/GenreButton";

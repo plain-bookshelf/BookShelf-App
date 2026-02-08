@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from '@emotion/native';
 import { colorStyle } from "@/styles/colorStyle";
 import AuthHomeLayout from "@/components/auth/authLayout/AuthHomeLayout";
 import Typography from "@/components/common/typography/Typography";

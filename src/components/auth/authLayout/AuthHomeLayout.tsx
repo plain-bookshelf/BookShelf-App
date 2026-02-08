@@ -1,5 +1,5 @@
 import { colorStyle } from "@/styles/colorStyle";
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface AuthLayoutProps{

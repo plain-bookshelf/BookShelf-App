@@ -1,6 +1,6 @@
 import { colorStyle } from "@/styles/colorStyle";
 import { fontStyle } from "@/styles/fontStyle";
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 
 interface InputProps {
   isError?: boolean,
@@ -12,9 +12,7 @@ export const InputBox = styled.View`
   gap: 16px;
 `
 
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: `${( colorStyle.defaultGray )}`
-})<InputProps>`
+export const Input = styled.TextInput<InputProps>`
   color: ${( colorStyle.defaultBlack )};
   ${( fontStyle.regular16 )};
   width: 100%;

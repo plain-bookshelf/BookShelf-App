@@ -5,8 +5,12 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "types": ["styled-components-react-native"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "styled-components.d.ts"
+  ],
   "exclude": ["**/node_modules", "**/Pods"]
 }

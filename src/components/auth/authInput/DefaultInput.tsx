@@ -3,6 +3,7 @@ import * as S from "./style"
 import { Image } from "react-native"
 import icon_input_error from "@/assets/icon_input_error.png"
 import { useState } from "react"
+import { colorStyle } from "@/styles/colorStyle"
 
 interface AuthInputProps {
   label: string,
@@ -36,6 +37,7 @@ export default function DefaultInput({ label, placeholder, isError, warningMessa
         isError={isError} value={value}
         isFocused={isFocused}
         onChangeText={onChangeText}
+        placeholderTextColor={colorStyle.defaultGray}
       />
       {isError && !isFocused &&
         <S.ErrorContainer>
