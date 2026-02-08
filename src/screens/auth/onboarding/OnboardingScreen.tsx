@@ -5,34 +5,21 @@ import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
 import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 import IntroStep from "./steps/IntroStep";
+import { View } from "react-native";
+import GenreSelectionStep from "./steps/GenreSelectionStep";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<OnboardingForm>({
-    genres: {
-      horror: false,
-      mystery: false,
-      fantasy: false,
-      romance: false,
-      humanities: false,
-      science: false,
-      practicalArts: false,
-      essay: false,
-      language: false,
-    },
-    readingTime: ''
-  });
-  const [isEmail, setIsEmail] = useState(false);
-  const [stepValid, setStepValid] = useState([true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, isEmail, setStepValid })
+  const [stepValid, setStepValid] = useState([true, false, false, false, true, true]);
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid })
 
   return(
     <KeyboardDismiss>
       <AuthStepLayout>
-        <>  
-          <StepHeader step={step} maxStep={4} onPrev={handlePrev} />
+        <> 
+          <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
           <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step}>
-            <StepContent step={step} form={form} setForm={setForm} updateStepValid={updateStepValid} />
+            <StepContent step={step} updateStepValid={updateStepValid} />
           </ActionLayout>
         </>
      </AuthStepLayout>
@@ -40,43 +27,21 @@ export default function OnboardingScreen() {
   )
 }
 
-interface OnboardingForm {
-  genres: {
-    horror: boolean,
-    mystery: boolean,
-    fantasy: boolean,
-    romance: boolean,
-    humanities: boolean,
-    science: boolean,
-    practicalArts: boolean,
-    essay: boolean,
-    language: boolean,
-  },
-  readingTime: string
-}
-
 interface StepContentProps {
   step: number;
-  form: OnboardingForm;
-  setForm: (form: OnboardingForm) => void;
   updateStepValid: (index: number, value: boolean) => void;
 }
 
-function StepContent({ step, form, setForm, updateStepValid }: StepContentProps) {
+function StepContent({ step, updateStepValid }: StepContentProps) {
   switch (step) {
     case 1:
       return(
         <IntroStep />
       )
 
-    case 1.5:
-      return(
-        <></>
-      )
-
     case 2:
       return(
-        <></>
+        <GenreSelectionStep setIsStepValid={(valid) => updateStepValid(2, valid)} />
       )
 
     case 3:
