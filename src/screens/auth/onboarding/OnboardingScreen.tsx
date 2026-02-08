@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import StepHeader from "../../../components/auth/authLayout/AuthStepComponentLayout/StepHeader";
 import ActionLayout from "../../../components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
@@ -8,22 +7,31 @@ import IntroStep from "./steps/IntroStep";
 import { View } from "react-native";
 import GenreSelectionStep from "./steps/GenreSelectionStep";
 import ReadingTimeStep from "./steps/ReadingTimeStep";
+import RecommendationPreviewStep from "./steps/RecommendationPreviewStep";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
   const [stepValid, setStepValid] = useState([true, false, false, false, true, true]);
   const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid })
 
+  const content = (
+    <AuthStepLayout>
+      <> 
+        <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
+        <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step}>
+          <StepContent step={step} updateStepValid={updateStepValid} />
+        </ActionLayout>
+      </>
+    </AuthStepLayout>
+  );
+  
+  if(step === 4){
+    return content;
+  }
+
   return(
     <KeyboardDismiss>
-      <AuthStepLayout>
-        <> 
-          <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
-          <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step}>
-            <StepContent step={step} updateStepValid={updateStepValid} />
-          </ActionLayout>
-        </>
-     </AuthStepLayout>
+      {content}
     </KeyboardDismiss>
   )
 }
@@ -48,6 +56,11 @@ function StepContent({ step, updateStepValid }: StepContentProps) {
     case 3:
       return(
         <ReadingTimeStep setIsStepValid={(valid) => updateStepValid(3, valid)} />
+      )
+
+    case 4:
+      return(
+        <RecommendationPreviewStep />
       )
 
     default:
