@@ -8,9 +8,10 @@ interface SignupHeaderProps {
   step?: number,
   maxStep?: number,
   onPrev: () => void,
+  isShow?: boolean,
 }
 
-export default function StepHeader({ step = 0, maxStep = 3, onPrev }: SignupHeaderProps) {
+export default function StepHeader({ step = 0, maxStep = 3, onPrev, isShow = true }: SignupHeaderProps) {
   const navigation = useNavigation<AuthNav>();
   const nowStep = Math.floor(step);
   
@@ -20,7 +21,7 @@ export default function StepHeader({ step = 0, maxStep = 3, onPrev }: SignupHead
         <Image source={btn_previous_default} style={{ width: 24, height: 24}} />
       </Pressable>
       {/* TODO: 최대 step 지정 후 isShowStep 이런 식으로 step 보여주기 여부로 변경 필요함 */}
-      {step !== 0 && step < (maxStep + 1) && <Typography children={`${nowStep} / ${maxStep}`} font='medium16' color='defaultBlack' />}
+      {isShow && step !== 0 && step < (maxStep + 1) && <Typography children={`${nowStep} / ${maxStep}`} font='medium16' color='defaultBlack' />}
     </View>
   )
 }

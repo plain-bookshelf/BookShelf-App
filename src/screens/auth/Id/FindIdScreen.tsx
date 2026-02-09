@@ -20,7 +20,7 @@ export default function FindIdScreen() {
     <KeyboardDismiss>
       <AuthStepLayout>
         <>  
-          <StepHeader onPrev={handlePrev} />
+          <StepHeader onPrev={handlePrev} step={step} isShow={false} />
           <ActionLayout label={labels[step - 1]} onNext={handleNext} isValid={stepValid} step={step}>
             <StepContent step={step} form={form} setForm={setForm} updateStepValid={updateStepValid} />
           </ActionLayout>
