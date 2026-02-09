@@ -6,6 +6,7 @@ import { useState } from "react";
 import img_testBook_default from "@/assets/img_test-book_default.png"
 import LinearGradient from 'react-native-linear-gradient';
 import { colorStyle } from "@/styles/colorStyle";
+import BookBar from "@/components/common/bookBar/BookrBar";
 
 export default function RecommendationPreviewStep() {
   const [userName, setUserName] = useState('이승현');
@@ -34,16 +35,18 @@ export default function RecommendationPreviewStep() {
     { id: 18, image: img_testBook_default },
   ];
 
-const bookGrid = []
+  const bookGrid = []
 
-for(let i=0;i<MOCK_BOOKS.length;i+=3){
-  bookGrid.push(MOCK_BOOKS.slice(i, i + 3));
-}
+  for(let i=0;i<MOCK_BOOKS.length;i+=3){
+    bookGrid.push(MOCK_BOOKS.slice(i, i + 3));
+  }
 
   return(
     <ContentLayout>
-      <Typography children={`${userName}님을 위한 추천 책`} font='medium28' color='defaultBlack' />
-      <Typography children={`${userName}님을 위해 이런 책을 준비했어요`} font='regular18' color='labelGray' />
+      <TitleBox>
+        <Typography children={`${userName}님을 위한 추천 책`} font='medium28' color='defaultBlack' />
+        <Typography children={`${userName}님을 위해 이런 책을 준비했어요`} font='regular18' color='labelGray' />
+      </TitleBox>
 
       <ContentContainer>
         {bookGrid.map((rowBooks, index) => {
@@ -71,20 +74,18 @@ for(let i=0;i<MOCK_BOOKS.length;i+=3){
   )
 }
 
+const TitleBox = styled.View`
+  padding: 36px 24px 0px;
+`
+
 const ContentContainer = styled.ScrollView`
   flex: 1;
   padding-top: 32px;
 `
 
 const BookContainer = styled.View`
-`
-
-const BookBar = styled.View`
-  margin: 0px -24px;
-  width: 100%;
-  height: 16px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  align-items: center;
+  padding-bottom: 24px;
 `
 
 const BookBox = styled.View`

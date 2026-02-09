@@ -8,13 +8,24 @@ import { View } from "react-native";
 import GenreSelectionStep from "./steps/GenreSelectionStep";
 import ReadingTimeStep from "./steps/ReadingTimeStep";
 import RecommendationPreviewStep from "./steps/RecommendationPreviewStep";
+import { colorStyle } from "@/styles/colorStyle";
+import ComponentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ComponentLayout";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
   const [stepValid, setStepValid] = useState([true, false, false, false, true, true]);
   const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid })
 
-  const content = (
+  const content = step === 4 ? 
+  (
+    <View style={{ flex: 1, backgroundColor: colorStyle.defaultWhite  }}>
+      <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
+      <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step} isLayout={false} >        
+        <StepContent step={step} updateStepValid={updateStepValid} />
+      </ActionLayout>
+    </View>
+  ) : 
+  (
     <AuthStepLayout>
       <> 
         <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
