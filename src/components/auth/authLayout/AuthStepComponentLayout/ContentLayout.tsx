@@ -6,7 +6,7 @@ interface ContentLayoutProps{
 
 export default function ContentLayout({ children }: ContentLayoutProps) {
   return(
-    <View style={{ gap: 8 }}>
+    <View style={{ flex:1, gap: 8 }}>
       {children}
     </View>
   )

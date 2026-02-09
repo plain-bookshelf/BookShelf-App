@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from '@emotion/native';
 import ActionLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
 import StepHeader from "@/components/auth/authLayout/AuthStepComponentLayout/StepHeader";
 import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";

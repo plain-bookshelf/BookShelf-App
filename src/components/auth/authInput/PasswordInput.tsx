@@ -1,4 +1,4 @@
-import styled from "styled-components/native"
+import styled from "@emotion/native"
 import Typography from "@/components/common/typography/Typography"
 import * as S from "./style"
 import { Image, Pressable } from "react-native"
@@ -6,6 +6,7 @@ import icon_input_error from "@/assets/icon_input_error.png"
 import { useState } from "react"
 import btn_passwordShow_false from "@/assets/btn_password-show_false.png"
 import btn_passwordShow_true from "@/assets/btn_password-show_true.png"
+import { colorStyle } from "@/styles/colorStyle"
 
 interface AuthInputProps {
   label: string,
@@ -43,6 +44,7 @@ export default function PasswordInput({ label, placeholder, isError, warningMess
           isFocused={isFocused}
           onChangeText={onChangeText}
           secureTextEntry={passwordIsSecure}
+          placeholderTextColor={colorStyle.defaultGray}
         />
         <ShowButton onPress={() => setPasswordIsSecure(pre => !pre)}>
           <Image source={passwordImage} style={{ width: 20, height: 20 }} />

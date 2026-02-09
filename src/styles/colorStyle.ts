@@ -8,7 +8,6 @@ export const colorStyle = {
   rankYellow: "#FFE356",
   rankGray: "#BFC1CC",
   rankCopper: "#E3AB41",
-  whiteBackground: "#FDFDFD",
   chatBackground: "#EAEAEA",
   appBarGray: "#A7A7A7",
   inputBarGray: "#F4F4F4",
@@ -22,7 +21,8 @@ export const colorStyle = {
   resendText: "#868686",
   lineGray: "#C8C8C8",
   socialLoginTitle: "#737373",
-  socialLoginBorder: "#A4A4A4"
+  socialLoginBorder: "#A4A4A4",
+  genreBackgroundGray: "#ECECEC"
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

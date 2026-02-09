@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from "@emotion/native";
 import DefaultInput from "@/components/auth/authInput/DefaultInput";
 import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
