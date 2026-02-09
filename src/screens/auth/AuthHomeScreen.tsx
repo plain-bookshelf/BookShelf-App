@@ -13,6 +13,7 @@ import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AuthNav, AuthStackParamList } from "@/navigation/type";
+import KeyboardDismiss from '@/components/common/KeyboardDismiss';
 
 export default function AuthHomeScreen() {
   const [loginId, setLoginId] = useState('');
@@ -40,53 +41,55 @@ export default function AuthHomeScreen() {
   }, [loginId, loginPassword])
 
   return(
-    <AuthHomeLayout>
-      <TitleBox>
-        <View>
-          <Typography children='안녕하세요 :)' font='medium28' color='defaultBlack' />
-          <Typography children='책 대여 서비스 책마루에요' font='medium28' color='defaultBlack' />
-        </View>
-        <Typography children='로그인하고 책마루를 시작해보세요' font='regular18' color='labelGray' />
-      </TitleBox>
+    <KeyboardDismiss>
+      <AuthHomeLayout>
+        <TitleBox>
+          <View>
+            <Typography children='안녕하세요 :)' font='medium28' color='defaultBlack' />
+            <Typography children='책 대여 서비스 책마루에요' font='medium28' color='defaultBlack' />
+          </View>
+          <Typography children='로그인하고 책마루를 시작해보세요' font='regular18' color='labelGray' />
+        </TitleBox>
 
-      <LoginForm>
-        <InputBox>
-          <DefaultInput label='' placeholder='이메일 또는 아이디 입력' isError={false} warningMessage='' value={loginId} onChangeText={setLoginId} />
-          <PasswordInput label='' placeholder='비밀번호 입력' isError={false} warningMessage='' value={loginPassword} onChangeText={setLoginPassword} />
-        </InputBox>
-        <Button font='semiBold16' label='로그인' onPress={() => navigation.navigate('Onboarding')} isValid={loginFormIsValid} />
-      </LoginForm>
+        <LoginForm>
+          <InputBox>
+            <DefaultInput label='' placeholder='이메일 또는 아이디 입력' isError={false} warningMessage='' value={loginId} onChangeText={setLoginId} />
+            <PasswordInput label='' placeholder='비밀번호 입력' isError={false} warningMessage='' value={loginPassword} onChangeText={setLoginPassword} />
+          </InputBox>
+          <Button font='semiBold16' label='로그인' onPress={() => navigation.navigate('Onboarding')} isValid={loginFormIsValid} />
+        </LoginForm>
 
-      <MenuContainer>
-        {menus.map((e) => {
-          return(
-            <MenuBox onPress={e.onPress}>
-              <Typography children={e.title} font='medium14' color='defaultBlack' />
-            </MenuBox>
-          )
-        })}
-      </MenuContainer>
-
-      <SocialLoginContainer>
-        <SocialLoginTitleBox>
-          <SocialLoginLine />
-          <Typography children='소셜 로그인' font='regular16' color='socialLoginTitle' />
-          <SocialLoginLine />
-        </SocialLoginTitleBox>
-
-        <SocialLoginButtonBox>
-          {socialLoginButtons.map((e) => {
+        <MenuContainer>
+          {menus.map((e) => {
             return(
-              <SocialLoginButton onPress={e.onPress} >
-                {e.button === btn_googleLogin_default ?
-                  <Image source={e.button} style={{ flex: 1, height: 38, borderRadius: 8, borderWidth: 1, borderColor: colorStyle.socialLoginBorder}} /> :
-                  <Image source={e.button} style={{ flex: 1, height: 40, borderRadius: 8}} />}
-              </SocialLoginButton>
+              <MenuBox onPress={e.onPress}>
+                <Typography children={e.title} font='medium14' color='defaultBlack' />
+              </MenuBox>
             )
           })}
-        </SocialLoginButtonBox>
-      </SocialLoginContainer>
-    </AuthHomeLayout>
+        </MenuContainer>
+
+        <SocialLoginContainer>
+          <SocialLoginTitleBox>
+            <SocialLoginLine />
+            <Typography children='소셜 로그인' font='regular16' color='socialLoginTitle' />
+            <SocialLoginLine />
+          </SocialLoginTitleBox>
+
+          <SocialLoginButtonBox>
+            {socialLoginButtons.map((e) => {
+              return(
+                <SocialLoginButton onPress={e.onPress} >
+                  {e.button === btn_googleLogin_default ?
+                    <Image source={e.button} style={{ flex: 1, height: 38, borderRadius: 8, borderWidth: 1, borderColor: colorStyle.socialLoginBorder}} /> :
+                    <Image source={e.button} style={{ flex: 1, height: 40, borderRadius: 8}} />}
+                </SocialLoginButton>
+              )
+            })}
+          </SocialLoginButtonBox>
+        </SocialLoginContainer>
+      </AuthHomeLayout>
+    </KeyboardDismiss>
   )
 }
 
