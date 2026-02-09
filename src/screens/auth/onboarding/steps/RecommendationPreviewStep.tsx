@@ -76,6 +76,7 @@ export default function RecommendationPreviewStep() {
 
 const TitleBox = styled.View`
   padding: 36px 24px 0px;
+  gap: 8px;
 `
 
 const ContentContainer = styled.ScrollView`

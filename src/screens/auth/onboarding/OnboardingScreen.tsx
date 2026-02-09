@@ -10,6 +10,7 @@ import ReadingTimeStep from "./steps/ReadingTimeStep";
 import RecommendationPreviewStep from "./steps/RecommendationPreviewStep";
 import { colorStyle } from "@/styles/colorStyle";
 import ComponentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ComponentLayout";
+import CompleteStep from "./steps/CompleteStep";
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
@@ -76,7 +77,7 @@ function StepContent({ step, updateStepValid }: StepContentProps) {
 
     default:
       return(
-        <></>
+        <CompleteStep />
       );
   }
 }
