@@ -4,13 +4,14 @@ import { useColorScheme } from 'react-native';
 import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
-import SystemNavigationBar from 'react-native-system-navigation-bar';
+import ImmersiveMode from "react-native-immersive-mode";
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
-    SystemNavigationBar.navigationHide();
+    ImmersiveMode.fullLayout(true);
+    ImmersiveMode.setBarMode("FullSticky");
   }, [])
 
   return (
