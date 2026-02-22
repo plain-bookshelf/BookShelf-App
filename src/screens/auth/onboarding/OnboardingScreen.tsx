@@ -20,7 +20,7 @@ export default function OnboardingScreen() {
   const content = step === 4 ? 
   (
     <View style={{ flex: 1, backgroundColor: colorStyle.defaultWhite  }}>
-      <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
+      <View style={{ height: 56 }} />{ /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
       <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step} isLayout={false} >        
         <StepContent step={step} updateStepValid={updateStepValid} />
       </ActionLayout>
@@ -29,7 +29,7 @@ export default function OnboardingScreen() {
   (
     <AuthStepLayout>
       <> 
-        <View style={{ height: 56 }} /> { /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
+        <View style={{ height: 56 }} />{ /* StepHeader가 필요 없기에 StepHeader 공간만큼 차지 */}
         <ActionLayout label={step < 5 ? '다음' : '시작하기'} onNext={handleNext} isValid={stepValid} step={step}>
           <StepContent step={step} updateStepValid={updateStepValid} />
         </ActionLayout>
