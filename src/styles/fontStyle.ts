@@ -4,6 +4,10 @@ export const fontStyle = {
     font-size: 24px;
     font-weight: 600;
   `,
+  semiBold22: `
+    font-size: 22px;
+    font-weight: 600;
+  `,
   semiBold20: `
     font-size: 20px;
     font-weight: 600;

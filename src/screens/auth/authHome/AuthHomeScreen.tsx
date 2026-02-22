@@ -1,4 +1,3 @@
-import styled from '@emotion/native';
 import { colorStyle } from "@/styles/colorStyle";
 import AuthHomeLayout from "@/components/layout/authLayout/AuthHomeLayout";
 import Typography from "@/components/common/typography/Typography";
@@ -13,6 +12,7 @@ import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
 import KeyboardDismiss from '@/components/common/KeyboardDismiss';
+import * as S from "./style"
 
 export default function AuthHomeScreen() {
   const [loginId, setLoginId] = useState('');
@@ -42,109 +42,52 @@ export default function AuthHomeScreen() {
   return(
     <KeyboardDismiss>
       <AuthHomeLayout>
-        <TitleBox>
+        <S.TitleBox>
           <View>
             <Typography children='안녕하세요 :)' font='medium28' color='defaultBlack' />
             <Typography children='책 대여 서비스 책마루에요' font='medium28' color='defaultBlack' />
           </View>
           <Typography children='로그인하고 책마루를 시작해보세요' font='regular18' color='labelGray' />
-        </TitleBox>
+        </S.TitleBox>
 
-        <LoginForm>
-          <InputBox>
+        <S.LoginForm>
+          <S.InputBox>
             <DefaultInput label='' placeholder='이메일 또는 아이디 입력' isError={false} warningMessage='' value={loginId} onChangeText={setLoginId} />
             <PasswordInput label='' placeholder='비밀번호 입력' isError={false} warningMessage='' value={loginPassword} onChangeText={setLoginPassword} />
-          </InputBox>
+          </S.InputBox>
           <Button font='semiBold16' label='로그인' onPress={() => navigation.navigate('Onboarding')} isValid={loginFormIsValid} />
-        </LoginForm>
+        </S.LoginForm>
 
-        <MenuContainer>
+        <S.MenuContainer>
           {menus.map((e, index) => {
             return(
-              <MenuBox onPress={e.onPress} key={index}>
+              <S.MenuBox onPress={e.onPress} key={index}>
                 <Typography children={e.title} font='medium14' color='defaultBlack' />
-              </MenuBox>
+              </S.MenuBox>
             )
           })}
-        </MenuContainer>
+        </S.MenuContainer>
 
-        <SocialLoginContainer>
-          <SocialLoginTitleBox>
-            <SocialLoginLine />
+        <S.SocialLoginContainer>
+          <S.SocialLoginTitleBox>
+            <S.SocialLoginLine />
             <Typography children='소셜 로그인' font='regular16' color='socialLoginTitle' />
-            <SocialLoginLine />
-          </SocialLoginTitleBox>
+            <S.SocialLoginLine />
+          </S.SocialLoginTitleBox>
 
-          <SocialLoginButtonBox>
+          <S.SocialLoginButtonBox>
             {socialLoginButtons.map((e, index) => {
               return(
-                <SocialLoginButton onPress={e.onPress} key={index} >
+                <S.SocialLoginButton onPress={e.onPress} key={index} >
                   {e.button === btn_googleLogin_default ?
                     <Image source={e.button} style={{ flex: 1, height: 38, borderRadius: 8, borderWidth: 1, borderColor: colorStyle.socialLoginBorder}} /> :
                     <Image source={e.button} style={{ flex: 1, height: 40, borderRadius: 8}} />}
-                </SocialLoginButton>
+                </S.SocialLoginButton>
               )
             })}
-          </SocialLoginButtonBox>
-        </SocialLoginContainer>
+          </S.SocialLoginButtonBox>
+        </S.SocialLoginContainer>
       </AuthHomeLayout>
     </KeyboardDismiss>
   )
 }
-
-const TitleBox = styled.View`
-  gap: 8px;
-  padding-bottom: 41px;
-`
-
-const LoginForm = styled.View`
-  gap: 32px;
-  padding-bottom: 16px;
-`
-
-const InputBox = styled.View`
-  gap: 16px;
-`
-
-const MenuContainer = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  gap: 4px;
-  padding-bottom: 52px;
-`
-
-const MenuBox = styled.Pressable`
-  width: 100px;
-  height: 25px;
-  justify-content: center;
-  align-items: center;
-`
-
-const SocialLoginContainer = styled.View`
-  gap: 20px;
-`
-
-const SocialLoginTitleBox = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-`
-
-const SocialLoginLine = styled.View`
-  flex-direction: row;
-  flex: 1;
-  height: 1px;
-  background-color: ${colorStyle.lineGray};
-`
-
-const SocialLoginButtonBox = styled.View`
-  gap: 12px;
-`
-
-const SocialLoginButton = styled.Pressable`
-  overflow-y: hidden;
-  border-radius: 8px;
-  flex-direction: row;
-  justify-content: center;
-`
