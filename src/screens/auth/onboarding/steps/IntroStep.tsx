@@ -1,4 +1,4 @@
-import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
+import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 import Typography from "@/components/common/typography/Typography";
 import { View } from "react-native";
 

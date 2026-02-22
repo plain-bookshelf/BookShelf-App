@@ -1,4 +1,4 @@
-import RootNavigator from '@/navigation/RootNavigator';
+import RootNavigator from '@/navigation/root/RootNavigator';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import {

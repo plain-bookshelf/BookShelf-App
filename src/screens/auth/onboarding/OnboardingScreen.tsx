@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
-import ActionLayout from "../../../components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
+import ActionLayout from "../../../components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
 import KeyboardDismiss from "@/components/common/KeyboardDismiss";
-import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
+import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";
 import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 import IntroStep from "./steps/IntroStep";
 import { View } from "react-native";
@@ -9,7 +9,7 @@ import GenreSelectionStep from "./steps/GenreSelectionStep";
 import ReadingTimeStep from "./steps/ReadingTimeStep";
 import RecommendationPreviewStep from "./steps/RecommendationPreviewStep";
 import { colorStyle } from "@/styles/colorStyle";
-import ComponentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ComponentLayout";
+import ComponentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ComponentLayout";
 import CompleteStep from "./steps/CompleteStep";
 
 export default function OnboardingScreen() {

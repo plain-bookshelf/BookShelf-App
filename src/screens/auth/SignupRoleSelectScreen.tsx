@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
-import ActionLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ActionLayout";
-import StepHeader from "@/components/auth/authLayout/AuthStepComponentLayout/StepHeader";
-import AuthStepLayout from "@/components/auth/authLayout/AuthStepLayout";
+import ActionLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
+import StepHeader from "@/components/layout/authLayout/AuthStepComponentLayout/StepHeader";
+import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";
 import Typography from "@/components/common/typography/Typography";
 import btn_student_default from "@/assets/btn_role-student_default.png"
 import btn_student_selected from "@/assets/btn_role-student_selected.png"
@@ -11,7 +11,6 @@ import { Image, Pressable } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
-import { Navigate } from "react-router-dom";
 
 export default function SignupRoleSelectScreen() {
   const [isStudent, setIsStudent] = useState(false);

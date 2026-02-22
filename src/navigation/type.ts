@@ -17,6 +17,7 @@ export type MainTabParamList = {
   Home: undefined;
   Ranking: undefined;
   Profile: undefined;
+  Notification: undefined;
 };
 
 

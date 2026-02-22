@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
+import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 import Typography from "@/components/common/typography/Typography";
 import GenreButton from "@/components/auth/genreButton/GenreButton";
 import { useEffect, useState } from "react";

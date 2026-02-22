@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import DefaultInput from "@/components/auth/authInput/DefaultInput"
 import Typography from "@/components/common/typography/Typography"
 import { useEffect, useState } from "react";
-import ContentLayout from '@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout';
+import ContentLayout from '@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout';
 import { Text } from 'react-native';
 import { isValidEmail } from '@/utils/isValidEmail';
 

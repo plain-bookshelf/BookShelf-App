@@ -1,5 +1,5 @@
 import Typography from "@/components/common/typography/Typography";
-import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
+import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 
 export default function CompletionStep() {
   return(
