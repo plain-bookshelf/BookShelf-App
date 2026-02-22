@@ -60,9 +60,9 @@ export default function AuthHomeScreen() {
         </LoginForm>
 
         <MenuContainer>
-          {menus.map((e) => {
+          {menus.map((e, index) => {
             return(
-              <MenuBox onPress={e.onPress}>
+              <MenuBox onPress={e.onPress} key={index}>
                 <Typography children={e.title} font='medium14' color='defaultBlack' />
               </MenuBox>
             )
@@ -77,9 +77,9 @@ export default function AuthHomeScreen() {
           </SocialLoginTitleBox>
 
           <SocialLoginButtonBox>
-            {socialLoginButtons.map((e) => {
+            {socialLoginButtons.map((e, index) => {
               return(
-                <SocialLoginButton onPress={e.onPress} >
+                <SocialLoginButton onPress={e.onPress} key={index} >
                   {e.button === btn_googleLogin_default ?
                     <Image source={e.button} style={{ flex: 1, height: 38, borderRadius: 8, borderWidth: 1, borderColor: colorStyle.socialLoginBorder}} /> :
                     <Image source={e.button} style={{ flex: 1, height: 40, borderRadius: 8}} />}
