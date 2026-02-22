@@ -5,7 +5,7 @@ import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
 import UserSignupScreen from "@/screens/auth/signup/UserSignupScreen";
 import SignupRoleSelectScreen from "@/screens/auth/SignupRoleSelectScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AuthStackParamList } from "./type";
+import { AuthStackParamList } from "../type";
 import OnboardingScreen from "@/screens/auth/onboarding/OnboardingScreen";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();

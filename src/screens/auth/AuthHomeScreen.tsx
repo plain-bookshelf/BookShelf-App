@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { colorStyle } from "@/styles/colorStyle";
-import AuthHomeLayout from "@/components/auth/authLayout/AuthHomeLayout";
+import AuthHomeLayout from "@/components/layout/authLayout/AuthHomeLayout";
 import Typography from "@/components/common/typography/Typography";
 import { Image, Pressable, View } from "react-native";
 import DefaultInput from "@/components/auth/authInput/DefaultInput";

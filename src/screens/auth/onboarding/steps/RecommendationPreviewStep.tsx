@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import ContentLayout from "@/components/auth/authLayout/AuthStepComponentLayout/ContentLayout";
+import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 import Typography from "@/components/common/typography/Typography";
 import { useState } from "react";
 import img_testBook_default from "@/assets/img_test-book_default.png"
