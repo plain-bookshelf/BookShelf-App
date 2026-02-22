@@ -29,7 +29,7 @@ export default function MainHeader() {
 
 const Container = styled(SafeAreaView)`
   background-color: ${( colorStyle.defaultWhite )};
-  height: 48px;
+  min-height: 48px;
   flex-direction: row;
   padding: 0px 24px;
   justify-content: space-between;
