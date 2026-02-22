@@ -11,6 +11,7 @@ import { Image, Pressable } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
+import * as S from "./style"
 
 export default function SignupRoleSelectScreen() {
   const [isStudent, setIsStudent] = useState(false);
@@ -47,13 +48,13 @@ export default function SignupRoleSelectScreen() {
       <>
         <StepHeader onPrev={() => navigation.goBack()} />
         <ActionLayout label='다음' onNext={() => navigation.navigate(isStudent ? 'UserSignup' : 'AdminSignup')} isValid={[isStudent || isAdmin]} step={1}>
-          <Container>
-            <TitleBox>
+          <S.Container>
+            <S.TitleBox>
               <Typography children='회원가입' font='medium28' color='defaultBlack' />
               <Typography children='회원가입하고 책마루에 가입하세요' font='regular18' color='labelGray' />
-            </TitleBox>
+            </S.TitleBox>
 
-            <RoleSelectButtonBox>
+            <S.RoleSelectButtonBox>
               <Pressable onPress={() => handleRoleSlect('student')} style={{ flex: 1 }}>
                 <Image source={studentButton} resizeMode="contain" style={{ width: '100%', height: 244 }} />
               </Pressable>
@@ -61,24 +62,10 @@ export default function SignupRoleSelectScreen() {
               <Pressable onPress={() => handleRoleSlect('admin')} style={{ flex: 1 }} >
                 <Image source={adminBtnButton} resizeMode="contain" style={{ width: '100%', height: 244 }} />
               </Pressable>
-            </RoleSelectButtonBox>
-          </Container>
+            </S.RoleSelectButtonBox>
+          </S.Container>
         </ActionLayout>
       </>
     </AuthStepLayout>
   )
 }
-
-const Container = styled.View`
-  gap: 74px;
-`
-
-const TitleBox = styled.View`
-  gap: 8px;
-`
-
-const RoleSelectButtonBox = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  gap: 24px;
-`
