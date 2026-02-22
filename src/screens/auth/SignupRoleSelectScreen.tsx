@@ -11,7 +11,6 @@ import { Image, Pressable } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
-import { Navigate } from "react-router-dom";
 
 export default function SignupRoleSelectScreen() {
   const [isStudent, setIsStudent] = useState(false);

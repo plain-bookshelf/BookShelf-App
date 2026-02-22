@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { colorStyle } from "@/styles/colorStyle";
 import AuthHomeLayout from "@/components/layout/authLayout/AuthHomeLayout";
 import Typography from "@/components/common/typography/Typography";
-import { Image, Pressable, View } from "react-native";
+import { Image, View } from "react-native";
 import DefaultInput from "@/components/auth/authInput/DefaultInput";
 import { useEffect, useState } from "react";
 import PasswordInput from "@/components/auth/authInput/PasswordInput";
@@ -11,8 +11,7 @@ import btn_kakaoLogin_default from "@/assets/btn_kakao-login_default.png"
 import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
 import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthNav, AuthStackParamList } from "@/navigation/type";
+import { AuthNav } from "@/navigation/type";
 import KeyboardDismiss from '@/components/common/KeyboardDismiss';
 
 export default function AuthHomeScreen() {
