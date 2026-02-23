@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import StepHeader from "../../../components/layout/authLayout/AuthStepComponentLayout/StepHeader";
 import IdStep from "./steps/IdStep";
 import ActionLayout from "../../../components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
-import KeyboardDismiss from "@/components/common/KeyboardDismiss";
+import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
 import PasswordStep from "./steps/PasswordStep";
 import VerificationStep from "./steps/VerificationStep";
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";

@@ -11,7 +11,7 @@ import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
 import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
-import KeyboardDismiss from '@/components/common/KeyboardDismiss';
+import KeyboardDismiss from '@/components/common/keyboardDismiss/KeyboardDismiss';
 import * as S from "./style"
 
 export default function AuthHomeScreen() {

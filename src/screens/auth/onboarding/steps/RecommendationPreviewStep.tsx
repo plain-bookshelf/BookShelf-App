@@ -5,7 +5,7 @@ import { useState } from "react";
 import img_testBook_default from "@/assets/img_test-book_default.png"
 import LinearGradient from 'react-native-linear-gradient';
 import { colorStyle } from "@/styles/colorStyle";
-import BookList from "@/components/common/bookBar/BookList";
+import BookList from "@/components/common/bookList/BookList";
 
 export default function RecommendationPreviewStep() {
   const [userName, setUserName] = useState('이승현');

@@ -2,7 +2,7 @@ import { Image } from "react-native";
 import banner_event_default from "@/assets/banner_event_default.png"
 import * as S from "./style"
 import Typography from "@/components/common/typography/Typography";
-import BookList from "@/components/common/bookBar/BookList";
+import BookList from "@/components/common/bookList/BookList";
 
 export default function HomeScreen() {
   const MOCK_BOOKS = [
