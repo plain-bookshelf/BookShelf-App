@@ -8,7 +8,7 @@ export default function BookBar() {
   return(
     <Shadow
       distance={10}
-      startColor="rgba(0,0,0,0.2)"
+      startColor="rgba(0,0,0,0.08)"
       offset={[0, 0]}
     >
       <S.BookBar width={width} />
