@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
 `
 
@@ -15,5 +15,8 @@ export const BookBox = styled.View`
 `
 
 export const NotFound = styled.View`
-  height: 173px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 64px;
+  height: 189px;
 `
