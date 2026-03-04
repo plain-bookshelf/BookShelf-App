@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import { fontStyle } from "@/styles/fontStyle";
 
 export const Container = styled.View`
   padding: 12px 00px 0px 20px;
@@ -11,4 +12,5 @@ export const SearchBar = styled.TextInput`
   align-items: center;
   padding-left: 4px;
   height: 48px;
+  ${fontStyle.regular18}
 `
