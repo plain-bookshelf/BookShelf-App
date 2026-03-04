@@ -34,7 +34,8 @@ export default function DefaultInput({ label, placeholder, isError, warningMessa
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
-        isError={isError} value={value}
+        isError={isError} 
+        value={value}
         isFocused={isFocused}
         onChangeText={onChangeText}
         placeholderTextColor={colorStyle.defaultGray}

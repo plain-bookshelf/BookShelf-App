@@ -1,7 +1,7 @@
 import ActionLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ActionLayout"
 import StepHeader from "@/components/layout/authLayout/AuthStepComponentLayout/StepHeader"
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout"
-import KeyboardDismiss from "@/components/common/KeyboardDismiss"
+import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss"
 import { useSignupStepControl } from "@/hooks/useSignupStepControl"
 import { FindContentProps, FindForm } from "@/types/index"
 import { useState } from "react"

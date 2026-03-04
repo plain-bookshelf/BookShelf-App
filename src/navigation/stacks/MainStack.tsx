@@ -7,22 +7,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomBar from "../tabs/BottomTab";
 import MainHeader from "@/components/layout/mainLayout/MainHeader";
 import HomeScreen from "@/screens/main/home/HomeScreen";
+import SearchStack from "@/navigation/stacks/SearchStack";
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export default function MainStack() {
-  const a = () => <MainHeader />
+  const header = () => <MainHeader />
 
   return(
     <Tab.Navigator
       tabBar={BottomBar as any}
       screenOptions={{ headerShown: true }}
     >
-      <Tab.Screen name="Search" component={AuthHomeScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="AI" component={SignupRoleSelectScreen} options={{ header: a}} />
-      <Tab.Screen name="Home" component={HomeScreen} options={{ header: a}} />
-      <Tab.Screen name="Ranking" component={AdminSignupScreen} options={{ header: a}} />
-      <Tab.Screen name="Profile" component={FindPasswordScreen} options={{ header: a}} />
+      <Tab.Screen name="Search" component={SearchStack} options={{ headerShown: false }} />
+      <Tab.Screen name="AI" component={SignupRoleSelectScreen} options={{ header: header}} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ header: header}} />
+      <Tab.Screen name="Ranking" component={AdminSignupScreen} options={{ header: header}} />
+      <Tab.Screen name="Profile" component={FindPasswordScreen} options={{ header: header}} />
     </Tab.Navigator>
   )
 }

@@ -1,12 +1,13 @@
-import { Image, Platform, useWindowDimensions } from "react-native";
+import { Image, useWindowDimensions } from "react-native";
 import * as S from "./style"
-import { Shadow } from "react-native-shadow-2";
+import BookBar from "../bookBar/BookBar";
+import Typography from "../typography/Typography";
 
 interface BookListProps {
   bookList: {
     id: number;
     image: any;
-  }[];
+  }[] | [];
 }
 
 export default function BookList({ bookList }: BookListProps) {
@@ -23,7 +24,7 @@ export default function BookList({ bookList }: BookListProps) {
   
   return(
     <S.Container>
-      {bookGrid.map((rowBooks, index) => {
+      {bookGrid.length > 0 ? bookGrid.map((rowBooks, index) => {
         return(
           <S.BookContainer key={index}>
             <S.BookBox>
@@ -33,16 +34,14 @@ export default function BookList({ bookList }: BookListProps) {
                 )
               })}
             </S.BookBox>
-            <Shadow
-              distance={10}
-              startColor="rgba(0,0,0,0.2)"
-              offset={[0, 0]}
-            >
-              <S.BookBar width={width} />
-            </Shadow>
+            <BookBar />
           </S.BookContainer>
         )
-      })}
+      }) :
+      <S.NotFound>
+        <Typography children='많고 많은 책 중 원하는 책은 찾지 못했어요' font='regular16' color='appBarGray' />
+        <BookBar />
+      </S.NotFound>}
     </S.Container>
   )
 }

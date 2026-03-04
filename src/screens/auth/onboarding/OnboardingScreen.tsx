@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import ActionLayout from "../../../components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
-import KeyboardDismiss from "@/components/common/KeyboardDismiss";
+import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";
 import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 import IntroStep from "./steps/IntroStep";

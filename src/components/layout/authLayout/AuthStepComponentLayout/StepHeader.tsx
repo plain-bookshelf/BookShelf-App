@@ -1,5 +1,5 @@
 import { Image, Pressable, View } from "react-native";
-import btn_previous_default from "@/assets/btn_previous_default.png"
+import btn_previous_default from "@/assets/btn_previous_auth.png"
 import Typography from "@/components/common/typography/Typography";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
