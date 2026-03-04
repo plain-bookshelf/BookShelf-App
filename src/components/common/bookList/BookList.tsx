@@ -1,6 +1,6 @@
 import { Image, Platform, useWindowDimensions } from "react-native";
 import * as S from "./style"
-import { Shadow } from "react-native-shadow-2";
+import BookBar from "../bookBar/bookBar";
 
 interface BookListProps {
   bookList: {
@@ -33,13 +33,7 @@ export default function BookList({ bookList }: BookListProps) {
                 )
               })}
             </S.BookBox>
-            <Shadow
-              distance={10}
-              startColor="rgba(0,0,0,0.2)"
-              offset={[0, 0]}
-            >
-              <S.BookBar width={width} />
-            </Shadow>
+            <BookBar />
           </S.BookContainer>
         )
       })}
