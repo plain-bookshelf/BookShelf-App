@@ -1,10 +1,11 @@
-import { Image } from "react-native";
-import banner_event_default from "@/assets/banner_event_default.png"
-import * as S from "./style"
-import Typography from "@/components/common/typography/Typography";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
 import BookList from "@/components/common/bookList/BookList";
+import * as S from "./style";
 
-export default function HomeScreen() {
+export default function SearchScreen() {
+  const [value, setValue] = useState('');
+
   const MOCK_BOOKS = [
     { id: 1, image: require("@/assets/img_test-book_default.png") },
     { id: 2, image: require("@/assets/img_test-book_default.png") },
@@ -28,11 +29,8 @@ export default function HomeScreen() {
 
   return(
     <S.Container>
-      <Image source={banner_event_default} resizeMode="contain" style={{ width: "100%", height: 148 }} />
-      <S.TitleBox>
-        <Typography children='인기순 책 100권' font='semiBold22' color='defaultBlack' />
-      </S.TitleBox>
+      <SearchBar placeholder='원하는 책의 이름이나 저자를 찾아보세요' value={value} onChangeText={setValue} />
       <BookList bookList={MOCK_BOOKS} />
     </S.Container>
-  )
+  )  
 }
