@@ -1,5 +1,6 @@
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type AuthStackParamList = {
   AuthHome: undefined;
@@ -11,8 +12,12 @@ export type AuthStackParamList = {
   Onboarding: undefined;
 };
 
+export type SearchStackParamList = {
+  SearchMain: undefined;
+};
+
 export type MainTabParamList = {
-  Search: undefined;
+  Search: NavigatorScreenParams<SearchStackParamList>;
   AI: undefined;
   Home: undefined;
   Ranking: undefined;
@@ -23,3 +28,4 @@ export type MainTabParamList = {
 
 export type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
 export type MainNav = BottomTabNavigationProp<MainTabParamList>;
+export type SearchNav = NativeStackNavigationProp<SearchStackParamList>;
