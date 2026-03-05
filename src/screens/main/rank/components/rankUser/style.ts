@@ -9,7 +9,7 @@ export const Container = styled.View`
   padding: 0px 24px;
 `
 
-export const InfoBox = styled.View`
+export const LeftBox = styled.View`
   flex-direction: row;
   align-items: center;
   gap: 20px;
