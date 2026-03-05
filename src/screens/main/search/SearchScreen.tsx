@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "./SearchBar";
+import SearchBar from "./components/searchBar/SearchBar";
 import BookList from "@/components/common/bookList/BookList";
 import * as S from "./style";
 
