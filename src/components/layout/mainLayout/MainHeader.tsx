@@ -15,7 +15,7 @@ export default function MainHeader() {
     <Container>
       <Image source={icon_logo_default} style={{ width: 93, height: 32 }} />
       <ButtonBox>
-        <Pressable onPress={() => navigation.navigate('Search')}>
+        <Pressable onPress={() => navigation.navigate('Search', { screen: 'SearchMain' })}>
           <Image source={btn_search_default} style={{ width: 24, height: 24 }} />
         </Pressable>
 
