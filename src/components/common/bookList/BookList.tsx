@@ -1,4 +1,4 @@
-import { Image, useWindowDimensions } from "react-native";
+import { Image, ImageSourcePropType, useWindowDimensions } from "react-native";
 import * as S from "./style"
 import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
@@ -6,7 +6,7 @@ import Typography from "../typography/Typography";
 interface BookListProps {
   bookList: {
     id: number;
-    image: any;
+    image: ImageSourcePropType;
   }[] | [];
 }
 

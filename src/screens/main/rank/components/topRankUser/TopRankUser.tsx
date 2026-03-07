@@ -1,9 +1,10 @@
+import { ImageSourcePropType } from "react-native";
 import Typography from "@/components/common/typography/Typography";
 import * as S from "./style"
 
 interface TopRankUserProps {
   rank: 1 | 2 | 3;
-  profileImage: any;
+  profileImage: ImageSourcePropType;
   profileName: string;
   bookPoint: number;
 }

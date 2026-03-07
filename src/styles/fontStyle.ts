@@ -1,5 +1,25 @@
 /** 공통 fontStyle */
 export const fontStyle = {
+  bold24: `
+    font-size: 24px;
+    font-weight: 700;
+  `,
+  bold22: `
+    font-size: 22px;
+    font-weight: 700;
+  `,
+  bold20: `
+    font-size: 20px;
+    font-weight: 700;
+  `,
+  bold18: `
+    font-size: 18px;
+    font-weight: 700;
+  `,
+  bold16: `
+    font-size: 16px;
+    font-weight: 700;
+  `,
   semiBold24: `
     font-size: 24px;
     font-weight: 600;

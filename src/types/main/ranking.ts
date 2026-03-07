@@ -1,6 +1,8 @@
+import { ImageSourcePropType } from "react-native";
+
 export interface RankUserProps {
   rank: number;
-  profileImage: any;
+  profileImage: ImageSourcePropType;
   profileName: string;
   bookPoint: number;
 }
