@@ -16,6 +16,6 @@ export default function MainProfileLayout({ children }: MainProfileLayoutProps){
 
 const LayoutContainer = styled(SafeAreaView)`
   flex: 1;
-  padding: 20px 24px 0px;
+  padding: 0px 24px;
   background-color: ${colorStyle.profileBackgroundGray};
 `
