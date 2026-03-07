@@ -8,6 +8,11 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0px 18px;
+  padding: 18px 0px;
   background-color: ${colorStyle.defaultWhite};
+`
+
+export const ActionCardContainer = styled.View`
+  width: 100%;
+  gap: 16px;
 `
