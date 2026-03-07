@@ -16,9 +16,14 @@ export type SearchStackParamList = {
   SearchMain: undefined;
 };
 
+export type AIStackParamList = {
+  BookRecommendation: undefined;
+  Chatbot: undefined;
+};
+
 export type MainTabParamList = {
   Search: NavigatorScreenParams<SearchStackParamList>;
-  AI: undefined;
+  AI: NavigatorScreenParams<AIStackParamList>;
   Home: undefined;
   Ranking: undefined;
   Profile: undefined;
@@ -29,3 +34,4 @@ export type MainTabParamList = {
 export type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
 export type MainNav = BottomTabNavigationProp<MainTabParamList>;
 export type SearchNav = NativeStackNavigationProp<SearchStackParamList>;
+export type AITopTabNav = import("@react-navigation/material-top-tabs").MaterialTopTabNavigationProp<AIStackParamList>;
