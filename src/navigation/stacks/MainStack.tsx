@@ -7,6 +7,7 @@ import MainHeader from "@/components/layout/mainLayout/MainHeader";
 import HomeScreen from "@/screens/main/home/HomeScreen";
 import SearchStack from "@/navigation/stacks/SearchStack";
 import RankingScreen from "@/screens/main/rank/RankingScreen";
+import ProfileScreen from "@/screens/main/profile/ProfileScreen";
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -22,7 +23,7 @@ export default function MainStack() {
       <Tab.Screen name="AI" component={SignupRoleSelectScreen} options={{ header: header}} />
       <Tab.Screen name="Home" component={HomeScreen} options={{ header: header}} />
       <Tab.Screen name="Ranking" component={RankingScreen} options={{ header: header}} />
-      <Tab.Screen name="Profile" component={FindPasswordScreen} options={{ header: header}} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ header: header}} />
     </Tab.Navigator>
   )
 }

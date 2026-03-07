@@ -24,7 +24,8 @@ export const colorStyle = {
   socialLoginBorder: "#A4A4A4",
   genreBackgroundGray: "#ECECEC",
   infoCardTitle: "#7B7B7B",
-  profileBackgroundGray: "#FAFAFA"
+  profileBackgroundGray: "#FAFAFA",
+  logoutRed: "#FF4B4B",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
