@@ -1,107 +1,140 @@
-/** 공통 fontStyle */
+/** 기본 폰트: Pretendard (React Native에서는 weight별 폰트 파일명 사용) */
+const PRETENDARD = {
+  bold: 'Pretendard-Bold',
+  semiBold: 'Pretendard-SemiBold',
+  medium: 'Pretendard-Medium',
+  regular: 'Pretendard-Regular',
+} as const;
+
+/** 공통 fontStyle (React Native는 camelCase만 인식) */
 export const fontStyle = {
   bold24: `
-    font-size: 24px;
-    font-weight: 700;
+    fontFamily: ${PRETENDARD.bold};
+    fontSize: 24;
+    fontWeight: 700;
   `,
   bold22: `
-    font-size: 22px;
-    font-weight: 700;
+    fontFamily: ${PRETENDARD.bold};
+    fontSize: 22;
+    fontWeight: 700;
   `,
   bold20: `
-    font-size: 20px;
-    font-weight: 700;
+    fontFamily: ${PRETENDARD.bold};
+    fontSize: 20;
+    fontWeight: 700;
   `,
   bold18: `
-    font-size: 18px;
-    font-weight: 700;
+    fontFamily: ${PRETENDARD.bold};
+    fontSize: 18;
+    fontWeight: 700;
   `,
   bold16: `
-    font-size: 16px;
-    font-weight: 700;
+    fontFamily: ${PRETENDARD.bold};
+    fontSize: 16;
+    fontWeight: 700;
   `,
   semiBold24: `
-    font-size: 24px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 24;
+    fontWeight: 600;
   `,
   semiBold22: `
-    font-size: 22px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 22;
+    fontWeight: 600;
   `,
   semiBold20: `
-    font-size: 20px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 20;
+    fontWeight: 600;
   `,
   semiBold18: `
-    font-size: 18px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 18;
+    fontWeight: 600;
   `,
   semiBold16: `
-    font-size: 16px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 16;
+    fontWeight: 600;
   `,
   semiBold14: `
-    font-size: 14px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 14;
+    fontWeight: 600;
   `,
   semiBold12: `
-    font-size: 12px;
-    font-weight: 600;
+    fontFamily: ${PRETENDARD.semiBold};
+    fontSize: 12;
+    fontWeight: 600;
   `,
 
   medium28: `
-    font-size: 28px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 28;
+    fontWeight: 500;
   `,
 
   medium24: `
-    font-size: 24px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 24;
+    fontWeight: 500;
   `,
   medium20: `
-    font-size: 20px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 20;
+    fontWeight: 500;
   `,
   medium18: `
-    font-size: 18px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 18;
+    fontWeight: 500;
   `,
   medium16: `
-    font-size: 16px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 16;
+    fontWeight: 500;
   `,
   medium14: `
-    font-size: 14px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 14;
+    fontWeight: 500;
   `,
   medium12: `
-    font-size: 12px;
-    font-weight: 500;
+    fontFamily: ${PRETENDARD.medium};
+    fontSize: 12;
+    fontWeight: 500;
   `,
 
   regular24: `
-    font-size: 24px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 24;
+    fontWeight: 400;
   `,
   regular20: `
-    font-size: 20px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 20;
+    fontWeight: 400;
   `,
   regular18: `
-    font-size: 18px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 18;
+    fontWeight: 400;
   `,
   regular16: `
-    font-size: 16px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 16;
+    fontWeight: 400;
   `,
   regular14: `
-    font-size: 14px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 14;
+    fontWeight: 400;
   `,
   regular12: `
-    font-size: 12px;
-    font-weight: 400;
+    fontFamily: ${PRETENDARD.regular};
+    fontSize: 12;
+    fontWeight: 400;
   `,
 } as const
 
