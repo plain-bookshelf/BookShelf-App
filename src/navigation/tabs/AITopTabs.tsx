@@ -14,6 +14,10 @@ export default function AITopTabs() {
         tabBarActiveTintColor: colorStyle.defaultBlack,
         tabBarInactiveTintColor: colorStyle.aiTabInactiveGray,
         tabBarIndicatorStyle: { backgroundColor: colorStyle.defaultGreen },
+        tabBarStyle: {
+          elevation: 0,
+          shadowOpacity: 0
+        },
       }}
     >
       <TopTab.Screen
