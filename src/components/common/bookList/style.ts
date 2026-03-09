@@ -10,7 +10,10 @@ export const BookContainer = styled.View`
 `
 
 export const BookBox = styled.View`
+  width: 100%;
+  padding: 0px 24px;
   flex-direction: row;
+  justify-content: flex-start;
   gap: 16px;
 `
 

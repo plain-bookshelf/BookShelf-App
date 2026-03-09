@@ -26,6 +26,7 @@ export const colorStyle = {
   infoCardTitle: "#7B7B7B",
   profileBackgroundGray: "#FAFAFA",
   logoutRed: "#FF4B4B",
+  aiTabInactiveGray: "#888888",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
