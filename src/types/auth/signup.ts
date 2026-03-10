@@ -11,6 +11,5 @@ export interface StepContentProps<TForm = SignupForm> {
   step: number;
   form: TForm;
   setForm: (form: TForm) => void;
-  setIsEmail: (isEmail: boolean) => void;
   updateStepValid: (index: number, value: boolean) => void;
 }
