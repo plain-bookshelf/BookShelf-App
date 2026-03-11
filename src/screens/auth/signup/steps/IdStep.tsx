@@ -1,82 +1,35 @@
-import styled from "@emotion/native";
 import DefaultInput from "@/components/auth/authInput/DefaultInput";
 import Typography from "@/components/common/typography/Typography";
-import { colorStyle } from "@/styles/colorStyle";
 import { useEffect, useState } from "react";
 import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
-import { Pressable } from "react-native";
 import { isValidEmail } from "@/utils/isValidEmail";
 
 interface IdStepProps {
   value: string,
   onChange: (text: string) => void,
   setIsStepValid: (isStepValid: boolean) => void,
-  setIsEmail: (isEmail: boolean) => void,
 }
 
-export default function IdStep({ value, onChange, setIsStepValid, setIsEmail }: IdStepProps) {
-  const recommandId = 'Bookmaru0713';
-  const [isRecommand, setIsRecommand] = useState(true);
+export default function IdStep({ value, onChange, setIsStepValid }: IdStepProps) {
+  const [isEmail, setIsEmail] = useState<boolean>(true);
 
+  /* 정규 표현식으로 ID인지 Email인지 검사 / input 비어있을 땐 검사 안하고 오류 안띄움 */
   useEffect(() => {
-    if(value.trim().length !== 0){
-      setIsStepValid(true)
+    if (value === "") {
+      setIsEmail(true);
+      setIsStepValid(false);
+      return;
     }
-    else{
-      setIsStepValid(false)
-    }
-  }, [value])
 
-  /* 정규 표현식으로 ID인지 Email인지 검사 */
-  useEffect(() => {
-    const isEmail = isValidEmail(value)
-    setIsEmail(isEmail);
+    const valid = isValidEmail(value);
+    setIsEmail(valid);
+    setIsStepValid(valid);
   }, [value])
-
-  
-  const handleRecommand = () => {
-    onChange(recommandId)
-  }
 
   return(
-    <Continaer>
-      <ContentLayout>
-        <Typography children='이메일 또는 아이디 생성' font='medium28' color='defaultBlack' />
-        <DefaultInput label='회원가입하고 책마루에 가입하세요!' placeholder='이메일 또는 아이디 생성' isError={false} warningMessage="이미 존재하는 아이디입니다." value={value} onChangeText={onChange} />
-      </ContentLayout>
-
-      {isRecommand &&
-        <Pressable onPress={handleRecommand}>
-          <RecommandIdContainer>
-            <Typography children='이런 아이디는 어떠세요?' font='semiBold14' color='recommandIdText' />
-            <Typography children={recommandId} font='semiBold16' color='defaultWhite' decoration={true} />
-            <ClickText>
-              <Typography children='클릭하여 바로 입력' font='regular12' color='defaultGray' />
-            </ClickText>
-          </RecommandIdContainer>
-        </Pressable>
-      }
-    </Continaer>
+    <ContentLayout>
+      <Typography children='이메일 입력' font='medium28' color='defaultBlack' />
+      <DefaultInput label='회원가입하고 책마루에 가입하세요!' placeholder='이메일 입력' isError={!isEmail} warningMessage="올바르지 않은 이메일 형식입니다." value={value} onChangeText={onChange} />
+    </ContentLayout>
   )
 }
-
-const Continaer = styled.View`
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 30px;
-`
-
-const RecommandIdContainer = styled.View`
-  box-sizing: border-box;
-  flex-direction: column;
-  width: 100%;
-  height: 80px;
-  background-color: ${( colorStyle.recommandIdBackground )};
-  padding: 12px 12px 8px;
-  border-radius: 8px;
-`
-
-const ClickText = styled.View`
-  align-items: flex-end;
-`

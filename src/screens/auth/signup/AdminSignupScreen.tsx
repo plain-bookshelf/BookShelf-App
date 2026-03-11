@@ -14,18 +14,22 @@ import AdminCodeStep from "./steps/AdminCodeStep";
 
 export default function AdminSignupScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<AdminSignupForm>({id: '', email: '', password: '', school: '', verificationCode: '', library: '', adminCode: ''});
-  const [isEmail, setIsEmail] = useState(false);
+  const [form, setForm] = useState<AdminSignupForm>({ id: '', email: '', password: '', school: '', verificationCode: '', library: '', adminCode: '' });
   const [stepValid, setStepValid] = useState([false, false, false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, isEmail, setStepValid })
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 5, setStep, setStepValid });
 
   return(
     <KeyboardDismiss>
       <AuthStepLayout>
         <>  
-          <StepHeader step={step} maxStep={4} onPrev={handlePrev} />
-          <ActionLayout label={step < 4 ? '다음' : step === 4 ? '완료' : '로그인하러 가기'} onNext={handleNext} isValid={stepValid} step={step}>
-            <StepContent step={step} form={form} setForm={setForm} setIsEmail={setIsEmail} updateStepValid={updateStepValid} />
+          <StepHeader step={step} maxStep={5} onPrev={handlePrev} />
+          <ActionLayout
+            label={step < 6 ? '다음' : step === 6 ? '완료' : '로그인하러 가기'}
+            onNext={handleNext}
+            isValid={stepValid}
+            step={step}
+          >
+            <StepContent step={step} form={form} setForm={setForm} updateStepValid={updateStepValid} />
           </ActionLayout>
         </>
      </AuthStepLayout>
@@ -39,31 +43,51 @@ interface AdminSignupForm extends SignupForm {
 
 type AdminStepContentProps = StepContentProps<AdminSignupForm>
 
-function StepContent({ step, form, setForm, setIsEmail, updateStepValid }: AdminStepContentProps) {
+function StepContent({ step, form, setForm, updateStepValid }: AdminStepContentProps) {
   switch (step) {
     case 1:
       return(
-        <IdStep value={form.id} onChange={(text: string) => setForm({...form, id: text})} setIsStepValid={(valid) => updateStepValid(0, valid)} setIsEmail={setIsEmail} />
-      )
-
-    case 1.5:
-      return(
-        <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})} setIsStepValid={(valid) => updateStepValid(1.5, valid)} />
+        <IdStep
+          value={form.id}
+          onChange={(text: string) => setForm({ ...form, id: text })}
+          setIsStepValid={(valid) => updateStepValid(0, valid)}
+        />
       )
 
     case 2:
       return(
-        <PasswordStep value={form.password} onChange={(text: string) => setForm({...form, password: text})} setIsStepValid={(valid) => updateStepValid(2, valid)} />
+        <VerificationStep
+          value={form.verificationCode}
+          onChange={(text: string) => setForm({ ...form, verificationCode: text })}
+          setIsStepValid={(valid) => updateStepValid(1, valid)}
+        />
       )
 
     case 3:
       return(
-        <Library value={form.library} onChange={(text: string) => setForm({...form, library: text})} setIsStepValid={(valid) => updateStepValid(3, valid)} />
+        <PasswordStep
+          value={form.password}
+          onChange={(text: string) => setForm({ ...form, password: text })}
+          setIsStepValid={(valid) => updateStepValid(2, valid)}
+        />
       )
-    
+
     case 4:
       return(
-        <AdminCodeStep value={form.adminCode} onChange={(text: string) => setForm({...form, adminCode: text})} setIsStepValid={(valid) => updateStepValid(4, valid)} />
+        <Library
+          value={form.library}
+          onChange={(text: string) => setForm({ ...form, library: text })}
+          setIsStepValid={(valid) => updateStepValid(3, valid)}
+        />
+      )
+    
+    case 5:
+      return(
+        <AdminCodeStep
+          value={form.adminCode}
+          onChange={(text: string) => setForm({ ...form, adminCode: text })}
+          setIsStepValid={(valid) => updateStepValid(4, valid)}
+        />
       )
 
     default:
