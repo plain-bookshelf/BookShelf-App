@@ -32,6 +32,7 @@ export function useSignupStepControl({ step, maxStep, setStep, setStepValid }: U
   const handleNext = () => {
     if (step === maxStep + 1) {
       navigation.navigate('AuthHome');
+      return;
     }
     
     setStep(s => s + 1);
