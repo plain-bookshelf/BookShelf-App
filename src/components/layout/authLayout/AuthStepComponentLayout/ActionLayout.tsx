@@ -5,7 +5,7 @@ interface ActionLayoutProps {
   children: React.ReactNode;
   label: string;
   onNext: () => void;
-  isValid: any;
+  isValid: boolean[];
   step: number;
   isLayout?: boolean;
 }
