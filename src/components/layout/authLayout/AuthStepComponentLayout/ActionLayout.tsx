@@ -11,8 +11,7 @@ interface ActionLayoutProps {
 }
 
 export default function ActionLayout({ children, label, onNext, isValid, step, isLayout = true }: ActionLayoutProps) {
-  const isStep = step < 1.5 ? Math.ceil(step) - 1 : Math.ceil(step);
-  const nowValid = isValid[isStep];
+  const isStepValid = isValid[step - 1];
 
   return(
     <View style={{ flex: 1}}>
@@ -20,9 +19,9 @@ export default function ActionLayout({ children, label, onNext, isValid, step, i
         {children}
       </View>
       {isLayout ? 
-        <Button font='semiBold18' label={label} onPress={onNext} isValid={nowValid} /> :
+        <Button font='semiBold18' label={label} onPress={onNext} isValid={isStepValid} /> :
         <View style={{ paddingBottom: 52, paddingHorizontal: 24 }}>
-          <Button font='semiBold18' label={label} onPress={onNext} isValid={nowValid} />
+          <Button font='semiBold18' label={label} onPress={onNext} isValid={isStepValid} />
         </View>  
       }
     </View>

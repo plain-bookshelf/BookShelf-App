@@ -14,7 +14,7 @@ import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 export default function UserSignupScreen() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<SignupForm>({ id: '', email: '', password: '', school: '', verificationCode: '', library: '' });
-  const [stepValid, setStepValid] = useState([false, false, false, false, false, true]);
+  const [stepValid, setStepValid] = useState([false, false, false, false, true]);
   const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid });
 
   return(
@@ -52,7 +52,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
         <VerificationStep
           value={form.verificationCode}
           onChange={(text: string) => setForm({ ...form, verificationCode: text })}
-          setIsStepValid={(valid) => updateStepValid(2, valid)}
+          setIsStepValid={(valid) => updateStepValid(1, valid)}
         />
       )
 
@@ -61,7 +61,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
         <PasswordStep
           value={form.password}
           onChange={(text: string) => setForm({ ...form, password: text })}
-          setIsStepValid={(valid) => updateStepValid(3, valid)}
+          setIsStepValid={(valid) => updateStepValid(2, valid)}
         />
       )
 
@@ -70,7 +70,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
         <Library
           value={form.library}
           onChange={(text: string) => setForm({ ...form, library: text })}
-          setIsStepValid={(valid) => updateStepValid(4, valid)}
+          setIsStepValid={(valid) => updateStepValid(3, valid)}
         />
       )
 
