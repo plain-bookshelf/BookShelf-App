@@ -3,7 +3,7 @@ import { colorStyle } from "@/styles/colorStyle";
 
 export const Backdrop = styled.View`
   flex: 1;
-  padding: 0px 24px;
+  padding: 252px 24px 0px;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
 `;
