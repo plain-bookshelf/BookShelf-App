@@ -12,23 +12,10 @@ export const ContentBox = styled.View`
   padding: 12px 0px;
 `
 
-export const ProfileImageBox = styled.Pressable`
-  position: relative;
-  width: 72px;
-  height: 72px;
-`
 
 export const ProfileImage = styled.Image`
   width: 72px;
   height: 72px;
-`
-
-export const ProfileImageEdit = styled.Image`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
 `
 
 export const TitleBox = styled.View`

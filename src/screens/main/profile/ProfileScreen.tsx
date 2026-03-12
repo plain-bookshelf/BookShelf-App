@@ -7,15 +7,13 @@ import Typography from "@/components/common/typography/Typography";
 import img_profile_test from "@/assets/img_profile_test.png";
 import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png";
 import icon_logout_default from "@/assets/icon_logout_default.png";
+import icon_edit_profile_default from "@/assets/icon_edit-profile_default.png"
 
 export default function ProfileScreen() {
   return(
     <MainProfileLayout>
       <S.ProfileCardContainer>
-        <S.ProfileImageBox>
-          <S.ProfileImage source={img_profile_test} />
-          <S.ProfileImageEdit source={icon_edit_avatar_default} />
-        </S.ProfileImageBox>
+        <S.ProfileImage source={img_profile_test} />
         <Typography font='bold22' color='defaultBlack' children='둥근네모' />
       </S.ProfileCardContainer>
       <S.ContentBox>
@@ -35,8 +33,10 @@ export default function ProfileScreen() {
       </S.ContentBox>
       <S.ContentBox>
         <S.ActionCardBox>
-        <ActionCard title='도움말' color='defaultBlack' icon={icon_tooltip_default} onPress={() => {}} />
-        <ActionCard title='로그아웃' color='logoutRed' icon={icon_logout_default} onPress={() => {}} />
+          <ActionCard title='도움말' color='defaultBlack' icon={icon_tooltip_default} onPress={() => {}} />
+          <ActionCard title='정보 수정' color='defaultBlack' icon={icon_edit_profile_default} onPress={() => {}} />
+          <ActionCard title='로그아웃' color='logoutRed' icon={icon_logout_default} onPress={() => {}} />
+          <ActionCard title='회원탈퇴' color='logoutRed' icon={icon_logout_default} onPress={() => {}} />
         </S.ActionCardBox>
       </S.ContentBox>
     </MainProfileLayout>
