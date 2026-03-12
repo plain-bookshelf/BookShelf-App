@@ -36,6 +36,7 @@ export default function DefaultModal({
               <Typography
                 font="regular16"
                 color="defaultBlack"
+                textAlign="center"
                 children={description}
               />
             ) : null}
