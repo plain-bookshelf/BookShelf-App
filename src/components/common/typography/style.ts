@@ -6,4 +6,5 @@ export const StyledText = styled.Text<{ font: FontKey, color: ColorKey, decorati
   color: ${({ color }) => colorStyle[color]};
   ${({ font }) => fontStyle[font]}
   text-decoration: ${({ decoration }) => decoration ? 'underline' : 'none'};
+  text-align: center;
 `
