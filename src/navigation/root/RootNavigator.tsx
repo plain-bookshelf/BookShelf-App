@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 /** AuthStack과 MainStack 구별용 NativeStack */
 export default function RootNavigator() {
   /* TODO: 나중에 상태 바꿔야 함 */
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return(
     <NavigationContainer>
