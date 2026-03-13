@@ -53,8 +53,8 @@ export default function WithdrawalModal({
             <S.Button onPress={onCancel}>
               <Typography font="medium16" color="defaultBlack" children={cancelLabel} />
             </S.Button>
-            <S.Button onPress={onConfirm}>
-              <Typography font="medium16" color="modalButtonRed" children={confirmLabel} />
+            <S.Button onPress={onConfirm} disabled={value !== "동의합니다"}>
+              <Typography font="medium16" color={value !== "동의합니다" ? "disabledGray" : "modalButtonRed"} children={confirmLabel} />
             </S.Button>
           </S.ButtonRow>
         </S.ModalContainer>

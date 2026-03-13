@@ -88,7 +88,7 @@ export default function ProfileScreen() {
         visible={withdrawModalVisible}
         title="회원탈퇴 하시겠습니까?"
         description={`회원 탈퇴를 진행하시기 위해\n“동의합니다”를 입력해주세요`}
-        confirmLabel="로그아웃"
+        confirmLabel="회원탈퇴"
         cancelLabel="취소"
         onConfirm={handleWithdraw}
         onCancel={() => setWithdrawModalVisible(false)}
