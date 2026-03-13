@@ -86,9 +86,9 @@ export default function ProfileScreen() {
       />
       <WithdrawalModal
         visible={withdrawModalVisible}
-        title="정말 탈퇴하시겠습니까?"
-        description={`모든 대여/예약 정보가 삭제되며\n복구가 불가능합니다.`}
-        confirmLabel="회원탈퇴"
+        title="회원탈퇴 하시겠습니까?"
+        description={`회원 탈퇴를 진행하시기 위해\n“동의합니다”를 입력해주세요`}
+        confirmLabel="로그아웃"
         cancelLabel="취소"
         onConfirm={handleWithdraw}
         onCancel={() => setWithdrawModalVisible(false)}
