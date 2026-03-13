@@ -2,7 +2,7 @@ import { Modal } from "react-native";
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
 
-interface DefaultModalProps {
+interface LogoutModalProps {
   visible: boolean;
   title: string;
   description?: string;
@@ -12,7 +12,7 @@ interface DefaultModalProps {
   onCancel: () => void;
 }
 
-export default function DefaultModal({
+export default function LogoutModal({
   visible,
   title,
   description,
@@ -20,7 +20,7 @@ export default function DefaultModal({
   cancelLabel = "취소",
   onConfirm,
   onCancel,
-}: DefaultModalProps) {
+}: LogoutModalProps) {
   return (
     <Modal
       transparent
@@ -30,7 +30,7 @@ export default function DefaultModal({
     >
       <S.Backdrop>
         <S.ModalContainer>
-          <S.TextBox>
+          <S.TextBox padding="69px 0px 57px">
             <Typography font="bold20" color="defaultBlack" children={title} />
             {description ? (
               <Typography
