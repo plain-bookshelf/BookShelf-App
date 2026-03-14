@@ -1,8 +1,11 @@
 import { Modal } from "react-native";
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
+import styled from "@emotion/native";
+import { colorStyle } from "@/styles/colorStyle";
+import { useState } from "react";
 
-interface DefaultModalProps {
+interface WithdrawalModalProps {
   visible: boolean;
   title: string;
   description?: string;
@@ -12,7 +15,7 @@ interface DefaultModalProps {
   onCancel: () => void;
 }
 
-export default function DefaultModal({
+export default function WithdrawalModal({
   visible,
   title,
   description,
@@ -20,7 +23,9 @@ export default function DefaultModal({
   cancelLabel = "취소",
   onConfirm,
   onCancel,
-}: DefaultModalProps) {
+}: WithdrawalModalProps) {
+  const [value, setValue] = useState<string>("");
+
   return (
     <Modal
       transparent
@@ -30,7 +35,7 @@ export default function DefaultModal({
     >
       <S.Backdrop>
         <S.ModalContainer>
-          <S.TextBox>
+          <S.TextBox padding="32px 0px 16px">
             <Typography font="bold20" color="defaultBlack" children={title} />
             {description ? (
               <Typography
@@ -41,12 +46,15 @@ export default function DefaultModal({
               />
             ) : null}
           </S.TextBox>
+          <InputBox>
+            <Input placeholder="입력" value={value} onChangeText={setValue} placeholderTextColor={colorStyle.resendText} />
+          </InputBox>
           <S.ButtonRow>
             <S.Button onPress={onCancel}>
               <Typography font="medium16" color="defaultBlack" children={cancelLabel} />
             </S.Button>
-            <S.Button onPress={onConfirm}>
-              <Typography font="medium16" color="modalButtonRed" children={confirmLabel} />
+            <S.Button onPress={onConfirm} disabled={value !== "동의합니다"}>
+              <Typography font="medium16" color={value !== "동의합니다" ? "disabledGray" : "modalButtonRed"} children={confirmLabel} />
             </S.Button>
           </S.ButtonRow>
         </S.ModalContainer>
@@ -55,3 +63,17 @@ export default function DefaultModal({
   );
 }
 
+const InputBox = styled.View`
+  width: 100%;
+  padding: 0px 24px 30px;
+`;
+
+const Input = styled.TextInput`
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  padding-left: 20px;
+  flex-direction: row;
+  align-items: center;
+  background-color: ${colorStyle.modalInputBackgroundGray};
+`;

@@ -1,6 +1,10 @@
 import styled from "@emotion/native";
 import { colorStyle } from "@/styles/colorStyle";
 
+interface TextBoxProps {
+  padding?: string;
+}
+
 export const Backdrop = styled.View`
   flex: 1;
   padding: 252px 24px 0px;
@@ -14,10 +18,10 @@ export const ModalContainer = styled.View`
   background-color: ${colorStyle.defaultWhite};
 `;
 
-export const TextBox = styled.View`
+export const TextBox = styled.View<TextBoxProps>`
   width: 100%;
   align-items: center;
-  padding: 69px 0px 57px;
+  padding: ${({ padding }) => padding};
   gap: 8px;
 `;
 

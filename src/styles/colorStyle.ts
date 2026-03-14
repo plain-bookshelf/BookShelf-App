@@ -27,6 +27,8 @@ export const colorStyle = {
   logoutRed: "#FF4B4B",
   aiTabInactiveGray: "#888888",
   modalButtonRed: "#FF5959",
+  modalInputBackgroundGray: "#EFEFEF",
+  disabledGray: "#A1A1A1",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

@@ -9,7 +9,8 @@ import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png";
 import icon_logout_default from "@/assets/icon_logout_default.png";
 import icon_edit_profile_default from "@/assets/icon_edit-profile_default.png"
 import { useState } from "react";
-import DefaultModal from "@/components/common/modal/DefaultModal";
+import LogoutModal from "@/components/common/modal/LogoutModal";
+import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 
 export default function ProfileScreen() {
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
@@ -74,7 +75,7 @@ export default function ProfileScreen() {
           />
         </S.ActionCardBox>
       </S.ContentBox>
-      <DefaultModal
+      <LogoutModal
         visible={logoutModalVisible}
         title="로그아웃 하시겠습니다?"
         description={`언제든 다시 로그인하고\n진행 상황을 불러올 수 있습니다`}
@@ -83,10 +84,10 @@ export default function ProfileScreen() {
         onConfirm={handleLogout}
         onCancel={() => setLogoutModalVisible(false)}
       />
-      <DefaultModal
+      <WithdrawalModal
         visible={withdrawModalVisible}
-        title="정말 탈퇴하시겠습니까?"
-        description={`모든 대여/예약 정보가 삭제되며\n복구가 불가능합니다.`}
+        title="회원탈퇴 하시겠습니까?"
+        description={`회원 탈퇴를 진행하시기 위해\n“동의합니다”를 입력해주세요`}
         confirmLabel="회원탈퇴"
         cancelLabel="취소"
         onConfirm={handleWithdraw}
