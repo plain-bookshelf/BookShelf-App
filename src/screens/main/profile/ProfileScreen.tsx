@@ -5,14 +5,16 @@ import icon_tooltip_default from "@/assets/icon_tooltip_default.png";
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
 import img_profile_test from "@/assets/img_profile_test.png";
-import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png";
 import icon_logout_default from "@/assets/icon_logout_default.png";
-import icon_edit_profile_default from "@/assets/icon_edit-profile_default.png"
+import icon_edit_profile_default from "@/assets/icon_edit-profile_default.png";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import LogoutModal from "@/components/common/modal/LogoutModal";
 import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
+import type { ProfileNav } from "@/navigation/type";
 
 export default function ProfileScreen() {
+  const navigation = useNavigation<ProfileNav>();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
 
