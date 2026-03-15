@@ -13,6 +13,7 @@ import LogoutModal from "@/components/common/modal/LogoutModal";
 import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
 import useAuthStore from "@/store/useAuthStore";
+import { logout } from "@/services/api/auth";
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
@@ -20,7 +21,8 @@ export default function ProfileScreen() {
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
   const clearTokens = useAuthStore((state) => state.clearTokens);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logout();
     clearTokens();
     setLogoutModalVisible(false);
   };
