@@ -6,7 +6,7 @@ import type { LoginRequest } from "@/types/auth";
 export function useLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const setTokens = useAuthStore((s) => s.setTokens);
+  const setTokens = useAuthStore((state) => state.setTokens);
 
   const login = useCallback(async (params: LoginRequest) => {
     try {

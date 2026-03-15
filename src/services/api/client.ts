@@ -1,33 +1,16 @@
 import axios from "axios";
 import { API_BASE_URL } from "@env";
 import useAuthStore from "../../store/useAuthStore";
-import { refreshTokenStorage } from "../../storage/refreshTokenStorage";
+import { refreshAccessToken } from "./auth";
 
-/* api 인스턴스 */
-const api = axios.create({
-  baseURL: 'http://10.89.79.143:8080',
-  timeout: 15000,
+/* api 인스턴스 (헤더 등 커스텀 옵션이 필요할 때 사용) */
+export const api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 3000,
 });
 
+/* 플랫폼 타입 */
 export const platformType = '?platformType=ANDROID'
-
-/* 토큰 갱신 */
-async function refreshAccessToken() {
-  const refreshToken = await refreshTokenStorage.get();
-
-  if (!refreshToken) return null;
-
-  const res = await axios.post(`${API_BASE_URL}/reissue`, {
-    refreshToken,
-  });
-
-  const newAccessToken = res.data.accessToken;
-
-  useAuthStore.getState().setAccessToken(newAccessToken);
-
-  return newAccessToken;
-}
-
 
 /* api 인터셉터 */
 api.interceptors.request.use((config) => {
@@ -50,6 +33,9 @@ api.interceptors.response.use(
         error.config.headers.Authorization = `Bearer ${newToken}`;
         return api.request(error.config);
       }
+
+      /* 리프레시 실패 시 토큰 정리 → 앱에서 accessToken 없음으로 로그인 풀림 */
+      await useAuthStore.getState().clearTokens();
     }
 
     return Promise.reject(error);

@@ -12,14 +12,16 @@ import { useNavigation } from "@react-navigation/native";
 import LogoutModal from "@/components/common/modal/LogoutModal";
 import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
+import useAuthStore from "@/store/useAuthStore";
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
+  const clearTokens = useAuthStore((state) => state.clearTokens);
 
   const handleLogout = () => {
-    // TODO: 로그아웃 로직 연동
+    clearTokens();
     setLogoutModalVisible(false);
   };
 

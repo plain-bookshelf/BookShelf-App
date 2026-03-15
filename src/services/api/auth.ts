@@ -1,10 +1,51 @@
-import { apiClient } from "./client";
-import type { LoginRequest, LoginResponse } from "@/types/auth";
-import { platformType } from "./client";
+import axios from "axios";
+import { API_BASE_URL } from "@env";
+import { apiClient, api, platformType } from "./client";
+import type { LoginRequest } from "@/types/auth";
+import useAuthStore from "@/store/useAuthStore";
+import { refreshTokenStorage } from "@/storage/refreshTokenStorage";
 
 const AUTH_BASE = "api/auth";
 
-/** 로그인 API */
+/* 로그인 API */
 export async function login(params: LoginRequest) {
   return apiClient.post(`${AUTH_BASE}/login${platformType}`, params)
+}
+
+/* 토큰 갱신 API */
+export async function refreshAccessToken(): Promise<string | null> {
+  const refreshToken = await refreshTokenStorage.get();
+
+  if (!refreshToken) {
+    await useAuthStore.getState().clearTokens();
+    return null;
+  }
+
+  try {
+    const res = await axios.put(
+      `${API_BASE_URL}/${AUTH_BASE}/reissue${platformType}`,
+      null,
+      {
+        timeout: 3000,
+        headers: { "X-Refresh-Token": refreshToken },
+      }
+    );
+
+    const newAccessToken = res.data.data.access_token;
+    return newAccessToken;
+  } catch {
+    await useAuthStore.getState().clearTokens();
+    return null;
+  }
+}
+
+/*로그아웃 */
+export async function logout() {
+  const refreshToken = await refreshTokenStorage.get();
+
+  if (!refreshToken) return;
+
+  return api.post(`${AUTH_BASE}/logout${platformType}`, null, {
+    headers: { Authorization: refreshToken },
+  })
 }

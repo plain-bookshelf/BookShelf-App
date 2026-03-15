@@ -5,8 +5,7 @@ interface AuthStore {
   accessToken: string | null;
   setAccessToken: (token: string) => void;
   setTokens: (accessToken: string, refreshToken: string) => Promise<void>;
-  clearAccessToken: () => void;
-  logout: () => Promise<void>;
+  clearTokens: () => Promise<void>;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -19,9 +18,7 @@ const useAuthStore = create<AuthStore>((set) => ({
     set({ accessToken });
   },
 
-  clearAccessToken: () => set({ accessToken: null }),
-
-  logout: async () => {
+  clearTokens: async () => {
     await refreshTokenStorage.remove();
     set({ accessToken: null });
   },
