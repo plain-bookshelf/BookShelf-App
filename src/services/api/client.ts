@@ -1,13 +1,15 @@
 import axios from "axios";
+import { API_BASE_URL } from "@env";
 import useAuthStore from "../../store/useAuthStore";
 import { refreshTokenStorage } from "../../storage/refreshTokenStorage";
 
 /* api 인스턴스 */
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: 'http://10.89.79.143:8080',
   timeout: 15000,
 });
 
+export const platformType = '?platformType=ANDROID'
 
 /* 토큰 갱신 */
 async function refreshAccessToken() {
@@ -15,7 +17,7 @@ async function refreshAccessToken() {
 
   if (!refreshToken) return null;
 
-  const res = await axios.post("http://localhost:3000/reissue", {
+  const res = await axios.post(`${API_BASE_URL}/reissue`, {
     refreshToken,
   });
 
@@ -56,14 +58,14 @@ api.interceptors.response.use(
 
 /* api 요청 보낼 때 실제로 사용하는 함수 */
 export const apiClient = {
-  get: (url: string) => api.get(url).then((res) => res.data),
+  get: (url: string) => api.get(url).then((res) => res.data.data),
 
   post: (url: string, body?: any) =>
-    api.post(url, body).then((res) => res.data),
+    api.post(url, body).then((res) => res.data.data),
 
   put: (url: string, body?: any) =>
-    api.put(url, body).then((res) => res.data),
+    api.put(url, body).then((res) => res.data.data),
 
   delete: (url: string) =>
-    api.delete(url).then((res) => res.data),
+    api.delete(url).then((res) => res.data.data),
 };
