@@ -12,7 +12,6 @@ import btn_googleLogin_default from "@/assets/btn_google-login_default.png"
 import { useNavigation } from "@react-navigation/native";
 import { AuthNav } from "@/navigation/type";
 import KeyboardDismiss from '@/components/common/keyboardDismiss/KeyboardDismiss';
-import { useLogin } from "@/hooks/useLogin";
 import * as S from "./style"
 
 export default function AuthHomeScreen() {
@@ -20,7 +19,6 @@ export default function AuthHomeScreen() {
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
   const navigation = useNavigation<AuthNav>();
-  const { login, isLoading, error, clearError } = useLogin();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
     {title: '아이디 찾기', onPress: () => navigation.navigate('FindPassword')},
@@ -54,29 +52,10 @@ export default function AuthHomeScreen() {
 
         <S.LoginForm>
           <S.InputBox>
-            <DefaultInput
-              label=''
-              placeholder='이메일 또는 아이디 입력'
-              isError={!!error}
-              warningMessage={error ?? ''}
-              value={loginId}
-              onChangeText={(text) => { setLoginId(text); clearError(); }}
-            />
-            <PasswordInput
-              label=''
-              placeholder='비밀번호 입력'
-              isError={!!error}
-              warningMessage=''
-              value={loginPassword}
-              onChangeText={(text) => { setLoginPassword(text); clearError(); }}
-            />
+            <DefaultInput label='' placeholder='이메일 또는 아이디 입력' isError={false} warningMessage='' value={loginId} onChangeText={setLoginId} />
+            <PasswordInput label='' placeholder='비밀번호 입력' isError={false} warningMessage='' value={loginPassword} onChangeText={setLoginPassword} />
           </S.InputBox>
-          <Button
-            font='semiBold16'
-            label={isLoading ? '로그인 중...' : '로그인'}
-            onPress={() => login({ username: loginId.trim(), password: loginPassword })}
-            isValid={loginFormIsValid && !isLoading}
-          />
+          <Button font='semiBold16' label='로그인' onPress={() => navigation.navigate('Onboarding')} isValid={loginFormIsValid} />
         </S.LoginForm>
 
         <S.MenuContainer>
