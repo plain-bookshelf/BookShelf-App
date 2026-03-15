@@ -22,8 +22,8 @@ export default function ProfileScreen() {
   const clearTokens = useAuthStore((state) => state.clearTokens);
 
   const handleLogout = async () => {
+    await clearTokens();
     await logout();
-    clearTokens();
     setLogoutModalVisible(false);
   };
 
