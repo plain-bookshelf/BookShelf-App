@@ -44,7 +44,8 @@ export async function logout() {
 
   if (!refreshToken) return;
 
-  return api.post(`${AUTH_BASE}/logout${platformType}`, null, {
+  return axios.post(`${API_BASE_URL}/${AUTH_BASE}/logout${platformType}`, null, {
+    timeout: 3000,
     headers: { Authorization: refreshToken },
   })
 }
