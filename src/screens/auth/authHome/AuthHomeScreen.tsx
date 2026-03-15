@@ -66,7 +66,7 @@ export default function AuthHomeScreen() {
               label=''
               placeholder='비밀번호 입력'
               isError={!!error}
-              warningMessage=''
+              warningMessage={error ?? ''}
               value={loginPassword}
               onChangeText={(text) => { setLoginPassword(text); clearError(); }}
             />
