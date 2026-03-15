@@ -27,14 +27,14 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
-      const newToken = await refreshAccessToken();
+      await refreshAccessToken();
+      const newToken = useAuthStore.getState().accessToken;
 
       if (newToken) {
         error.config.headers.Authorization = `Bearer ${newToken}`;
         return api.request(error.config);
       }
 
-      /* 리프레시 실패 시 토큰 정리 → 앱에서 accessToken 없음으로 로그인 풀림 */
       await useAuthStore.getState().clearTokens();
     }
 

@@ -13,7 +13,7 @@ export async function login(params: LoginRequest) {
 }
 
 /* 토큰 갱신 API */
-export async function refreshAccessToken(): Promise<string | null> {
+export async function refreshAccessToken() {
   const refreshToken = await refreshTokenStorage.get();
 
   if (!refreshToken) {
@@ -32,10 +32,9 @@ export async function refreshAccessToken(): Promise<string | null> {
     );
 
     const newAccessToken = res.data.data.access_token;
-    return newAccessToken;
+    await useAuthStore.getState().setAccessToken(newAccessToken);
   } catch {
     await useAuthStore.getState().clearTokens();
-    return null;
   }
 }
 
