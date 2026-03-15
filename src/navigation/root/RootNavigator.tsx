@@ -2,13 +2,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "../stacks/AuthStack";
 import MainStack from "../stacks/MainStack";
+import useAuthStore from "@/store/useAuthStore";
 
 const Stack = createNativeStackNavigator();
 
 /** AuthStack과 MainStack 구별용 NativeStack */
 export default function RootNavigator() {
-  /* TODO: 나중에 상태 바꿔야 함 */
-  const isLoggedIn = true;
+  const accessToken = useAuthStore((s) => s.accessToken);
+  const isLoggedIn = !!accessToken;
 
   return(
     <NavigationContainer>
