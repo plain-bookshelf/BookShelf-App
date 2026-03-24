@@ -16,7 +16,7 @@ import { useLogin } from "@/hooks/useLogin";
 import * as S from "./style"
 
 export default function AuthHomeScreen() {
-  const [loginId, setLoginId] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
   const navigation = useNavigation<AuthNav>();
@@ -33,13 +33,13 @@ export default function AuthHomeScreen() {
   ];
 
   useEffect(() => {
-    if(loginId.trim().length !== 0 && loginPassword.trim().length !== 0){
+    if(loginEmail.trim().length !== 0 && loginPassword.trim().length !== 0){
       setLoginFormIsValid(true);
     }
     else{
       setLoginFormIsValid(false);
     }
-  }, [loginId, loginPassword])
+  }, [loginEmail, loginPassword])
 
   return(
     <KeyboardDismiss>
@@ -56,11 +56,11 @@ export default function AuthHomeScreen() {
           <S.InputBox>
             <DefaultInput
               label=''
-              placeholder='이메일 또는 아이디 입력'
+              placeholder='이메일 입력'
               isError={!!error}
               warningMessage={error ?? ''}
-              value={loginId}
-              onChangeText={(text) => { setLoginId(text); clearError(); }}
+              value={loginEmail}
+              onChangeText={(text) => { setLoginEmail(text); clearError(); }}
             />
             <PasswordInput
               label=''
@@ -74,7 +74,7 @@ export default function AuthHomeScreen() {
           <Button
             font='semiBold16'
             label={isLoading ? '로그인 중...' : '로그인'}
-            onPress={() => login({ username: loginId.trim(), password: loginPassword })}
+            onPress={() => login({ username: loginEmail.trim(), password: loginPassword })}
             isValid={loginFormIsValid && !isLoading}
           />
         </S.LoginForm>

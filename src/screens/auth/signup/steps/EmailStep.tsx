@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 import { isValidEmail } from "@/utils/isValidEmail";
 
-interface IdStepProps {
+interface EmailStepProps {
   value: string,
   onChange: (text: string) => void,
   setIsStepValid: (isStepValid: boolean) => void,
 }
 
-export default function IdStep({ value, onChange, setIsStepValid }: IdStepProps) {
+export default function EmailStep({ value, onChange, setIsStepValid }: EmailStepProps) {
   const [isEmail, setIsEmail] = useState<boolean>(true);
 
   /* 정규 표현식으로 ID인지 Email인지 검사 / input 비어있을 땐 검사 안하고 오류 안띄움 */
