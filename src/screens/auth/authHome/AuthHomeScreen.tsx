@@ -56,7 +56,7 @@ export default function AuthHomeScreen() {
           <S.InputBox>
             <DefaultInput
               label=''
-              placeholder='이메일 또는 아이디 입력'
+              placeholder='이메일 입력'
               isError={!!error}
               warningMessage={error ?? ''}
               value={loginId}
