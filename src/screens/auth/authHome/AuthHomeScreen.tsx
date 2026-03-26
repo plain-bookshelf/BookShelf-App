@@ -23,7 +23,6 @@ export default function AuthHomeScreen() {
   const { login, isLoading, error, clearError } = useLogin();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
-    {title: '아이디 찾기', onPress: () => navigation.navigate('FindPassword')},
     {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindId')}
   ];
   const socialLoginButtons = [
