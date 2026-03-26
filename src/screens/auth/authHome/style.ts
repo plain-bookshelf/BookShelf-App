@@ -18,7 +18,7 @@ export const InputBox = styled.View`
 export const MenuContainer = styled.View`
   flex-direction: row;
   justify-content: center;
-  gap: 4px;
+  gap: 20px;
   padding-bottom: 52px;
 `
 
