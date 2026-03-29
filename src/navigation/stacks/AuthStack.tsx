@@ -1,5 +1,4 @@
 import AuthHomeScreen from "@/screens/auth/authHome/AuthHomeScreen";
-import FindIdScreen from "@/screens/auth/id/FindIdScreen";
 import FindPasswordScreen from "@/screens/auth/password/FindPasswordScreen";
 import AdminSignupScreen from "@/screens/auth/signup/AdminSignupScreen";
 import UserSignupScreen from "@/screens/auth/signup/UserSignupScreen";
@@ -18,7 +17,6 @@ export default function AuthStack() {
       <Stack.Screen name="UserSignup" component={UserSignupScreen} />
       <Stack.Screen name="AdminSignup" component={AdminSignupScreen} />
       <Stack.Screen name="FindPassword" component={FindPasswordScreen} />
-      <Stack.Screen name="FindId" component={FindIdScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
     </Stack.Navigator>
   )
