@@ -47,7 +47,7 @@ export default function WithdrawalModal({
             ) : null}
           </S.TextBox>
           <InputBox>
-            <Input placeholder="입력" value={value} onChangeText={setValue} placeholderTextColor={colorStyle.resendText} />
+            <Input placeholder="동의합니다" value={value} onChangeText={setValue} placeholderTextColor={colorStyle.resendText} />
           </InputBox>
           <S.ButtonRow>
             <S.Button onPress={onCancel}>
