@@ -1,7 +1,7 @@
 import Typography from "@/components/common/typography/Typography";
 import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
 import { useEffect } from "react";
-import AffiliationInput from "@/components/common/Input/AffiliationInput";
+import AffiliationInput from "@/components/common/input/AffiliationInput";
 
 interface LibraryStepProps {
   value: string,
