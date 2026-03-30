@@ -1,9 +1,9 @@
+import * as S from "./style"
 import { colorStyle } from "@/styles/colorStyle";
-import styled from "@emotion/native";
 import Typography from "../typography/Typography";
 import { useState } from "react";
 import icon_search_default from "@/assets/icon_search-_default.png"
-import { fontStyle } from "@/styles/fontStyle";
+import { Image } from "react-native";
 
 interface AffiliationInputProps {
   label?: string,
@@ -15,10 +15,10 @@ export default function AffiliationInput({ label, value, onChange }: Affiliation
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <InputContainer>
-    {label && <Typography children={label} font='regular18' color='labelGray' />}
-    <InputBox>
-      <Input
+    <>
+      {label && <Typography children={label} font='regular18' color='labelGray' />}
+      <S.Input
+        style={{ paddingLeft: 44, position: 'relative' }}
         placeholder='소속 도서관 검색'
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -27,44 +27,7 @@ export default function AffiliationInput({ label, value, onChange }: Affiliation
         onChangeText={onChange}
         placeholderTextColor={colorStyle.defaultGray}
       />
-      <SearchIcon source={icon_search_default} />
-    </InputBox>
-  </InputContainer>
+      <Image source={icon_search_default} style={{ width: 20, height: 20, position: 'absolute', left: 34, top: 14 }} />
+    </>
   )
 }
-
-interface InputProps {
-  isError?: boolean,
-  isFocused?: boolean,
-}
-
-const InputContainer = styled.View`
-  flex-direction: column;
-  gap: 16px;
-`
-
-const InputBox = styled.View`
-  position: relative;
-  flex-direction: row;
-  align-items: center;
-`
-
-const Input = styled.TextInput<InputProps>`
-  color: ${( colorStyle.defaultBlack )};
-  ${( fontStyle.regular16 )};
-  width: 100%;
-  height: 48px;
-  background-color: ${( colorStyle.inputBarGray )};
-  border-width: 1px;
-  border-color: ${({ isFocused, isError }) => isFocused ? colorStyle.defaultBlack : isError ? colorStyle.defaultRed : colorStyle.inputBarGray};
-  border-radius: 8px;
-  align-items: center;
-  padding-left: 44px;
-`
-
-const SearchIcon = styled.Image`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 20px;
-`
