@@ -6,6 +6,10 @@ export const Container = styled.View`
   flex: 1;
 `
 
-export const TitleBox = styled.View`
-  padding: 20px 0px 16px 14px;
+export const TitleBox = styled.View<{ isPopularBooks: boolean }>`
+  flex-direction: row;
+  justify-content: ${({ isPopularBooks }) => isPopularBooks ? "flex-end" : "flex-start"};
+  align-items: center;
+  gap: 82px;
+  padding: 21px 24px 15px;
 `
