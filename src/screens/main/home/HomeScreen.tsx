@@ -44,7 +44,7 @@ export default function HomeScreen() {
           {isPopularBooks && <Image source={btn_next_type_books_arrow_default} style={{ width: 28, height: 28 }} />}
         </Pressable>
       </S.TitleBox>
-      <BookList bookList={popularBooks} />
+      <BookList bookList={isPopularBooks ? popularBooks : latestBooks} />
     </S.Container>
   )
 }
