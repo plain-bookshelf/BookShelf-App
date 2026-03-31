@@ -65,7 +65,7 @@ export default function ProfileScreen() {
             title='정보 수정'
             color='defaultBlack'
             icon={icon_edit_profile_default}
-            onPress={() => {}}
+            onPress={() => navigation.navigate('EditProfile')}
           />
           <ActionCard
             title='로그아웃'
