@@ -2,7 +2,7 @@ import { colorStyle } from "@/styles/colorStyle";
 import AuthHomeLayout from "@/components/layout/authLayout/AuthHomeLayout";
 import Typography from "@/components/common/typography/Typography";
 import { Image, View } from "react-native";
-import DefaultInput from "@/components/auth/authInput/DefaultInput";
+import DefaultInput from "@/components/common/input/DefaultInput";
 import { useEffect, useState } from "react";
 import PasswordInput from "@/components/auth/authInput/PasswordInput";
 import Button from "@/components/common/button/Button";

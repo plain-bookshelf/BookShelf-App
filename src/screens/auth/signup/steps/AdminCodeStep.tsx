@@ -1,7 +1,7 @@
 import Typography from "@/components/common/typography/Typography"
 import { useEffect } from "react"
 import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
-import DefaultInput from "@/components/auth/authInput/DefaultInput";
+import DefaultInput from "@/components/common/input/DefaultInput";
 
 interface AdminCodeStepStepProps {
   value: string;
