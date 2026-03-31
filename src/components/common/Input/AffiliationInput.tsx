@@ -1,4 +1,5 @@
 import * as S from "./style"
+import styled from "@emotion/native";
 import { colorStyle } from "@/styles/colorStyle";
 import Typography from "../typography/Typography";
 import { useState } from "react";
@@ -15,7 +16,7 @@ export default function AffiliationInput({ label, value, onChange }: Affiliation
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <>
+    <Container>
       {label && <Typography children={label} font='regular18' color='labelGray' />}
       <S.Input
         style={{ paddingLeft: 44, position: 'relative' }}
@@ -27,7 +28,11 @@ export default function AffiliationInput({ label, value, onChange }: Affiliation
         onChangeText={onChange}
         placeholderTextColor={colorStyle.defaultGray}
       />
-      <Image source={icon_search_default} style={{ width: 20, height: 20, position: 'absolute', left: 34, top: 14 }} />
-    </>
+      <Image source={icon_search_default} style={{ width: 20, height: 20, position: 'absolute', left: 17, top: 14 }} />
+    </Container>
   )
 }
+
+const Container = styled.View`
+  position: relative;
+`
