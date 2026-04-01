@@ -22,10 +22,16 @@ export type AIStackParamList = {
   Chatbot: undefined;
 };
 
+export type MyBooksStackParamList = {
+  Borrowed: undefined;
+  Reserved: undefined;
+  Overdue: undefined;
+};
+
 export type ProfileStackParamList = {
   ProfileMain: undefined;
   EditProfile: undefined;
-  MyBooksDetail: { initialTab?: "reserved" | "rental" | "overdue" };
+  MyBooks: { initialTab?: "Borrowed" | "Reserved" | "Overdue" };
 };
 
 export type MainTabParamList = {

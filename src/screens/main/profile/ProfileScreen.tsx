@@ -14,6 +14,7 @@ import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
 import useAuthStore from "@/store/useAuthStore";
 import { logout } from "@/services/api/auth";
+import { Pressable } from "react-native";
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
@@ -48,9 +49,15 @@ export default function ProfileScreen() {
       </S.ContentBox>
       <S.ContentBox>
       <S.InfoCardContainer>
-        <InfoCard title='대여 중인 책' value='10권' />
-        <InfoCard title='예약한 책' value='10권' />
-        <InfoCard title='연체된 책' value='10권' />
+        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Borrowed' })}>
+          <InfoCard title='대여 중인 책' value='10권' />
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Reserved' })}>
+          <InfoCard title='예약한 책' value='10권' />
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Overdue' })}>
+          <InfoCard title='연체된 책' value='10권' />
+        </Pressable>
       </S.InfoCardContainer>
       </S.ContentBox>
       <S.ContentBox>

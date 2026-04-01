@@ -5,7 +5,7 @@ import BottomBar from "../tabs/BottomTab";
 import MainHeader from "@/components/layout/mainLayout/MainHeader";
 import HomeScreen from "@/screens/main/home/HomeScreen";
 import SearchStack from "@/navigation/stacks/SearchStack";
-import AITopTabs from "@/navigation/tabs/AITopTabs";
+import AITopTabs from "@/navigation/tabs/AITopTab";
 import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
 
