@@ -49,6 +49,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>TJJoyofsingingB.otf</string>
+		<string>TJJoyofsingingEB.otf</string>
+		<string>TJJoyofsingingL.otf</string>
+		<string>TJJoyofsingingM.otf</string>
 		<string>Pretendard-Bold.otf</string>
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-Regular.otf</string>

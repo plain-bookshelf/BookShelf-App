@@ -11,12 +11,16 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		1F6E567EF6F94060BF4FE6ED /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AE4E92BF76A340799ED824F8 /* Pretendard-Bold.otf */; };
-		A4ADCF3F0E4D4FE197770DA8 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4408FB5EE9E4012BB8812D2 /* Pretendard-Medium.otf */; };
-		08C8501819BE4337878CBB21 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F9BB153E74B2F8EA81484 /* Pretendard-Regular.otf */; };
-		E73E0F9CFF8A404E9C2308AE /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57B7DBE04F80465E8EDDA362 /* Pretendard-SemiBold.otf */; };
-		300A2670045A456493130963 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = E8A86581D47D4B95932753C4 /* .gitkeep */; };
-		0B7B9168CAF6463DB6DAE929 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2A3A2F141B324D64BD4FDA0D /* README.md */; };
+		50124F6494B8456B85B37006 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0DA1532CF484F12A49250B1 /* Pretendard-Bold.otf */; };
+		F1B0DE616D484EEAAE05F749 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4194A1C50D924B469D5E90E3 /* Pretendard-Medium.otf */; };
+		D9633ECE6CFC4C128751A6E3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E4EDF3A0943A43E08C999ECE /* Pretendard-Regular.otf */; };
+		5544D9210D144181A8E2EF7C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 38E1C95AE8EA4440B5C738D1 /* Pretendard-SemiBold.otf */; };
+		51FC10591E934322A7A7D538 /* TJJoyofsingingB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7D6FB5D0F2B840B6AD2585B8 /* TJJoyofsingingB.otf */; };
+		6354EB50B8DF49ED9BBD6573 /* TJJoyofsingingEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = A348639E9EC84C54A256CE60 /* TJJoyofsingingEB.otf */; };
+		4C11F04C95D147F39E4A8098 /* TJJoyofsingingL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BA5A439A14DAAB3251809 /* TJJoyofsingingL.otf */; };
+		E9231B53AFCD45509F4737D9 /* TJJoyofsingingM.otf in Resources */ = {isa = PBXBuildFile; fileRef = C826C1E9E3044E72A59DF948 /* TJJoyofsingingM.otf */; };
+		76F8583813114B858FCD770F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 299ADC8611074F5DAAC2CE29 /* .gitkeep */; };
+		265C219E48B542128908698F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 96C200EDB4EE45598CDD1B96 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +34,16 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = bookShelfApp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = bookShelfApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		AE4E92BF76A340799ED824F8 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; name = "Pretendard-Bold.otf"; path = "../assets/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F4408FB5EE9E4012BB8812D2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; name = "Pretendard-Medium.otf"; path = "../assets/fonts/Pretendard-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4A8F9BB153E74B2F8EA81484 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; name = "Pretendard-Regular.otf"; path = "../assets/fonts/Pretendard-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		57B7DBE04F80465E8EDDA362 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; name = "Pretendard-SemiBold.otf"; path = "../assets/fonts/Pretendard-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E8A86581D47D4B95932753C4 /* .gitkeep */ = {isa = PBXFileReference; name = ".gitkeep"; path = "../assets/fonts/.gitkeep"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2A3A2F141B324D64BD4FDA0D /* README.md */ = {isa = PBXFileReference; name = "README.md"; path = "../assets/fonts/README.md"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D0DA1532CF484F12A49250B1 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; name = "Pretendard-Bold.otf"; path = "../assets/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4194A1C50D924B469D5E90E3 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; name = "Pretendard-Medium.otf"; path = "../assets/fonts/Pretendard-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4EDF3A0943A43E08C999ECE /* Pretendard-Regular.otf */ = {isa = PBXFileReference; name = "Pretendard-Regular.otf"; path = "../assets/fonts/Pretendard-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		38E1C95AE8EA4440B5C738D1 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; name = "Pretendard-SemiBold.otf"; path = "../assets/fonts/Pretendard-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7D6FB5D0F2B840B6AD2585B8 /* TJJoyofsingingB.otf */ = {isa = PBXFileReference; name = "TJJoyofsingingB.otf"; path = "../assets/fonts/TJJoyofsingingB.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A348639E9EC84C54A256CE60 /* TJJoyofsingingEB.otf */ = {isa = PBXFileReference; name = "TJJoyofsingingEB.otf"; path = "../assets/fonts/TJJoyofsingingEB.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1F7BA5A439A14DAAB3251809 /* TJJoyofsingingL.otf */ = {isa = PBXFileReference; name = "TJJoyofsingingL.otf"; path = "../assets/fonts/TJJoyofsingingL.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C826C1E9E3044E72A59DF948 /* TJJoyofsingingM.otf */ = {isa = PBXFileReference; name = "TJJoyofsingingM.otf"; path = "../assets/fonts/TJJoyofsingingM.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		299ADC8611074F5DAAC2CE29 /* .gitkeep */ = {isa = PBXFileReference; name = ".gitkeep"; path = "../assets/fonts/.gitkeep"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		96C200EDB4EE45598CDD1B96 /* README.md */ = {isa = PBXFileReference; name = "README.md"; path = "../assets/fonts/README.md"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +121,16 @@
 		CBFFE1AC6FCA46049238B15D /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
-				AE4E92BF76A340799ED824F8 /* Pretendard-Bold.otf */,
-				F4408FB5EE9E4012BB8812D2 /* Pretendard-Medium.otf */,
-				4A8F9BB153E74B2F8EA81484 /* Pretendard-Regular.otf */,
-				57B7DBE04F80465E8EDDA362 /* Pretendard-SemiBold.otf */,
-				E8A86581D47D4B95932753C4 /* .gitkeep */,
-				2A3A2F141B324D64BD4FDA0D /* README.md */,
+				D0DA1532CF484F12A49250B1 /* Pretendard-Bold.otf */,
+				4194A1C50D924B469D5E90E3 /* Pretendard-Medium.otf */,
+				E4EDF3A0943A43E08C999ECE /* Pretendard-Regular.otf */,
+				38E1C95AE8EA4440B5C738D1 /* Pretendard-SemiBold.otf */,
+				7D6FB5D0F2B840B6AD2585B8 /* TJJoyofsingingB.otf */,
+				A348639E9EC84C54A256CE60 /* TJJoyofsingingEB.otf */,
+				1F7BA5A439A14DAAB3251809 /* TJJoyofsingingL.otf */,
+				C826C1E9E3044E72A59DF948 /* TJJoyofsingingM.otf */,
+				299ADC8611074F5DAAC2CE29 /* .gitkeep */,
+				96C200EDB4EE45598CDD1B96 /* README.md */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -186,12 +198,16 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				1F6E567EF6F94060BF4FE6ED /* Pretendard-Bold.otf in Resources */,
-				A4ADCF3F0E4D4FE197770DA8 /* Pretendard-Medium.otf in Resources */,
-				08C8501819BE4337878CBB21 /* Pretendard-Regular.otf in Resources */,
-				E73E0F9CFF8A404E9C2308AE /* Pretendard-SemiBold.otf in Resources */,
-				300A2670045A456493130963 /* .gitkeep in Resources */,
-				0B7B9168CAF6463DB6DAE929 /* README.md in Resources */,
+				50124F6494B8456B85B37006 /* Pretendard-Bold.otf in Resources */,
+				F1B0DE616D484EEAAE05F749 /* Pretendard-Medium.otf in Resources */,
+				D9633ECE6CFC4C128751A6E3 /* Pretendard-Regular.otf in Resources */,
+				5544D9210D144181A8E2EF7C /* Pretendard-SemiBold.otf in Resources */,
+				51FC10591E934322A7A7D538 /* TJJoyofsingingB.otf in Resources */,
+				6354EB50B8DF49ED9BBD6573 /* TJJoyofsingingEB.otf in Resources */,
+				4C11F04C95D147F39E4A8098 /* TJJoyofsingingL.otf in Resources */,
+				E9231B53AFCD45509F4737D9 /* TJJoyofsingingM.otf in Resources */,
+				76F8583813114B858FCD770F /* .gitkeep in Resources */,
+				265C219E48B542128908698F /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
