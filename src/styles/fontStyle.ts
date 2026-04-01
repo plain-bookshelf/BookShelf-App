@@ -1,4 +1,4 @@
-/** 기본 폰트: Pretendard (React Native에서는 weight별 폰트 파일명 사용) */
+/** 기본 폰트: Pretendard */
 const PRETENDARD = {
   bold: 'Pretendard-Bold',
   semiBold: 'Pretendard-SemiBold',
@@ -6,7 +6,15 @@ const PRETENDARD = {
   regular: 'Pretendard-Regular',
 } as const;
 
-/** 공통 fontStyle (React Native는 camelCase만 인식) */
+/** 포인트 폰트: 특정 경우에만 사용 */
+const TJ = {
+  light: 'TJJoyofsingingL',
+  medium: 'TJJoyofsingingM',
+  bold: 'TJJoyofsingingB',
+  extraBold: 'TJJoyofsingingEB',
+} as const;
+
+/** 공통 fontStyle */
 export const fontStyle = {
   bold24: `
     fontFamily: ${PRETENDARD.bold};
@@ -135,6 +143,68 @@ export const fontStyle = {
     fontFamily: ${PRETENDARD.regular};
     fontSize: 12;
     fontWeight: 400;
+  `,
+
+  tjMedium24: `
+    fontFamily: ${TJ.medium};
+    fontSize: 24;
+    fontWeight: 400;
+  `,
+  tjMedium20: `
+    fontFamily: ${TJ.medium};
+    fontSize: 20;
+    fontWeight: 400;
+  `,
+  tjMedium18: `
+    fontFamily: ${TJ.medium};
+    fontSize: 18;
+    fontWeight: 400;
+  `,
+  tjMedium16: `
+    fontFamily: ${TJ.medium};
+    fontSize: 16;
+    fontWeight: 400;
+  `,
+  tjMedium14: `
+    fontFamily: ${TJ.medium};
+    fontSize: 14;
+    fontWeight: 400;
+  `,
+  tjMedium12: `
+    fontFamily: ${TJ.medium};
+    fontSize: 12;
+    fontWeight: 400;
+  `,
+
+  tjBold24: `
+    fontFamily: ${TJ.bold};
+    fontSize: 24;
+    fontWeight: 700;
+  `,
+  tjBold20: `
+    fontFamily: ${TJ.bold};
+    fontSize: 20;
+    fontWeight: 700;
+  `,
+  tjBold18: `
+    fontFamily: ${TJ.bold};
+    fontSize: 18;
+    fontWeight: 700;
+  `,
+  tjBold16: `
+    fontFamily: ${TJ.bold};
+    fontSize: 16;
+    fontWeight: 700;
+  `,
+  tjBold14: `
+    fontFamily: ${TJ.bold};
+    fontSize: 14;
+    fontWeight: 700;
+  `,
+  tjBold12: `
+    fontFamily: ${TJ.bold};
+    fontSize: 12;
+    fontWeight: 700;
   `,
 } as const
 
