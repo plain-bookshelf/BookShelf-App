@@ -4,7 +4,7 @@ import Typography from "@/components/common/typography/Typography";
 import { Image, View } from "react-native";
 import DefaultInput from "@/components/common/input/DefaultInput";
 import { useEffect, useState } from "react";
-import PasswordInput from "@/components/auth/authInput/PasswordInput";
+import PasswordInput from "@/components/common/input/PasswordInput";
 import Button from "@/components/common/button/Button";
 import btn_kakaoLogin_default from "@/assets/btn_kakao-login_default.png"
 import btn_naverLogin_default from "@/assets/btn_naver-login_default.png"
