@@ -29,6 +29,7 @@ export const colorStyle = {
   modalButtonRed: "#FF5959",
   modalInputBackgroundGray: "#EFEFEF",
   disabledGray: "#A1A1A1",
+  overdueRed: "#FF5151",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

@@ -23,7 +23,23 @@
     },
     {
       "path": "assets/fonts/README.md",
-      "sha1": "1a32acf95314e43538bb55fccce53fbd2c35b0fd"
+      "sha1": "5c9a219396a3c124e62dfb15571d84d6d9ffb4fc"
+    },
+    {
+      "path": "assets/fonts/TJJoyofsingingB.otf",
+      "sha1": "a732085a73806e156c939ccd935afe75c85bab5e"
+    },
+    {
+      "path": "assets/fonts/TJJoyofsingingEB.otf",
+      "sha1": "84e0f65ebe4457c4bbb4b74e33c6500331e22fb3"
+    },
+    {
+      "path": "assets/fonts/TJJoyofsingingL.otf",
+      "sha1": "ea632291ad4fb1c0b8db47c4771be1403f5368df"
+    },
+    {
+      "path": "assets/fonts/TJJoyofsingingM.otf",
+      "sha1": "d3b08a4b5c811f37e9d55a4aee9b13c13e8fdc8a"
     }
   ]
 }

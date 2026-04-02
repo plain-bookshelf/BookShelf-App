@@ -12,7 +12,6 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 22px 24px 10px;
-
 `
 
 export const ContentBox = styled.View`
