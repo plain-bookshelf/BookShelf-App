@@ -1,7 +1,6 @@
-import Typography from "@/components/common/typography/Typography";
 import img_test_book_default from "@/assets/img_test-book_default.png";
 import * as S from "../style";
-import { Image } from "react-native";
+import BookCard from "../components/bookCard/BookCard";
 
 export default function OverdueScreen() {
   const MOCK_BOOKS = [
@@ -20,13 +19,13 @@ export default function OverdueScreen() {
     <S.Container>
       <S.BookCardList>
         {MOCK_BOOKS.map((book) => (
-          <S.BookCard key={book.id}>
-            <Image source={book.image} style={{ width: 55, height: 80 }} />
-            <S.BookCardTextBox>
-              <Typography font="tjMedium16" color="defaultBlack" children={book.title} />
-              <Typography font="regular12" color="overdueRed" children={`${book.day}일 연체됨`} />
-            </S.BookCardTextBox>
-          </S.BookCard>
+          <BookCard
+            key={book.id}
+            title={book.title}
+            info={`${book.day}일 연체됨`}
+            image={book.image}
+            color="overdueRed"
+          />
         ))}
       </S.BookCardList>
     </S.Container>
