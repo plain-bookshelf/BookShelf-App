@@ -1,7 +1,7 @@
 import Typography from "@/components/common/typography/Typography"
 import { useEffect, useState } from "react"
 import ContentLayout from "@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout";
-import PasswordInput from "@/components/auth/authInput/PasswordInput";
+import PasswordInput from "@/components/common/input/PasswordInput";
 
 interface ResetPasswordStepProps {
   value: string;
