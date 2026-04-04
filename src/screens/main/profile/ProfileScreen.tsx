@@ -1,6 +1,5 @@
 import ActionCard from "./components/actionCard/ActionCard";
 import InfoCard from "./components/infoCard/InfoCard";
-import MainProfileLayout from "@/components/layout/mainLayout/MainProfileLayout";
 import icon_tooltip_default from "@/assets/icon_tooltip_default.png";
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
@@ -34,7 +33,7 @@ export default function ProfileScreen() {
   };
 
   return(
-    <MainProfileLayout>
+    <S.Container>
       <S.ProfileCardContainer>
         <S.ProfileImage source={img_profile_test} />
         <Typography font='bold22' color='defaultBlack' children='둥근네모' />
@@ -106,6 +105,6 @@ export default function ProfileScreen() {
         onConfirm={handleWithdraw}
         onCancel={() => setWithdrawModalVisible(false)}
       />
-    </MainProfileLayout>
+    </S.Container>
   )
 }
