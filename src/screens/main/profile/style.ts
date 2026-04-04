@@ -1,5 +1,12 @@
 import styled from "@emotion/native";
 import { colorStyle } from "@/styles/colorStyle";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+export const Container = styled(SafeAreaView)`
+  flex: 1;
+  padding: 0px 24px;
+  background-color: ${colorStyle.profileBackgroundGray};
+`
 
 export const ProfileCardContainer = styled.View`
   padding: 20px 0px;
