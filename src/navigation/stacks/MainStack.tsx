@@ -8,6 +8,7 @@ import SearchStack from "@/navigation/stacks/SearchStack";
 import AITopTabs from "@/navigation/tabs/AITopTab";
 import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
+import BookDetailScreen from "@/screens/main/bookDetail/BookDetail";
 
 const RootStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -35,6 +36,7 @@ export default function MainStack() {
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="MainTabs" component={MainTabs} />
       <RootStack.Screen name="Notification" component={MainTabs} />
+      <RootStack.Screen name="BookDetail" component={BookDetailScreen} />
     </RootStack.Navigator>
   );
 }
