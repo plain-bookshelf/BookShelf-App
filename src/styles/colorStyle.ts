@@ -32,6 +32,7 @@ export const colorStyle = {
   overdueRed: "#FF5151",
   commentLikeCountGray: "#9E9E9E",
   bookInfoGray: "#AFAFAF",
+  bookStoryGray: "#6F6F6F",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
