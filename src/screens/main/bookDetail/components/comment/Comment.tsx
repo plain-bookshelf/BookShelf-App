@@ -1,8 +1,8 @@
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
 import { Image, Pressable } from "react-native";
-import btn_comment_isLiked_false from "@/assets/btn_comment-isLiked-false.png";
-import btn_comment_isLiked_true from "@/assets/btn_comment-isLiked-true.png";
+import btn_isLiked_false from "@/assets/btn_isLiked_false.png";
+import btn_isLiked_true from "@/assets/btn_isLiked_true.png";
 
 interface CommentProps {
   userName: string;
@@ -24,7 +24,7 @@ export default function Comment({ userName, comment, isLiked, likeCount }: Comme
           <Typography font="medium16" color="commentLikeCountGray" children={likeCount.toString()} />
         </Pressable>
         )}
-        <Image source={isLiked ? btn_comment_isLiked_true : btn_comment_isLiked_false} style={{ width: 20, height: 20 }} />
+        <Image source={isLiked ? btn_isLiked_true : btn_isLiked_false} style={{ width: 20, height: 20 }} />
       </S.RightBox>
     </S.Container>
   )
