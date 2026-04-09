@@ -2,7 +2,7 @@ import { FontKey } from "@/styles/fontStyle"
 import * as S from "./style"
 import { Pressable } from "react-native"
 
-interface ButtonProps {
+interface DefaultButtonProps {
   font: FontKey;
   label: string;
   onPress?: () => void;
@@ -16,7 +16,7 @@ interface ButtonProps {
  * @param onPress 버튼 클릭 시 실행할 함수 입력
  * @returns pressed 까지 적용된 버튼 생성
  */
-export default function Button({ font, label, onPress, isValid }: ButtonProps) {
+export default function DefaultButton({ font, label, onPress, isValid }: DefaultButtonProps) {
   return(
     <Pressable disabled={!isValid} onPress={onPress}>
       {({ pressed }) => (

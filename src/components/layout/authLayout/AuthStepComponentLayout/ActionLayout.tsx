@@ -1,4 +1,4 @@
-import Button from "@/components/common/button/Button"
+import Button from "@/components/common/button/defaultButton/DefaultButton"
 import { View } from "react-native"
 
 interface ActionLayoutProps {
