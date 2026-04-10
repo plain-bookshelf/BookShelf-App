@@ -28,7 +28,7 @@ export const StoryBox = styled.View<{ showFullStory: boolean }>`
   align-items: flex-start;
   width: 100%;
   height: ${({ showFullStory }) => showFullStory ? "auto" : "164px"};
-  overflow-y: ${({ showFullStory }) => showFullStory ? "visible" : "hidden"};
+  overflow: ${({ showFullStory }) => showFullStory ? "visible" : "hidden"};
   gap: 4px;
 `
 
