@@ -27,8 +27,6 @@ export const StoryBox = styled.View<{ showFullStory: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  height: ${({ showFullStory }) => showFullStory ? "auto" : "164px"};
-  overflow: ${({ showFullStory }) => showFullStory ? "visible" : "hidden"};
   gap: 4px;
 `
 
@@ -36,7 +34,7 @@ export const BlurBox = styled(LinearGradient)`
   position: absolute;
   bottom: 0px;
   width: 100%;
-  height: 65px;
+  height: 80px;
 `
 
 export const ShowFullStoryButton = styled.Pressable`

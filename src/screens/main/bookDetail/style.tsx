@@ -19,7 +19,7 @@ export const Container = styled.ScrollView`
 
 export const Content = styled.View`
   flex-direction: column;
-  gap: 64px;
+  gap: 32px;
   padding: 11px 24px 99px;
 `
 
