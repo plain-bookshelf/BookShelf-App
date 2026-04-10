@@ -52,7 +52,7 @@ export const SocialLoginButtonBox = styled.View`
 `
 
 export const SocialLoginButton = styled.Pressable`
-  overflow-y: hidden;
+  overflow: hidden;
   border-radius: 8px;
   flex-direction: row;
   justify-content: center;

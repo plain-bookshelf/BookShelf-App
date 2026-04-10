@@ -9,7 +9,7 @@ export const BookContainer = styled.View`
   padding-bottom: 24px;
 `
 
-export const BookBox = styled.View`
+export const BookBox = styled.Pressable`
   width: 100%;
   padding: 0px 24px;
   flex-direction: row;

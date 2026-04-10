@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
 import DefaultInput from "@/components/common/input/DefaultInput";
 import { isValidEmail } from "@/utils/isValidEmail";
-import Button from "@/components/common/button/Button";
+import Button from "@/components/common/button/defaultButton/DefaultButton";
 
 export default function EditProfileScreen() {
   const navigation = useNavigation<ProfileNav>();

@@ -2,6 +2,8 @@ import { Image, ImageSourcePropType, useWindowDimensions } from "react-native";
 import * as S from "./style"
 import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
+import { MainNav } from "@/navigation/type";
+import { useNavigation } from "@react-navigation/native";
 
 interface BookListProps {
   bookList: {
@@ -11,6 +13,7 @@ interface BookListProps {
 }
 
 export default function BookList({ bookList }: BookListProps) {
+  const navigation = useNavigation<MainNav>();
   const { width } = useWindowDimensions();
 
   /* (전체너비 - 좌우패딩 - gap간격) / 3 */
@@ -27,7 +30,7 @@ export default function BookList({ bookList }: BookListProps) {
       {bookGrid.length > 0 ? bookGrid.map((rowBooks, index) => {
         return(
           <S.BookContainer key={index}>
-            <S.BookBox>
+            <S.BookBox onPress={() => navigation.navigate("BookDetail", { bookId: rowBooks[0].id })}>
               {rowBooks.map((book) => {
                 return(
                   <Image key={book.id} source={book.image} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />

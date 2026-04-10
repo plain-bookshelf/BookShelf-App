@@ -53,6 +53,7 @@ export type MainTabParamList = {
 export type MainStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList>;
   Notification: undefined;
+  BookDetail: { bookId: number };
 };
 
 export type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
