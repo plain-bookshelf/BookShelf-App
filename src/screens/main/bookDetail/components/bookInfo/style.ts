@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import { LinearGradient } from "react-native-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 
 export const Container = styled.View`
   flex: 1;

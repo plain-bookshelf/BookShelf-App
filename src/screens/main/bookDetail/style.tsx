@@ -1,6 +1,6 @@
 import { colorStyle } from "@/styles/colorStyle";
 import styled from "@emotion/native";
-import { LinearGradient } from "react-native-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 
 export const Header = styled.View`
   width: 100%;
