@@ -1,5 +1,4 @@
-import * as S from "./style";
-import { Image, Pressable } from "react-native";
+import { Text } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { NotificationStackParamList } from "@/navigation/type";
