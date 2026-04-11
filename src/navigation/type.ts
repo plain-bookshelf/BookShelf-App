@@ -49,12 +49,23 @@ export type MainTabParamList = {
   Profile: NavigatorScreenParams<ProfileStackParamList>;
 };
 
-/* Search와는 별개로 bottom tab에는 notification이 존재하지 않기 때문에 상위 Stack에서 관리하도록 변경 */
-export type MainStackParamList = {
-  MainTabs: NavigatorScreenParams<MainTabParamList>;
+/* 탭에 없는 알림 플로우: 목록 → 상세 */
+export type NotificationStackParamList = {
   Notifications: undefined;
+  NotificationDetail: { notificationId: number };
+};
+
+/* 도서 상세 · 댓글 플로우 */
+export type BookStackParamList = {
   BookDetail: { bookId: number };
   BookComments: { bookId: number };
+};
+
+/* Search와는 별개로 bottom tab에는 notification이 없어 상위 Stack에서 nested stack으로 관리 */
+export type MainStackParamList = {
+  MainTabs: NavigatorScreenParams<MainTabParamList>;
+  Notification: NavigatorScreenParams<NotificationStackParamList>;
+  Book: NavigatorScreenParams<BookStackParamList>;
 };
 
 export type AuthNav = NativeStackNavigationProp<AuthStackParamList>;
