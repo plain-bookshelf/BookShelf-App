@@ -31,6 +31,8 @@ export const backgroundBlur = styled.Pressable`
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0px;
+  left: 0px;
   background-color: ${colorStyle.bookCommentsBackgroundBlur};
   opacity: 0.4;
 `;
