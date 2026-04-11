@@ -18,7 +18,7 @@ export default function Notification({ title, content, isRead, onPress }: Notifi
         distance={5}
         startColor="rgba(0,0,0,0.25)"
         endColor="rgba(0,0,0,0.02)"
-        offset={[0, 4]}
+        offset={[0, 2]}
         paintInside={false}
         style={{ borderRadius: 8 }}
         containerStyle={{
