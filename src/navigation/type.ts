@@ -52,7 +52,7 @@ export type MainTabParamList = {
 /* Search와는 별개로 bottom tab에는 notification이 존재하지 않기 때문에 상위 Stack에서 관리하도록 변경 */
 export type MainStackParamList = {
   MainTabs: NavigatorScreenParams<MainTabParamList>;
-  Notification: undefined;
+  Notifications: undefined;
   BookDetail: { bookId: number };
   BookComments: { bookId: number };
 };
