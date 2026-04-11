@@ -30,7 +30,11 @@ export default function BookList({ bookList }: BookListProps) {
       {bookGrid.length > 0 ? bookGrid.map((rowBooks, index) => {
         return(
           <S.BookContainer key={index}>
-            <S.BookBox onPress={() => navigation.navigate("BookDetail", { bookId: rowBooks[0].id })}>
+            <S.BookBox
+              onPress={() =>
+                navigation.navigate("Book", { screen: "BookDetail", params: { bookId: rowBooks[0].id } })
+              }
+            >
               {rowBooks.map((book) => {
                 return(
                   <Image key={book.id} source={book.image} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
