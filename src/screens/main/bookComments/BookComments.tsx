@@ -1,8 +1,8 @@
 import * as S from "./style";
 import { Image, Pressable } from "react-native";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { MainStackParamList } from "@/navigation/type";
+import { BookStackParamList } from "@/navigation/type";
 import btn_go_back_default from "@/assets/btn_previous_main.png";
 import Comment from "@/components/common/comment/Comment";
 import MessageInput from "@/components/common/input/messageInput/MessageInput";
@@ -23,8 +23,7 @@ const COMMENT_MOCK_DATA = [
   { userName: "Jane Doe", comment: "This is a comment", isLiked: false, likeCount: 0 },
 ];
 
-type BookCommentsNav = NativeStackNavigationProp<MainStackParamList, "BookComments">;
-type BookCommentsRoute = RouteProp<MainStackParamList, "BookComments">;
+type BookCommentsNav = NativeStackNavigationProp<BookStackParamList, "BookComments">;
 
 export default function BookComments() {
   const [value, setValue] = useState<string>(""); 

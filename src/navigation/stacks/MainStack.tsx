@@ -8,9 +8,8 @@ import SearchStack from "@/navigation/stacks/SearchStack";
 import AITopTabs from "@/navigation/tabs/AITopTab";
 import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
-import BookDetailScreen from "@/screens/main/bookDetail/BookDetail";
-import BookCommentsScreen from "@/screens/main/bookComments/BookComments";
-import NotificationsScreen from "@/screens/main/notifications/NotificationsScreen";
+import BookStack from "@/navigation/stacks/BookStack";
+import NotificationStack from "@/navigation/stacks/NotificationStack";
 
 const RootStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -32,14 +31,13 @@ function MainTabs() {
   );
 }
 
-/* 메인 bottom tab에 존재하지 않는 notification을 관리하기 위한 상위 Stack */
+/* 탭 밖 플로우는 nested stack으로 묶음 (알림 · 도서) */
 export default function MainStack() {
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="MainTabs" component={MainTabs} />
-      <RootStack.Screen name="Notifications" component={NotificationsScreen} />
-      <RootStack.Screen name="BookDetail" component={BookDetailScreen} />
-      <RootStack.Screen name="BookComments" component={BookCommentsScreen} />
+      <RootStack.Screen name="Notification" component={NotificationStack} />
+      <RootStack.Screen name="Book" component={BookStack} />
     </RootStack.Navigator>
   );
 }

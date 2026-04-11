@@ -19,7 +19,7 @@ export default function MainHeader() {
           <Image source={btn_search_default} style={{ width: 24, height: 24 }} />
         </Pressable>
 
-        <Pressable onPress={() => navigation.navigate('Notifications')}>
+        <Pressable onPress={() => navigation.navigate("Notification", { screen: "Notifications" })}>
           <Image source={btn_notification_default} style={{ width: 24, height: 24 }} />
         </Pressable>
       </ButtonBox>

@@ -1,7 +1,8 @@
 import * as S from "./style";
 import { Image, Pressable } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { MainStackParamList, MainNav } from "@/navigation/type";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { BookStackParamList } from "@/navigation/type";
 import btn_go_back_default from "@/assets/btn_previous_main.png";
 import Comment from "@/components/common/comment/Comment";
 import BookInfo from "@/screens/main/bookDetail/components/bookInfo/BookInfo";
@@ -48,8 +49,8 @@ export default function BookDetail() {
     { id: 10, image: img_test_book_default },
   ];
 
-  const navigation = useNavigation<MainNav>();
-  const { bookId } = useRoute<RouteProp<MainStackParamList, "BookDetail">>().params;
+  const navigation = useNavigation<NativeStackNavigationProp<BookStackParamList>>();
+  const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
   const showCommentPreviewOnly = COMMENT_MOCK_DATA.length > 4;
 
   return (
