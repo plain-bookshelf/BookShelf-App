@@ -1,11 +1,11 @@
 import styled from "@emotion/native";
 
-export const Container = styled.View`
+export const Container = styled.View<{ screen: "bookDetail" | "bookComments" }>`
   flex-direction: row;
   width: 100%;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 8px 8px 8px 12px;
+  padding:${({ screen }) => screen === "bookDetail" ? "8px 8px 8px 12px" : "20px 24px"};
 `
 
 export const LeftBox = styled.View`

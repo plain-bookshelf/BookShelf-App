@@ -5,18 +5,19 @@ import btn_isLiked_false from "@/assets/btn_isLiked_false.png";
 import btn_isLiked_true from "@/assets/btn_isLiked_true.png";
 
 interface CommentProps {
+  screen: "bookDetail" | "bookComments";
   userName: string;
   comment: string;
   isLiked: boolean;
   likeCount: number;
 }
 
-export default function Comment({ userName, comment, isLiked, likeCount }: CommentProps) {
+export default function Comment({ screen, userName, comment, isLiked, likeCount }: CommentProps) {
   return (
-    <S.Container>
+    <S.Container screen={screen}>
       <S.LeftBox>
-        <Typography font="semiBold16" color="defaultBlack" children={userName} />
-        <Typography font="regular14" color="defaultBlack" children={comment} />
+        <Typography font={screen === "bookDetail" ? "semiBold16" : "semiBold18"} color="defaultBlack" children={userName} />
+        <Typography font={screen === "bookDetail" ? "regular14" : "regular16"} color="defaultBlack" children={comment} />
       </S.LeftBox>
       <S.RightBox>
         {likeCount > 0 && (

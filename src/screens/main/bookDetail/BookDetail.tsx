@@ -1,13 +1,12 @@
 import * as S from "./style";
 import { Image, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { MainNav } from "@/navigation/type";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { MainStackParamList, MainNav } from "@/navigation/type";
 import btn_go_back_default from "@/assets/btn_previous_main.png";
-import Comment from "@/screens/main/bookDetail/components/comment/Comment";
+import Comment from "@/components/common/comment/Comment";
 import BookInfo from "@/screens/main/bookDetail/components/bookInfo/BookInfo";
 import img_test_book_default from "@/assets/img_test-book_default.png";
 import Typography from "@/components/common/typography/Typography";
-import { useState } from "react";
 import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
@@ -50,7 +49,8 @@ export default function BookDetail() {
   ];
 
   const navigation = useNavigation<MainNav>();
-  const [showFullComment, setShowFullComment] = useState<boolean>(COMMENT_MOCK_DATA.length < 5);
+  const { bookId } = useRoute<RouteProp<MainStackParamList, "BookDetail">>().params;
+  const showCommentPreviewOnly = COMMENT_MOCK_DATA.length > 4;
 
   return (
     <>
@@ -67,21 +67,23 @@ export default function BookDetail() {
           <S.CommentsBox>
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
             <S.CommentList>
-              {COMMENT_MOCK_DATA.slice(0, showFullComment ? COMMENT_MOCK_DATA.length : 4).map((item, index) => (
-                <Comment key={index} userName={item.userName} comment={item.comment} isLiked={item.isLiked} likeCount={item.likeCount} />
+              {(showCommentPreviewOnly ? COMMENT_MOCK_DATA.slice(0, 4) : COMMENT_MOCK_DATA).map((comment, index) => (
+                <Comment key={index} screen="bookDetail" userName={comment.userName} comment={comment.comment} isLiked={comment.isLiked} likeCount={comment.likeCount} />
               ))}
             </S.CommentList>
-            {!showFullComment && <S.BlurBox
-              pointerEvents="none"
-              colors={[`rgba(255, 255, 255, 0)`, `${colorStyle.defaultWhite}`]}
-              start={{x: 0, y: 0}}
-              end={{x: 0, y: 0.8}}
-            />}
-            {!showFullComment && 
-              <S.ShowFullStoryButton onPress={() => setShowFullComment(true)}>
-                <Typography font='regular14' color='defaultBlack' children='전체보기' />
+            {showCommentPreviewOnly && (
+              <S.BlurBox
+                pointerEvents="none"
+                colors={[`rgba(255, 255, 255, 0)`, `${colorStyle.defaultWhite}`]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 0.8 }}
+              />
+            )}
+            {showCommentPreviewOnly && (
+              <S.ShowFullStoryButton onPress={() => navigation.navigate("BookComments", { bookId })}>
+                <Typography font="regular14" color="defaultBlack" children="전체보기" />
               </S.ShowFullStoryButton>
-            }
+            )}
           </S.CommentsBox>
 
           <S.RecommandBookListBox>
