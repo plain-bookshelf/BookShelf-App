@@ -20,9 +20,17 @@ export const ContentBox = styled.View`
 `
 
 
-export const ProfileImage = styled.Image`
+export const ProfileImagBox = styled.Pressable`
+  position: relative;
   width: 72px;
   height: 72px;
+`
+
+export const ProfileName = styled.Pressable`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 `
 
 export const TitleBox = styled.View`

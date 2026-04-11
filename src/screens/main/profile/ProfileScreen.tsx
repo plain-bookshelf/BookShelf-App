@@ -13,7 +13,8 @@ import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
 import useAuthStore from "@/store/useAuthStore";
 import { logout } from "@/services/api/auth";
-import { Pressable } from "react-native";
+import { Image, Pressable } from "react-native";
+import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png"
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
@@ -35,8 +36,14 @@ export default function ProfileScreen() {
   return(
     <S.Container>
       <S.ProfileCardContainer>
-        <S.ProfileImage source={img_profile_test} />
-        <Typography font='bold22' color='defaultBlack' children='둥근네모' />
+        <S.ProfileImagBox>
+          <Image source={img_profile_test} style={{ width: 72, height: 72 }} />
+          <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24, position: 'absolute', bottom: 0, right: 0 }} />
+        </S.ProfileImagBox>
+        <S.ProfileName>
+          <Typography font='bold22' color='defaultBlack' children='둥근네모' />
+          <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24 }} />
+        </S.ProfileName>
       </S.ProfileCardContainer>
       <S.ContentBox>
       <S.TitleBox>
@@ -66,12 +73,6 @@ export default function ProfileScreen() {
             color='defaultBlack'
             icon={icon_tooltip_default}
             onPress={() => {}}
-          />
-          <ActionCard
-            title='정보 수정'
-            color='defaultBlack'
-            icon={icon_edit_profile_default}
-            onPress={() => navigation.navigate('EditProfile')}
           />
           <ActionCard
             title='로그아웃'

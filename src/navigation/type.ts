@@ -36,7 +36,6 @@ export type MyBooksStackParamList = {
 /* Profile Screen에서 Stack으로 구분 */
 export type ProfileStackParamList = {
   ProfileMain: undefined;
-  EditProfile: undefined;
   MyBooks: { initialTab?: "Borrowed" | "Reserved" | "Overdue" };
 };
 
