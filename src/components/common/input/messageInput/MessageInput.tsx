@@ -4,17 +4,18 @@ import btn_chatbot_send_default from "@/assets/btn_chatbot-send_default.png";
 import { Pressable } from "react-native";
 import { Image } from "react-native";
 
-interface InputBarProps {
+interface MessageInputProps {
+  placeholder: string;
   value: string;
   onChangeText: (text: string) => void;
   onSend: () => void;
 }
 
-export default function InputBar({ value, onChangeText, onSend }: InputBarProps) {
+export default function MessageInput({ placeholder, value, onChangeText, onSend }: MessageInputProps) {
   return (
     <S.Container>
       <S.Input 
-        placeholder="질문할 내용을 입력해주세요" 
+        placeholder={placeholder} 
         placeholderTextColor={colorStyle.defaultGray} 
         onChangeText={onChangeText} 
         value={value}

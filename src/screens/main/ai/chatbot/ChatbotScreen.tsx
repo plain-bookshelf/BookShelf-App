@@ -1,10 +1,9 @@
 import * as S from "./style";
 import ChatCard from "./components/chatCard/ChatCard";
 import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
-import InputBar from "./components/inputBar/InputBar";
 import { useState } from "react";
 import { ChatCardProps } from "@/types/main/chatbot";
-import { ScrollView } from "react-native";
+import MessageInput from "@/components/common/input/messageInput/MessageInput";
 
 export default function ChatbotScreen() {
   const [value, setValue] = useState<string>("");
@@ -32,7 +31,7 @@ export default function ChatbotScreen() {
             ))}
           </S.ChatCardList>
         </S.ChatCardContainer>
-        <InputBar value={value} onChangeText={setValue} onSend={() => {setValue("")}} /> {/* TODO: 챗봇 api 연동 */}
+        <MessageInput backgroundColor="defaultWhite" placeholder="질문할 내용을 입력해주세요" value={value} onChangeText={setValue} onSend={() => {setValue("")}} /> {/* TODO: 챗봇 api 연동 */}
       </S.Container>
     </KeyboardDismiss>
   );
