@@ -33,7 +33,7 @@ export default function NotificationsScreen() {
       <S.Container>
         <S.Content>
           {MOCK_NOTIFICATIONS.map((notification) => (
-            <Notification key={notification.id} title={notification.title} content={notification.content} isRead={notification.isRead} />
+            <Notification key={notification.id} title={notification.title} content={notification.content} isRead={notification.isRead} onPress={() => {}} />
           ))}
         </S.Content>
       </S.Container>
