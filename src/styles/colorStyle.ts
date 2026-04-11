@@ -33,6 +33,8 @@ export const colorStyle = {
   commentLikeCountGray: "#9E9E9E",
   bookInfoGray: "#AFAFAF",
   bookStoryGray: "#6F6F6F",
+  bookCommentsBackgroundGray: "#F3F3F3",
+  bookCommentsBackgroundBlur: "#333333",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */
