@@ -10,6 +10,7 @@ import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
 import BookDetailScreen from "@/screens/main/bookDetail/BookDetail";
 import BookCommentsScreen from "@/screens/main/bookComments/BookComments";
+import NotificationsScreen from "@/screens/main/notifications/NotificationsScreen";
 
 const RootStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -36,7 +37,7 @@ export default function MainStack() {
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="MainTabs" component={MainTabs} />
-      <RootStack.Screen name="Notification" component={MainTabs} />
+      <RootStack.Screen name="Notifications" component={NotificationsScreen} />
       <RootStack.Screen name="BookDetail" component={BookDetailScreen} />
       <RootStack.Screen name="BookComments" component={BookCommentsScreen} />
     </RootStack.Navigator>
