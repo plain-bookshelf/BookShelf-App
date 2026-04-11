@@ -1,9 +1,9 @@
-import { colorStyle } from "@/styles/colorStyle";
+import { ColorKey, colorStyle } from "@/styles/colorStyle";
 import styled from "@emotion/native";
 
-export const Container = styled.View`
+export const Container = styled.View<{ backgroundColor: ColorKey }>`
   width: 100%;
-  background-color: ${colorStyle.defaultWhite};
+  background-color: ${({ backgroundColor }) =>  colorStyle[backgroundColor]};
   height: 48px;
   padding: 0px 16px;
   border-radius: 8px;
