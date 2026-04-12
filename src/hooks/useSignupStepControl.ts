@@ -9,7 +9,7 @@ interface UseSignupStepControlParams {
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
 }
 
-export function useSignupStepControl({ step, maxStep, setStep, setStepValid }: UseSignupStepControlParams) {
+export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid }: UseSignupStepControlParams) => {
   const navigation = useNavigation<AuthNav>();
 
   const updateStepValid = (index: number, valid: boolean) => {
@@ -39,4 +39,4 @@ export function useSignupStepControl({ step, maxStep, setStep, setStepValid }: U
   };
 
   return { updateStepValid, handlePrev, handleNext };
-}
+};

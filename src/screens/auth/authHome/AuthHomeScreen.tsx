@@ -20,7 +20,7 @@ export default function AuthHomeScreen() {
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
   const navigation = useNavigation<AuthNav>();
-  const { login, isLoading, error, clearError } = useLogin();
+  const { mutate: login, isPending, error, reset } = useLogin();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
     {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindId')}
@@ -57,24 +57,24 @@ export default function AuthHomeScreen() {
               label=''
               placeholder='이메일 입력'
               isError={!!error}
-              warningMessage={error ?? ''}
+              warningMessage={error?.message ?? '알 수 없는 오류 발생생'}
               value={loginEmail}
-              onChangeText={(text) => { setLoginEmail(text); clearError(); }}
+              onChangeText={(text) => { setLoginEmail(text); reset(); }}
             />
             <PasswordInput
               label=''
               placeholder='비밀번호 입력'
               isError={!!error}
-              warningMessage={error ?? ''}
+              warningMessage={error?.message ?? '알 수 없는 오류 발생생'}
               value={loginPassword}
-              onChangeText={(text) => { setLoginPassword(text); clearError(); }}
+              onChangeText={(text) => { setLoginPassword(text); reset(); }}
             />
           </S.InputBox>
           <Button
             font='semiBold16'
-            label={isLoading ? '로그인 중...' : '로그인'}
+            label={isPending ? '로그인 중...' : '로그인'}
             onPress={() => login({ username: loginEmail.trim(), password: loginPassword })}
-            isValid={loginFormIsValid && !isLoading}
+            isValid={loginFormIsValid && !isPending}
           />
         </S.LoginForm>
 
