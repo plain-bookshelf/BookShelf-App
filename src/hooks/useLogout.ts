@@ -14,9 +14,9 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
     onSuccess: handleLogout,
-    onError: (error) => {
+    onError: async (error) => {
       console.error("로그아웃 실패", error);
-      handleLogout();
+      await handleLogout();
     },
   });
 };

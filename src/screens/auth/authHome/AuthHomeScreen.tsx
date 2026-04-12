@@ -20,7 +20,7 @@ export default function AuthHomeScreen() {
   const [loginPassword, setLoginPassword] = useState('');
   const [loginFormIsValid, setLoginFormIsValid] = useState(false);
   const navigation = useNavigation<AuthNav>();
-  const { mutateAsync: login, isPending, error } = useLogin();
+  const { mutate: login, isPending, error, reset } = useLogin();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
     {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindId')}
@@ -59,7 +59,7 @@ export default function AuthHomeScreen() {
               isError={!!error}
               warningMessage={error?.message ?? '알 수 없는 오류 발생생'}
               value={loginEmail}
-              onChangeText={(text) => { setLoginEmail(text); }}
+              onChangeText={(text) => { setLoginEmail(text); reset(); }}
             />
             <PasswordInput
               label=''
@@ -67,7 +67,7 @@ export default function AuthHomeScreen() {
               isError={!!error}
               warningMessage={error?.message ?? '알 수 없는 오류 발생생'}
               value={loginPassword}
-              onChangeText={(text) => { setLoginPassword(text); }}
+              onChangeText={(text) => { setLoginPassword(text); reset(); }}
             />
           </S.InputBox>
           <Button

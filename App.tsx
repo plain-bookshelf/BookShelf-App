@@ -1,5 +1,5 @@
 import RootNavigator from '@/navigation/root/RootNavigator';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import {
   SafeAreaProvider,
@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-  const queryClient = new QueryClient();
+  const [queryClient] = useState(() => new QueryClient());
 
   useEffect(() => {
     ImmersiveMode.fullLayout(true);
