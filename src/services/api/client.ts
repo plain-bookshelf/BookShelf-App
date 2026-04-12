@@ -1,4 +1,4 @@
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosRequestHeaders, InternalAxiosRequestConfig } from "axios";
 import useAuthStore from "@/store/useAuthStore";
 import { API_BASE_URL } from "@env";
 import { reissue } from "./auth";
@@ -29,12 +29,18 @@ client.interceptors.response.use(
   (response) => response,
 
   async (error) => {
+    /* axios 에러가 아니거나 요청 설정이 없으면 에러 반환 */
     if (!axios.isAxiosError(error) || !error.config) {
       return Promise.reject(error);
     }
     const originalRequest = error.config as CustomAxiosRequestConfig;
 
-    // 401 에러 && 재시도 안 한 요청
+    /* 요청 설정에 x-no-retry 헤더가 있으면 에러 반환 */
+    if (originalRequest.headers?.["x-no-retry"]) {
+      return Promise.reject(error);
+    }
+
+    /* 401 에러 && 재시도 안 한 요청 */
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
@@ -44,7 +50,7 @@ client.interceptors.response.use(
 
         useAuthStore.getState().setAccessToken(data.accessToken);
 
-        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+        originalRequest.headers?.set("Authorization", `Bearer ${data.accessToken}`);
 
         return await client(originalRequest);
 

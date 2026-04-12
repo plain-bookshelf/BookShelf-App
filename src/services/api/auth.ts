@@ -8,7 +8,10 @@ const AUTH_BASE = "api/auth";
 
 /* 로그인 API */
 export const login = async (params: LoginRequest) => {
-  const res = await client.post(`${AUTH_BASE}/login${platformType}`, params)
+  const res = await client.post(
+    `${AUTH_BASE}/login${platformType}`,
+    params
+  )
   return res.data;
 }
 
@@ -16,7 +19,16 @@ export const login = async (params: LoginRequest) => {
 export const reissue = async () => {
   const refreshToken = await refreshTokenStorage.get();
   if (!refreshToken) return;
-  const res = await client.put(`${AUTH_BASE}/reissue${platformType}`, {}, { headers: { 'x-refresh-token': refreshToken } })
+  const res = await client.put(
+    `${AUTH_BASE}/reissue${platformType}`,
+    {},
+    {
+      headers: {
+        "x-refresh-token": refreshToken,
+        "x-no-retry": "true",
+      },
+    }
+  )
   return res.data;
 }
 
@@ -26,6 +38,14 @@ export const logout = async () => {
 
   if (!refreshToken) return;
 
-  const res = await client.post(`${AUTH_BASE}/logout${platformType}`, {}, { headers: { 'x-refresh-token': refreshToken },})
+  const res = await client.post(
+    `${AUTH_BASE}/logout${platformType}`,
+    {},
+    {
+      headers: {
+        "x-refresh-token": refreshToken,
+      },
+    }
+  )
   return res.data;
 }
