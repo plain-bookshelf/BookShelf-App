@@ -5,9 +5,11 @@ import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
 import ImmersiveMode from "react-native-immersive-mode";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     ImmersiveMode.fullLayout(true);
@@ -16,7 +18,9 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <RootNavigator />
+      <QueryClientProvider client={queryClient}>
+        <RootNavigator />
+      </QueryClientProvider>
     </SafeAreaProvider>
   );
 }
