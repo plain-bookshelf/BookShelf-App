@@ -1,51 +1,31 @@
 import axios from "axios";
 import { API_BASE_URL } from "@env";
-import { apiClient, api, platformType } from "./client";
+import { client, platformType } from "./client";
 import type { LoginRequest } from "@/types/auth";
-import useAuthStore from "@/store/useAuthStore";
 import { refreshTokenStorage } from "@/storage/refreshTokenStorage";
 
 const AUTH_BASE = "api/auth";
 
 /* 로그인 API */
-export async function login(params: LoginRequest) {
-  return apiClient.post(`${AUTH_BASE}/login${platformType}`, params)
+export const login = async (params: LoginRequest) => {
+  const res = await client.post(`${AUTH_BASE}/login${platformType}`, params)
+  return res.data;
 }
 
 /* 토큰 갱신 API */
-export async function refreshAccessToken() {
+export const reissue = async () => {
   const refreshToken = await refreshTokenStorage.get();
-
-  if (!refreshToken) {
-    await useAuthStore.getState().clearTokens();
-    return null;
-  }
-
-  try {
-    const res = await axios.put(
-      `${API_BASE_URL}/${AUTH_BASE}/reissue${platformType}`,
-      null,
-      {
-        timeout: 3000,
-        headers: { "X-Refresh-Token": refreshToken },
-      }
-    );
-
-    const newAccessToken = res.data.data.access_token;
-    await useAuthStore.getState().setAccessToken(newAccessToken);
-  } catch {
-    await useAuthStore.getState().clearTokens();
-  }
+  if (!refreshToken) return;
+  const res = await client.put(`${AUTH_BASE}/reissue${platformType}`, {}, { headers: { 'x-refresh-token': refreshToken } })
+  return res.data;
 }
 
 /*로그아웃 */
-export async function logout() {
+export const logout = async () => {
   const refreshToken = await refreshTokenStorage.get();
 
   if (!refreshToken) return;
 
-  return axios.post(`${API_BASE_URL}/${AUTH_BASE}/logout${platformType}`, null, {
-    timeout: 3000,
-    headers: { Authorization: refreshToken },
-  })
+  const res = await client.post(`${AUTH_BASE}/logout${platformType}`, {}, { headers: { 'x-refresh-token': refreshToken },})
+  return res.data;
 }

@@ -1,19 +1,16 @@
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
+import useAuthStore from "@/store/useAuthStore";
 import { API_BASE_URL } from "@env";
-import useAuthStore from "../../store/useAuthStore";
-import { refreshAccessToken } from "./auth";
+import { reissue } from "./auth";
 
-/* api 인스턴스 (헤더 등 커스텀 옵션이 필요할 때 사용) */
-export const api = axios.create({
+export const platformType = '?platformType=ANDROID';
+
+export const client = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 3000,
+  timeout: 5000,
 });
 
-/* 플랫폼 타입 */
-export const platformType = '?platformType=ANDROID'
-
-/* api 인터셉터 */
-api.interceptors.request.use((config) => {
+client.interceptors.request.use((config) => {
   const token = useAuthStore.getState().accessToken;
 
   if (token) {
@@ -23,35 +20,37 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-api.interceptors.response.use(
+
+interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
+  _retry?: boolean;
+}
+
+client.interceptors.response.use(
   (response) => response,
+
   async (error) => {
-    if (error.response?.status === 401) {
-      await refreshAccessToken();
-      const newToken = useAuthStore.getState().accessToken;
+    const originalRequest = error.config as CustomAxiosRequestConfig;
 
-      if (newToken) {
-        error.config.headers.Authorization = `Bearer ${newToken}`;
-        return api.request(error.config);
+    // 401 에러 && 재시도 안 한 요청
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const data = await reissue();
+        if (!data?.accessToken) throw new Error("토큰 재발급 실패");
+
+        useAuthStore.getState().setAccessToken(data.accessToken);
+
+        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+
+        return await client(originalRequest);
+
+      } catch (refreshError) {
+        useAuthStore.getState().clearTokens();
+        return Promise.reject(refreshError);
       }
-
-      await useAuthStore.getState().clearTokens();
     }
 
     return Promise.reject(error);
   }
 );
-
-/* api 요청 보낼 때 실제로 사용하는 함수 */
-export const apiClient = {
-  get: (url: string) => api.get(url).then((res) => res.data.data),
-
-  post: (url: string, body?: any) =>
-    api.post(url, body).then((res) => res.data.data),
-
-  put: (url: string, body?: any) =>
-    api.put(url, body).then((res) => res.data.data),
-
-  delete: (url: string) =>
-    api.delete(url).then((res) => res.data.data),
-};
