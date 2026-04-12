@@ -39,9 +39,10 @@ client.interceptors.response.use(
     if (originalRequest.headers?.["x-no-retry"]) {
       return Promise.reject(error);
     }
-
+    
+    const currentAccessToken = useAuthStore.getState().accessToken;
     /* 401 에러 && 재시도 안 한 요청 */
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest._retry && !!currentAccessToken) {
       originalRequest._retry = true;
 
       try {
@@ -55,7 +56,7 @@ client.interceptors.response.use(
         return await client(originalRequest);
 
       } catch (refreshError) {
-        useAuthStore.getState().clearTokens();
+        await useAuthStore.getState().clearTokens();
         return Promise.reject(refreshError);
       }
     }
