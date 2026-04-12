@@ -29,6 +29,9 @@ client.interceptors.response.use(
   (response) => response,
 
   async (error) => {
+    if (!axios.isAxiosError(error) || !error.config) {
+      return Promise.reject(error);
+    }
     const originalRequest = error.config as CustomAxiosRequestConfig;
 
     // 401 에러 && 재시도 안 한 요청
