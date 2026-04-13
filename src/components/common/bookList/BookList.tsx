@@ -1,30 +1,31 @@
-import { Image, ImageSourcePropType, useWindowDimensions } from "react-native";
+import { Image, useWindowDimensions } from "react-native";
 import * as S from "./style"
 import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
 import { MainNav } from "@/navigation/type";
 import { useNavigation } from "@react-navigation/native";
+import type { RecommandBook } from "@/types";
 
-interface BookListProps {
-  bookList: {
-    id: number;
-    image: ImageSourcePropType;
-  }[] | [];
-}
-
-export default function BookList({ bookList }: BookListProps) {
+export default function BookList({ bookList = [] }: { bookList: RecommandBook[] }) {
   const navigation = useNavigation<MainNav>();
   const { width } = useWindowDimensions();
 
   /* (전체너비 - 좌우패딩 - gap간격) / 3 */
   const imageWidth = (width - 24 * 2 - 16 * 2) / 3;
 
-  const bookGrid = []
-
-  for(let i=0;i<bookList.length;i+=3){
-    bookGrid.push(bookList.slice(i, i + 3));
+  const bookGrid: RecommandBook[][] = [];
+  /* BookList Grid 형태로 변환 로직 */
+  const bookRows = Math.floor(bookList.length / 3);
+  const lastRow = bookList.length % 3;
+  for (let i = 0; i < bookRows; i++) {
+    const row = bookList.slice(i * 3, (i + 1) * 3);
+    bookGrid.push(row);
   }
-  
+  if (lastRow > 0) {
+    const row = bookList.slice(bookRows * 3, bookRows * 3 + lastRow);
+    bookGrid.push(row);
+  }
+
   return(
     <S.Container>
       {bookGrid.length > 0 ? bookGrid.map((rowBooks, index) => {
@@ -37,7 +38,7 @@ export default function BookList({ bookList }: BookListProps) {
             >
               {rowBooks.map((book) => {
                 return(
-                  <Image key={book.id} source={book.image} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
+                  <Image key={book.id} source={{ uri: book.img }} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
                 )
               })}
             </S.BookBox>
