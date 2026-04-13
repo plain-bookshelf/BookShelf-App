@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { User } from "@/types/main/user";
+import type { User } from "@/types";
 
 interface UserStore {
   user: User | null;
