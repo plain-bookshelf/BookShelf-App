@@ -3,10 +3,10 @@ import { getRecommandBooks } from "@/services/ai/recommandBooks";
 import useUserStore from "@/store/useUserStore";
 
 export const useRecommandBooks = () => {
-  const username = useUserStore.getState().user?.username;
+  const username = useUserStore((state) => state.user?.username);
   
   return useQuery({
     queryKey: ["recommandBooks", username],
-    queryFn: getRecommandBooks,
+    queryFn: () => getRecommandBooks(username ?? ""),
   });
 };
