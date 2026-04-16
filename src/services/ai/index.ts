@@ -1,2 +1,3 @@
-export { aiClient } from "./client";
+export * from "./client";
 export * from "./chat";
+export * from "./recommandBooks";

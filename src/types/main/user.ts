@@ -6,4 +6,5 @@ export interface User {
   authority: string;
   affiliation_name: string;
   profile_image: string;
+  chat_session_id?: number;
 }

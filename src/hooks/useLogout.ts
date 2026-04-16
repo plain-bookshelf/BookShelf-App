@@ -1,4 +1,4 @@
-import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { logout } from "@/services/api/auth";
 import useAuthStore from "@/store/useAuthStore";
 
@@ -20,5 +20,3 @@ export const useLogout = () => {
     },
   });
 };
-
-export default useLogout;
