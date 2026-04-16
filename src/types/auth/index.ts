@@ -1,3 +1,3 @@
 export * from "./signup";
-export * from "./find";
+export * from "./affiliationView";
 export * from "./login";

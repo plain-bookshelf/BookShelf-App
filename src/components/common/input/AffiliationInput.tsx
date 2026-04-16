@@ -28,7 +28,7 @@ export default function AffiliationInput({ label, value, onChange }: Affiliation
         onChangeText={onChange}
         placeholderTextColor={colorStyle.defaultGray}
       />
-      <Image source={icon_search_default} style={{ width: 20, height: 20, position: 'absolute', left: 17, top: 14 }} />
+      <Image source={icon_search_default} style={{ width: 20, height: 20, position: 'absolute', left: 17, top: 38 }} />
     </Container>
   )
 }
