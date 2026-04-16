@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { useSignup } from './useSignup';
 import { SignupForm } from '@/types';
 import { useEmailSend } from './useEmailSend';
+import { useEmailVerification } from './useEmailVerification';
 
 interface UseSignupStepControlParams {
   step: number;
@@ -17,6 +18,7 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
   const navigation = useNavigation<AuthNav>();
   const { mutate: signup } = useSignup();
   const { mutate: emailSend } = useEmailSend();
+  const { mutate: emailVerification } = useEmailVerification();
 
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
@@ -27,11 +29,6 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
   };
 
   const handlePrev = () => {
-    if (step < 2) {
-      /* TODO: 나중에 login / signup 페이지로 넘기도록 해야함 */
-      return;
-    }
-
     setStep(s => s - 1);
   };
 
@@ -40,8 +37,12 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
       emailSend({
         email: form.email,
       });
-    }
-    else if (step === maxStep) {
+    } else if (step === 2) {
+      emailVerification({
+        email: form.email,
+        verification_code: form.verificationCode,
+      });
+    } else if (step === maxStep) {
       signup({
         username: form.email,
         password: form.password,
@@ -49,8 +50,7 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
         affiliation_name: form.library,
       });
       return;
-    }
-    else if (step === maxStep + 1) {
+    } else if (step === maxStep + 1) {
       navigation.navigate('AuthHome');
       return;
     }
