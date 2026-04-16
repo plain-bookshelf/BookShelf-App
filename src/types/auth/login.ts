@@ -6,6 +6,8 @@ export interface LoginRequest {
 
 /** 로그인 성공 응답 타입 TODO: 추후 변경해야 됨 */
 export interface LoginResponse {
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    access_token: string;
+    refresh_token: string;
+  };
 }

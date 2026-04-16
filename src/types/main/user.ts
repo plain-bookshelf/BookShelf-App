@@ -2,7 +2,6 @@
 export interface User {
   username: string;
   nickname: string;
-  access_token: string;
   authority: string;
   affiliation_name: string;
   profile_image: string;
