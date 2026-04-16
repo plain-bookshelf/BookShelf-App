@@ -9,9 +9,10 @@ export const useLogin = () => {
     mutationFn: async(params: LoginRequest) => await login(params),
 
     onSuccess: async (data: LoginResponse) => {
-      const { accessToken, refreshToken } = data;
+      const { access_token, refresh_token } = data.data;
+      console.log(data.data);
 
-      await useAuthStore.getState().setTokens(accessToken, refreshToken);
+      await useAuthStore.getState().setTokens(access_token, refresh_token);
     },
 
     onError: (error) => {
