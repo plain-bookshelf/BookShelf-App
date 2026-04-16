@@ -1,16 +1,20 @@
 import { AuthNav } from '@/navigation/type';
 import { useNavigation } from '@react-navigation/native';
 import { Dispatch, SetStateAction } from 'react';
+import { useSignup } from './useSignup';
+import { SignupForm } from '@/types';
 
 interface UseSignupStepControlParams {
   step: number;
   maxStep: number;
   setStep: Dispatch<SetStateAction<number>>;
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
+  form: SignupForm;
 }
 
-export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid }: UseSignupStepControlParams) => {
+export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, form }: UseSignupStepControlParams) => {
   const navigation = useNavigation<AuthNav>();
+  const { mutate: signup } = useSignup();
 
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
@@ -30,6 +34,15 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid }: U
   };
 
   const handleNext = () => {
+    if (step === maxStep) {
+      signup({
+        username: form.email,
+        password: form.password,
+        email: form.email,
+        affiliation_name: form.library,
+      });
+      return;
+    }
     if (step === maxStep + 1) {
       navigation.navigate('AuthHome');
       return;
