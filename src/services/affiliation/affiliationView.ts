@@ -1,5 +1,5 @@
 import type { AffiliationViewResult } from "@/types";
-import { client } from "../api/client";
+import { client } from "@/services";
 
 const AFFILIATION_VIEW_PATH = "affiliation";
 
