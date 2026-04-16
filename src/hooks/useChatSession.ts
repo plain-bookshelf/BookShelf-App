@@ -7,7 +7,13 @@ export const useChatSession = () => {
   const username = useUserStore((state) => state.user?.username);
   
   return useMutation({
-    mutationFn: async() => await postChatSession({ username: username ?? "" }),
+    mutationFn: async() => {
+      if(!username) {
+        throw new Error("유저 정보가 없어 챗봇 세션을 생성할 수 없습니다.");
+      }
+      const data = await postChatSession({ username })
+      return data;
+    },
 
       onSuccess: async (data: ChatSessionResponse) => {
         const { id } = data;
