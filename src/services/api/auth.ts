@@ -1,5 +1,3 @@
-import axios from "axios";
-import { API_BASE_URL } from "@env";
 import { client, platformType } from "./client";
 import type { LoginRequest } from "@/types/auth";
 import { refreshTokenStorage } from "@/storage/refreshTokenStorage";

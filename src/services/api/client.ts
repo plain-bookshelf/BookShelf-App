@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders, InternalAxiosRequestConfig } from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
 import useAuthStore from "@/store/useAuthStore";
 import { API_BASE_URL } from "@env";
 import { reissue } from "./auth";
