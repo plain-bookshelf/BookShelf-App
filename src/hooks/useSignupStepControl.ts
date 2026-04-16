@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Dispatch, SetStateAction } from 'react';
 import { useSignup } from './useSignup';
 import { SignupForm } from '@/types';
+import { useEmailSend } from './useEmailSend';
 
 interface UseSignupStepControlParams {
   step: number;
@@ -15,6 +16,7 @@ interface UseSignupStepControlParams {
 export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, form }: UseSignupStepControlParams) => {
   const navigation = useNavigation<AuthNav>();
   const { mutate: signup } = useSignup();
+  const { mutate: emailSend } = useEmailSend();
 
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
@@ -34,7 +36,12 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
   };
 
   const handleNext = () => {
-    if (step === maxStep) {
+    if (step === 1) {
+      emailSend({
+        email: form.email,
+      });
+    }
+    else if (step === maxStep) {
       signup({
         username: form.email,
         password: form.password,
@@ -43,7 +50,7 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
       });
       return;
     }
-    if (step === maxStep + 1) {
+    else if (step === maxStep + 1) {
       navigation.navigate('AuthHome');
       return;
     }
