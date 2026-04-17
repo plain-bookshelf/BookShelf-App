@@ -1,17 +1,25 @@
 import { AuthNav } from '@/navigation/type';
 import { useNavigation } from '@react-navigation/native';
 import { Dispatch, SetStateAction } from 'react';
+import { useSignup } from './useSignup';
+import { SignupForm } from '@/types';
+import { useEmailSend } from './useEmailSend';
+import { useEmailVerification } from './useEmailVerification';
 
 interface UseSignupStepControlParams {
   step: number;
   maxStep: number;
   setStep: Dispatch<SetStateAction<number>>;
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
+  form: SignupForm;
 }
 
-export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid }: UseSignupStepControlParams) => {
+export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, form }: UseSignupStepControlParams) => {
   const navigation = useNavigation<AuthNav>();
-
+  const { mutateAsync: signup } = useSignup();
+  const { mutateAsync: emailSend } = useEmailSend();
+  const { mutateAsync: emailVerification } = useEmailVerification();
+  
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
       const next = [...prev];
@@ -21,16 +29,42 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid }: U
   };
 
   const handlePrev = () => {
-    if (step < 2) {
-      /* TODO: 나중에 login / signup 페이지로 넘기도록 해야함 */
-      return;
-    }
-
     setStep(s => s - 1);
   };
 
-  const handleNext = () => {
-    if (step === maxStep + 1) {
+  const handleNext = async () => {
+    if (step === 1) {
+      try {
+        await emailSend({
+        email: form.email,
+      });
+      } catch (error) {
+        console.error("이메일 전송 실패", error);
+        return;
+      }
+    } else if (step === 2) {
+      try {
+        await emailVerification({
+        email: form.email,
+        verification_code: form.verificationCode,
+      });
+      } catch (error) {
+        console.error("이메일 인증 실패", error);
+        return;
+      }
+    } else if (step === maxStep) {
+      try {
+        await signup({
+        username: form.email,
+        password: form.password,
+        email: form.email,
+        affiliation_name: form.library,
+      });
+      } catch (error) {
+        console.error("회원가입 실패", error);
+        return;
+      }
+    } else if (step === maxStep + 1) {
       navigation.navigate('AuthHome');
       return;
     }

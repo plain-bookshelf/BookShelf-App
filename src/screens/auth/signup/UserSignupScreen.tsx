@@ -13,9 +13,9 @@ import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
 
 export default function UserSignupScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<SignupForm>({ id: '', email: '', password: '', school: '', verificationCode: '', library: '' });
+  const [form, setForm] = useState<SignupForm>({ email: '', password: '', username: '', nickname: '', verificationCode: '', library: '' });
   const [stepValid, setStepValid] = useState([false, false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid });
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid, form });
 
   return(
     <KeyboardDismiss>
@@ -41,8 +41,8 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
     case 1:
       return(
         <IdStep
-          value={form.id}
-          onChange={(text: string) => setForm({ ...form, id: text })}
+          value={form.email}
+          onChange={(text: string) => setForm({ ...form, email: text })}
           setIsStepValid={(valid) => updateStepValid(0, valid)}
         />
       )
@@ -53,6 +53,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
           value={form.verificationCode}
           onChange={(text: string) => setForm({ ...form, verificationCode: text })}
           setIsStepValid={(valid) => updateStepValid(1, valid)}
+          email={form.email}
         />
       )
 

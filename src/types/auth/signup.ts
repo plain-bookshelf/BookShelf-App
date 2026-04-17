@@ -1,8 +1,8 @@
 export interface SignupForm {
-  id: string;
   email: string;
   password: string;
-  school: string;
+  username: string;
+  nickname: string;
   verificationCode: string;
   library: string;
 }
