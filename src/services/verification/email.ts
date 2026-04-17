@@ -1,4 +1,4 @@
-import { client } from "@/services";
+import { client } from "../api/client";
 import { EmailSendRequest, EmailResponse, EmailVerificationRequest } from "@/types";
 
 const VERIFICATION_BASE = "api/verification";

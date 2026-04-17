@@ -1,5 +1,5 @@
 import { SignupRequest, SignupResponse } from "@/types";
-import { client, platformType } from "@/services";
+import { client, platformType } from "../api/client";
 
 const MEMBER_BASE = "api/member";
 
