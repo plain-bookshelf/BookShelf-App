@@ -9,6 +9,7 @@ export const setExpiresAt = async ( scope: string, email: string, expiresAt: num
   try {
     await EncryptedStorage.setItem(buildKey(scope, email), String(expiresAt));
   } catch {
+    throw new Error("이메일 타이머 저장 실패");
   }
 };
 
