@@ -18,7 +18,6 @@ export const refreshTokenStorage = {
     try {
       await EncryptedStorage.setItem(REFRESH_TOKEN_KEY, token);
     } catch {
-      throw new Error("토큰 저장 실패");
     }
   },
 
@@ -26,7 +25,6 @@ export const refreshTokenStorage = {
     try {
       await EncryptedStorage.removeItem(REFRESH_TOKEN_KEY);
     } catch {
-      throw new Error("토큰 삭제 실패");
     }
   },
 };
