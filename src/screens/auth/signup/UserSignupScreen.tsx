@@ -53,6 +53,7 @@ function StepContent({ step, form, setForm, updateStepValid }: StepContentProps)
           value={form.verificationCode}
           onChange={(text: string) => setForm({ ...form, verificationCode: text })}
           setIsStepValid={(valid) => updateStepValid(1, valid)}
+          email={form.email}
         />
       )
 

@@ -4,6 +4,7 @@ import Typography from "@/components/common/typography/Typography"
 import { useEffect, useState } from "react";
 import ContentLayout from '@/components/layout/authLayout/AuthStepComponentLayout/ContentLayout';
 import { isValidEmail } from '@/utils/isValidEmail';
+import type { VerificationTimerScope } from '@/storage/verificationCodeTimerStorage';
 
 interface VerificationStepProps {
   value: string;
@@ -11,9 +12,11 @@ interface VerificationStepProps {
   email: string;
   onChangeEmail: (text: string) => void
   setIsStepValid: (isStepValid: boolean) => void;
+  verificationEmail: string;
+  timerScope: VerificationTimerScope;
 }
 
-export default function VerificationStep({ value, onChange, email, onChangeEmail, setIsStepValid }: VerificationStepProps) {
+export default function VerificationStep({ value, onChange, email, onChangeEmail, setIsStepValid, verificationEmail, timerScope }: VerificationStepProps) {
   const [isEmail, setIsEmail] = useState(true);
   useEffect(() => {
     setIsStepValid(false);
