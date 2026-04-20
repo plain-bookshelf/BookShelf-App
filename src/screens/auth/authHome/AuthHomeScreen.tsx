@@ -23,7 +23,7 @@ export default function AuthHomeScreen() {
   const { mutate: login, isPending, error, reset } = useLogin();
   const menus = [
     {title: '회원가입', onPress: () => navigation.navigate('SignupRoleSelect')},
-    {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindId')}
+    {title: '비밀번호 찾기', onPress: () => navigation.navigate('FindPassword')}
   ];
   const socialLoginButtons = [
     {button: btn_kakaoLogin_default, onPress: () => {}},
