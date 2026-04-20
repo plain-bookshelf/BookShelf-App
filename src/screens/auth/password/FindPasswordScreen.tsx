@@ -2,18 +2,18 @@ import ActionLayout from "@/components/layout/authLayout/AuthStepComponentLayout
 import StepHeader from "@/components/layout/authLayout/AuthStepComponentLayout/StepHeader"
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout"
 import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss"
+import { useSignupStepControl } from "@/hooks/useSignupStepControl"
+import { FindContentProps, FindForm } from "@/types/index"
 import { useState } from "react"
 import EmailStep from "./steps/EmailStep"
 import VerificationStep from "./steps/VerificationStep"
 import ResetPasswordStep from "./steps/ResetPasswordStep"
-import { useFindPasswordStepControl } from "@/hooks/useFindPasswordStepControl"
-import { StepContentProps, type FindPasswordForm } from "@/types"
 
 export default function FindPasswordScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<FindPasswordForm>({email: '', verification_code: '', new_password: ''});
-  const [stepValid, setStepValid] = useState([false, false, false]);
-  const { updateStepValid, handlePrev, handleNext } = useFindPasswordStepControl({ step, maxStep: 2, setStep, setStepValid, form })
+  const [form, setForm] = useState<FindPasswordForm>({email: '', verificationCode: '', NewPassword: ''});
+  const [stepValid, setStepValid] = useState([false, false, false, true]);
+  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 2, setStep, setStepValid })
   const labels = ['인증코드 발송', '다음', '로그인으로 돌아가기']
 
   return(
@@ -30,7 +30,11 @@ export default function FindPasswordScreen() {
   )
 }
 
-type FindPasswordContentProps = StepContentProps<FindPasswordForm>
+interface FindPasswordForm extends FindForm {
+  NewPassword: string
+}
+
+type FindPasswordContentProps = FindContentProps<FindPasswordForm>
 
 function StepContent({ step, form, setForm, updateStepValid }: FindPasswordContentProps) {
   switch (step) {
@@ -41,14 +45,14 @@ function StepContent({ step, form, setForm, updateStepValid }: FindPasswordConte
 
     case 2:
       return(
-        <VerificationStep value={form.verification_code} onChange={(text: string) => setForm({...form, verification_code: text})}
-          email={form.email} onChangeEmail={(text: string) => setForm({...form, email: text})} setIsStepValid={(valid) => updateStepValid(1, valid)}
+        <VerificationStep value={form.verificationCode} onChange={(text: string) => setForm({...form, verificationCode: text})}
+          email={form.email} onChangeEmail={(text: string) => setForm({...form, email: text})} setIsStepValid={(valid) => updateStepValid(2, valid)}
         />
       )
 
     default:
       return(
-        <ResetPasswordStep value={form.new_password} onChange={(text: string) => setForm({...form, new_password: text})} setIsStepValid={(valid) => updateStepValid(2, valid)} />
+        <ResetPasswordStep value={form.NewPassword} onChange={(text: string) => setForm({...form, NewPassword: text})} setIsStepValid={(valid) => updateStepValid(3, valid)} />
       );
   }
 }

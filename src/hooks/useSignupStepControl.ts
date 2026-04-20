@@ -35,7 +35,9 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
   const handleNext = async () => {
     if (step === 1) {
       try {
-        await emailSend({params: {email: form.email}, codeType: "VERIFICATION_EMAIL"});
+        await emailSend({
+        email: form.email,
+      });
       } catch (error) {
         console.error("이메일 전송 실패", error);
         return;
