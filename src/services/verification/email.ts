@@ -3,8 +3,8 @@ import { EmailSendRequest, EmailResponse, EmailVerificationRequest } from "@/typ
 
 const VERIFICATION_BASE = "api/verification";
 
-export const emailSend = async (params: EmailSendRequest): Promise<EmailResponse> => {
-  const res = await client.post(`${VERIFICATION_BASE}/email/send?codeType=VERIFICATION_EMAIL`, params);
+export const emailSend = async (params: EmailSendRequest, codeType: string): Promise<EmailResponse> => {
+  const res = await client.post(`${VERIFICATION_BASE}/email/send?codeType=${codeType}`, params);
   return res.data;
 }
 

@@ -6,3 +6,6 @@ export * from "./useChatSession";
 export * from "./useSignup";
 export * from "./useEmailSend";
 export * from "./useEmailVerification";
+export * from "./useFindPasswor";
+export * from "./usePasswordReset";
+export * from "./useFindPasswordStepControl";
