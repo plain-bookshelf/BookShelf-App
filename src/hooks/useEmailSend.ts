@@ -4,8 +4,8 @@ import { useMutation } from "@tanstack/react-query";
 
 export const useEmailSend = () => {
   return useMutation({
-    mutationFn: async(params: EmailSendRequest): Promise<EmailResponse> => {
-      return await emailSend(params);
+    mutationFn: async({params, codeType}: {params: EmailSendRequest, codeType: string}): Promise<EmailResponse> => {
+      return await emailSend(params, codeType);
     },
 
       onSuccess: (data: EmailResponse) => {

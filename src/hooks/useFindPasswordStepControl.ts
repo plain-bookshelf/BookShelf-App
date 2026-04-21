@@ -1,24 +1,22 @@
 import { AuthNav } from '@/navigation/type';
 import { useNavigation } from '@react-navigation/native';
 import { Dispatch, SetStateAction } from 'react';
-import { useSignup } from './useSignup';
-import { SignupForm } from '@/types';
-import { useEmailSend } from './useEmailSend';
-import { useEmailVerification } from './useEmailVerification';
+import { FindPasswordForm } from '@/types';
+import { useEmailSend, useFindPassword, usePasswordReset } from '@/hooks';
 
-interface UseSignupStepControlParams {
+interface UseFindPasswordStepControlParams {
   step: number;
   maxStep: number;
   setStep: Dispatch<SetStateAction<number>>;
   setStepValid: Dispatch<SetStateAction<boolean[]>>;
-  form: SignupForm;
+  form: FindPasswordForm;
 }
 
-export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, form }: UseSignupStepControlParams) => {
+export const useFindPasswordStepControl = ({ step, maxStep, setStep, setStepValid, form }: UseFindPasswordStepControlParams) => {
   const navigation = useNavigation<AuthNav>();
-  const { mutateAsync: signup } = useSignup();
   const { mutateAsync: emailSend } = useEmailSend();
-  const { mutateAsync: emailVerification } = useEmailVerification();
+  const { mutateAsync: findPassword } = useFindPassword();
+  const { mutateAsync: passwordReset } = usePasswordReset();
   
   const updateStepValid = (index: number, valid: boolean) => {
     setStepValid(prev => {
@@ -35,16 +33,16 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
   const handleNext = async () => {
     if (step === 1) {
       try {
-        await emailSend({params: {email: form.email}, codeType: "VERIFICATION_EMAIL"});
+        await emailSend({params: {email: form.email}, codeType: "FIND_PASSWORD"});
       } catch (error) {
         console.error("이메일 전송 실패", error);
         return;
       }
     } else if (step === 2) {
       try {
-        await emailVerification({
+        await findPassword({
         email: form.email,
-        verification_code: form.verificationCode,
+        verification_code: form.verification_code,
       });
       } catch (error) {
         console.error("이메일 인증 실패", error);
@@ -52,14 +50,12 @@ export const useSignupStepControl = ({ step, maxStep, setStep, setStepValid, for
       }
     } else if (step === maxStep) {
       try {
-        await signup({
-        username: form.email,
-        password: form.password,
+        await passwordReset({
         email: form.email,
-        affiliation_name: form.library,
+        new_password: form.new_password,
       });
       } catch (error) {
-        console.error("회원가입 실패", error);
+        console.error("비밀번호 재설정 실패", error);
         return;
       }
     } else if (step === maxStep + 1) {
