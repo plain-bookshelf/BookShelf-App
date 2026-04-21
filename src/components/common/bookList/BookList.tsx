@@ -4,16 +4,20 @@ import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
 import { MainNav } from "@/navigation/type";
 import { useNavigation } from "@react-navigation/native";
-import type { RecommandBook } from "@/types";
 
-export default function BookList({ bookList = [] }: { bookList: RecommandBook[] }) {
+interface BookListProps {
+  id: number;
+  img: string;
+}
+
+export default function BookList({ bookList = [] }: { bookList: BookListProps[] }) {
   const navigation = useNavigation<MainNav>();
   const { width } = useWindowDimensions();
 
   /* (전체너비 - 좌우패딩 - gap간격) / 3 */
   const imageWidth = (width - 24 * 2 - 16 * 2) / 3;
 
-  const bookGrid: RecommandBook[][] = [];
+  const bookGrid: BookListProps[][] = [];
   /* BookList Grid 형태로 변환 로직 */
   const bookRows = Math.floor(bookList.length / 3);
   const lastRow = bookList.length % 3;

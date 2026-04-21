@@ -5,32 +5,14 @@ import Typography from "@/components/common/typography/Typography";
 import BookList from "@/components/common/bookList/BookList";
 import btn_next_type_books_arrow_default from "@/assets/btn_next-type-books-arrow-right_default.png"
 import { useState } from "react";
+import { useHomeBooks } from "@/hooks/useHomeBooks";
+import type { HomeBook } from "@/types";
 
 export default function HomeScreen() {
-  const MOCK_BOOKS = [
-    { id: 1, image: require("@/assets/img_test-book_default.png") },
-    { id: 2, image: require("@/assets/img_test-book_default.png") },
-    { id: 3, image: require("@/assets/img_test-book_default.png") },
-    { id: 4, image: require("@/assets/img_test-book_default.png") },
-    { id: 5, image: require("@/assets/img_test-book_default.png") },
-    { id: 6, image: require("@/assets/img_test-book_default.png") },
-    { id: 7, image: require("@/assets/img_test-book_default.png") },
-    { id: 8, image: require("@/assets/img_test-book_default.png") },
-    { id: 9, image: require("@/assets/img_test-book_default.png") },
-    { id: 10, image: require("@/assets/img_test-book_default.png") },
-    { id: 11, image: require("@/assets/img_test-book_default.png") },
-    { id: 12, image: require("@/assets/img_test-book_default.png") },
-    { id: 13, image: require("@/assets/img_test-book_default.png") },
-    { id: 14, image: require("@/assets/img_test-book_default.png") },
-    { id: 15, image: require("@/assets/img_test-book_default.png") },
-    { id: 16, image: require("@/assets/img_test-book_default.png") },
-    { id: 17, image: require("@/assets/img_test-book_default.png") },
-    { id: 18, image: require("@/assets/img_test-book_default.png") },
-  ];
+  const { books: popularBooks } = useHomeBooks("POPULAR");
+  const { books: recentBooks } = useHomeBooks("RECENT");
 
   const [isPopularBooks, setIsPopularBooks] = useState(true);
-  const [popularBooks, setPopularBooks] = useState(MOCK_BOOKS);
-  const [latestBooks, setLatestBooks] = useState(MOCK_BOOKS);
 
   return(
     <S.Container>
@@ -44,7 +26,7 @@ export default function HomeScreen() {
           {isPopularBooks && <Image source={btn_next_type_books_arrow_default} style={{ width: 28, height: 28 }} />}
         </Pressable>
       </S.TitleBox>
-      <BookList bookList={isPopularBooks ? popularBooks : latestBooks} />
+      <BookList bookList={isPopularBooks ? popularBooks.map((book) => ({ id: book.id, img: book.bookImage })) : recentBooks.map((book) => ({ id: book.id, img: book.bookImage }))} />
     </S.Container>
   )
 }
