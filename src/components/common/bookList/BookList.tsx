@@ -1,4 +1,4 @@
-import { Image, useWindowDimensions } from "react-native";
+import { Image, Pressable, useWindowDimensions } from "react-native";
 import * as S from "./style"
 import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
@@ -35,14 +35,12 @@ export default function BookList({ bookList = [] }: { bookList: BookListProps[] 
       {bookGrid.length > 0 ? bookGrid.map((rowBooks, index) => {
         return(
           <S.BookContainer key={index}>
-            <S.BookBox
-              onPress={() =>
-                navigation.navigate("Book", { screen: "BookDetail", params: { bookId: rowBooks[0].id } })
-              }
-            >
+            <S.BookBox>
               {rowBooks.map((book) => {
                 return(
-                  <Image key={book.id} source={{ uri: book.img }} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
+                  <Pressable key={book.id} onPress={() => navigation.navigate("Book", { screen: "BookDetail", params: { bookId: book.id } })}>
+                    <Image source={{ uri: book.img }} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
+                  </Pressable>
                 )
               })}
             </S.BookBox>

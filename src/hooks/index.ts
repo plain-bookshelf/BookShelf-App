@@ -10,3 +10,4 @@ export * from "./useFindPassword";
 export * from "./usePasswordReset";
 export * from "./useFindPasswordStepControl";
 export * from "./useHomeBooks";
+export * from "./useBookDetail";
