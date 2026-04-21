@@ -12,15 +12,20 @@ import LogoutModal from "@/components/common/modal/LogoutModal";
 import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
 import useAuthStore from "@/store/useAuthStore";
+import useUserStore from "@/store/useUserStore";
 import { logout } from "@/services/api/auth";
 import { Image, Pressable } from "react-native";
 import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png"
+import { launchImageLibrary } from "react-native-image-picker";
+import { useProfileChange } from "@/hooks";
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
   const clearTokens = useAuthStore((state) => state.clearTokens);
+  const profileImage = useUserStore((state) => state.user?.profile_image);
+  const { mutate: profileChange, isPending: isProfileChanging } = useProfileChange();
 
   const handleLogout = async () => {
     await clearTokens();
@@ -33,11 +38,30 @@ export default function ProfileScreen() {
     setWithdrawModalVisible(false);
   };
 
+  const handleProfileChange = async () => {
+    if (isProfileChanging) return;
+
+    const result = await launchImageLibrary({
+      mediaType: "photo",
+      selectionLimit: 1,
+    });
+
+    if (result.didCancel || result.errorCode) return;
+
+    const uri = result.assets?.[0]?.uri;
+    if (!uri) return;
+
+    profileChange(uri);
+  };
+
   return(
     <S.Container>
       <S.ProfileCardContainer>
-        <S.ProfileImagBox>
-          <Image source={img_profile_test} style={{ width: 72, height: 72 }} />
+        <S.ProfileImagBox onPress={handleProfileChange} disabled={isProfileChanging}>
+          <Image
+            source={profileImage ? { uri: profileImage } : img_profile_test}
+            style={{ width: 72, height: 72, borderRadius: 36 }}
+          />
           <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24, position: 'absolute', bottom: 0, right: 0 }} />
         </S.ProfileImagBox>
         <S.ProfileName>
