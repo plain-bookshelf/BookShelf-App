@@ -74,7 +74,7 @@ export default function BookDetail() {
             publisher={bookInfo?.publisher ?? ""}
             holSchool={bookDetail?.affiliationName ?? ""}
             publicationDate={bookInfo?.publicationDate ?? ""}
-            image={bookInfo?.bookImage ?? img_test_book_default}
+            image={bookInfo?.bookImage ? { uri: bookInfo.bookImage } : img_test_book_default}
             isLiked={bookDetail?.isLiked ?? false} />
           
           <S.CommentsBox>
@@ -112,7 +112,7 @@ export default function BookDetail() {
         </S.Content>
       </S.Container>
       <S.ActionButtonBox>
-      {BOOK_INFO_MOCK_DATA.status === "borrowed" ? (
+      {bookDetail?.isEnableRental ? (
         <DefaultButton font='semiBold16' label='대여 요청' onPress={() => {}} isValid={true} />
       ) : (
         <ReserveButton font='semiBold16' label='예약' onPress={() => {}} isValid={true} />
