@@ -19,7 +19,7 @@ export default function VerificationStep({ value, onChange, setIsStepValid, emai
   const handleResend = async () => {
     await clear();
     try {
-      await emailSend({ email: email });
+      await emailSend({ params: { email: email }, codeType: "VERIFICATION_EMAIL" });
       await start();
     } catch (error) {
       console.error("이메일 전송 실패", error);
