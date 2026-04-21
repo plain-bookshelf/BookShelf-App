@@ -4,3 +4,4 @@ export * from "./affiliation";
 export * from "./member";
 export * from "./verification";
 export * from "./home";
+export * from "./bookDetail";
