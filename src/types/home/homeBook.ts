@@ -9,15 +9,10 @@ export interface HomeBook {
   genreList: string[];
 }
 
-export interface HomeBookSliceResult {
-  content: HomeBook[];
-  isLastPage: boolean;
-}
-
 export interface HomeBookResponse {
   status: string;
   message: string;
   data: {
-    SliceResult: HomeBookSliceResult;
+    content: HomeBook[];
   };
 }

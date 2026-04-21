@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHomeBooks } from "@/services";
+import { getHomeBook } from "@/services";
 import type { BookFindType, HomeBook } from "@/types";
 
 export const useHomeBooks = (bookFindType: BookFindType) => {
   const query = useQuery({
     queryKey: ["homeBooks", bookFindType],
-    queryFn: () => getHomeBooks(bookFindType),
+    queryFn: () => getHomeBook(bookFindType),
   });
 
-  const books: HomeBook[] = query?.data?.data?.SliceResult?.content ?? [];
+  const books: HomeBook[] = query?.data?.data?.content ?? [];
 
   return { ...query, books };
 };
