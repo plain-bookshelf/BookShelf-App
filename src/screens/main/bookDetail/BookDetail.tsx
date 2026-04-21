@@ -11,6 +11,7 @@ import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
+import { useBookDetail } from "@/hooks";
 
 
 export default function BookDetail() {
@@ -51,7 +52,10 @@ export default function BookDetail() {
 
   const navigation = useNavigation<NativeStackNavigationProp<BookStackParamList>>();
   const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
+  const { bookDetail } = useBookDetail(bookId);
+  const bookInfo = bookDetail?.bookInfo;
   const showCommentPreviewOnly = COMMENT_MOCK_DATA.length > 4;
+  console.log(bookId);
 
   return (
     <>
@@ -63,7 +67,15 @@ export default function BookDetail() {
 
       <S.Container>
         <S.Content>
-          <BookInfo title={BOOK_INFO_MOCK_DATA.title} story={BOOK_INFO_MOCK_DATA.story} author={BOOK_INFO_MOCK_DATA.author} publisher={BOOK_INFO_MOCK_DATA.publisher} holSchool={BOOK_INFO_MOCK_DATA.holSchool} publicationDate={BOOK_INFO_MOCK_DATA.publicationDate} image={BOOK_INFO_MOCK_DATA.image} isLiked={BOOK_INFO_MOCK_DATA.isLiked} />
+          <BookInfo
+            title={bookInfo?.title ?? ""}
+            story={bookInfo?.introduction ?? ""}
+            author={bookInfo?.author ?? ""}
+            publisher={bookInfo?.publisher ?? ""}
+            holSchool={bookDetail?.affiliationName ?? ""}
+            publicationDate={bookInfo?.publicationDate ?? ""}
+            image={bookInfo?.bookImage ?? img_test_book_default}
+            isLiked={bookDetail?.isLiked ?? false} />
           
           <S.CommentsBox>
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
@@ -91,7 +103,7 @@ export default function BookDetail() {
             <Typography font="medium20" color="defaultBlack" children="추천" />
             <S.RecommandBookList horizontal>
               {MOCK_BOOKS.map((book) => (
-                <S.RecommandBook key={book.id} onPress={() => navigation.navigate("BookDetail", { bookId: book.id })}>
+                <S.RecommandBook key={book.id} onPress={() => navigation.push("BookDetail", { bookId: book.id })}>
                   <Image source={book.image} style={{ width: 76, height: 110 }} />
                 </S.RecommandBook>
               ))}
