@@ -1,7 +1,13 @@
 import Typography from "@/components/common/typography/Typography";
 import * as S from "./style"
 import { Image } from "react-native";
-import { RankUserProps } from "@/types/main";
+
+export interface RankUserProps {
+  rank: number;
+  profileImage: string;
+  profileName: string;
+  bookPoint: number;
+}
 
 export default function RankUser({ rank, profileImage, profileName, bookPoint }: RankUserProps) {
   return(
