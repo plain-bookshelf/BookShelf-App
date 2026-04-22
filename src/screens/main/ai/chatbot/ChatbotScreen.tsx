@@ -2,7 +2,7 @@ import * as S from "./style";
 import ChatCard from "./components/chatCard/ChatCard";
 import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
 import { useState } from "react";
-import { ChatCardProps } from "@/types/main/chatbot";
+import { ChatCardProps } from "@/types";
 import MessageInput from "@/components/common/input/messageInput/MessageInput";
 
 export default function ChatbotScreen() {
