@@ -17,15 +17,16 @@ import { logout } from "@/services/api/auth";
 import { Image, Pressable } from "react-native";
 import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png"
 import { launchImageLibrary } from "react-native-image-picker";
-import { useProfileChange } from "@/hooks";
+import { useProfileChange, useMyPage } from "@/hooks";
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
   const clearTokens = useAuthStore((state) => state.clearTokens);
-  const profileImage = useUserStore((state) => state.user?.profile_image);
+  const storedProfileImage = useUserStore((state) => state.user?.profile_image);
   const { mutate: profileChange, isPending: isProfileChanging } = useProfileChange();
+  const { my } = useMyPage();
 
   const handleLogout = async () => {
     await clearTokens();
@@ -59,34 +60,38 @@ export default function ProfileScreen() {
       <S.ProfileCardContainer>
         <S.ProfileImagBox onPress={handleProfileChange} disabled={isProfileChanging}>
           <Image
-            source={profileImage ? { uri: profileImage } : img_profile_test}
+            source={my?.profile_image ? { uri: my?.profile_image } : img_profile_test}
             style={{ width: 72, height: 72, borderRadius: 36 }}
           />
           <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24, position: 'absolute', bottom: 0, right: 0 }} />
         </S.ProfileImagBox>
         <S.ProfileName>
-          <Typography font='bold22' color='defaultBlack' children='둥근네모' />
+          <Typography font='bold22' color='defaultBlack' children={my?.username ?? ""} />
           <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24 }} />
         </S.ProfileName>
       </S.ProfileCardContainer>
-      <S.ContentBox>
-      <S.TitleBox>
-        <Typography font='medium16' color='defaultGreen' children='회색인간 ' />
-        <Typography font='medium16' color='defaultBlack' children='대여 기간이 ' />
-        <Typography font='medium16' color='defaultGreen' children='3일 ' />
-        <Typography font='medium16' color='defaultBlack' children='남았습니다.' />
-      </S.TitleBox>
-      </S.ContentBox>
+
+      {my?.most_little_left_rental_date && my?.most_little_left_rental_title && (
+        <S.ContentBox>
+          <S.TitleBox>
+            <Typography font='medium16' color='defaultGreen' children={`${my?.most_little_left_rental_title} `} />
+            <Typography font='medium16' color='defaultBlack' children='대여 기간이 ' />
+            <Typography font='medium16' color='defaultGreen' children={`${my?.most_little_left_rental_date}일 `} />
+            <Typography font='medium16' color='defaultBlack' children='남았습니다.' />
+          </S.TitleBox>
+        </S.ContentBox>
+      )}
+
       <S.ContentBox>
       <S.InfoCardContainer>
         <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Borrowed' })}>
-          <InfoCard title='대여 중인 책' value='10권' />
+          <InfoCard title='대여 중인 책' value={`${my?.rented_book_count}권`} />
         </Pressable>
         <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Reserved' })}>
-          <InfoCard title='예약한 책' value='10권' />
+          <InfoCard title='예약한 책' value={`${my?.reserved_book_count}권`} />
         </Pressable>
         <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Overdue' })}>
-          <InfoCard title='연체된 책' value='10권' />
+          <InfoCard title='연체된 책' value={`${my?.overdue_book_count}권`} />
         </Pressable>
       </S.InfoCardContainer>
       </S.ContentBox>
