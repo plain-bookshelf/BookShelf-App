@@ -4,7 +4,7 @@ import * as S from "./style"
 
 interface TopRankUserProps {
   rank: 1 | 2 | 3;
-  profileImage: ImageSourcePropType;
+  profileImage: string;
   profileName: string;
   bookPoint: number;
 }
@@ -13,7 +13,7 @@ export default function TopRankUser({ rank, profileImage, profileName, bookPoint
   return(
     <S.Container>
       <S.ProfileBox>
-        <S.ProfileImage rank={rank} source={profileImage} />
+        <S.ProfileImage rank={rank} source={{ uri: profileImage }} />
         <S.Ranking rank={rank}>
           <Typography font='medium16' color='defaultWhite' children={rank.toString()} />
         </S.Ranking>
