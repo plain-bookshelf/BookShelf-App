@@ -1,4 +1,4 @@
-import { client, platformType } from "../api/client";
+import { client } from "../api/client";
 import type { ProfileChangeResponse } from "@/types";
 
 const MEMBER_BASE = "api/member";
