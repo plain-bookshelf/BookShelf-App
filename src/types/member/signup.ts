@@ -5,6 +5,10 @@ export interface SignupRequest {
   affiliation_name: string;
 }
 
+export interface SignupOfficialRequest extends SignupRequest {
+  verification_code: string;
+}
+
 export interface SignupResponse {
   data: {
     username: string;
@@ -18,3 +22,5 @@ export interface SignupResponse {
     refresh_token: string;
   };
 }
+
+export interface SignupOfficialResponse extends SignupResponse {}

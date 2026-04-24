@@ -7,6 +7,10 @@ export interface SignupForm {
   library: string;
 }
 
+export interface SignupOfficialForm extends SignupForm {
+  adminCode: string;
+}
+
 export interface StepContentProps<TForm = SignupForm> {
   step: number;
   form: TForm;
