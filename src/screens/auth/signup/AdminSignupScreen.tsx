@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import StepHeader from "../../../components/layout/authLayout/AuthStepComponentLayout/StepHeader";
 import IdStep from "./steps/EmailStep";
 import ActionLayout from "../../../components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
@@ -8,20 +8,34 @@ import VerificationStep from "./steps/VerificationStep";
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";
 import Library from "./steps/LibraryStep";
 import CompletionStep from "./steps/CompletionStep";
-import { SignupForm, StepContentProps } from "@/types/index";
-import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
+import { SignupOfficialForm, StepContentProps } from "@/types/index";
+import { useSignupOfficialStepControl } from "../../../hooks/useSignupOfficialStepControl";
 import AdminCodeStep from "./steps/AdminCodeStep";
 
 export default function AdminSignupScreen() {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<AdminSignupForm>({ id: '', email: '', password: '', school: '', verificationCode: '', library: '', adminCode: '' });
+  const [form, setForm] = useState<SignupOfficialForm>({
+    email: '',
+    password: '',
+    username: '',
+    nickname: '',
+    verificationCode: '',
+    library: '',
+    adminCode: '',
+  });
   const [stepValid, setStepValid] = useState([false, false, false, false, false, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 5, setStep, setStepValid });
+  const { updateStepValid, handlePrev, handleNext } = useSignupOfficialStepControl({
+    step,
+    maxStep: 5,
+    setStep,
+    setStepValid,
+    form,
+  });
 
   return(
     <KeyboardDismiss>
       <AuthStepLayout>
-        <>  
+        <>
           <StepHeader step={step} maxStep={5} onPrev={handlePrev} />
           <ActionLayout
             label={step < 6 ? '다음' : step === 6 ? '완료' : '로그인하러 가기'}
@@ -37,19 +51,15 @@ export default function AdminSignupScreen() {
   )
 }
 
-interface AdminSignupForm extends SignupForm {
-  adminCode: string
-}
+type OfficialStepContentProps = StepContentProps<SignupOfficialForm>
 
-type AdminStepContentProps = StepContentProps<AdminSignupForm>
-
-function StepContent({ step, form, setForm, updateStepValid }: AdminStepContentProps) {
+function StepContent({ step, form, setForm, updateStepValid }: OfficialStepContentProps) {
   switch (step) {
     case 1:
       return(
         <IdStep
-          value={form.id}
-          onChange={(text: string) => setForm({ ...form, id: text })}
+          value={form.email}
+          onChange={(text: string) => setForm({ ...form, email: text })}
           setIsStepValid={(valid) => updateStepValid(0, valid)}
         />
       )
@@ -60,6 +70,7 @@ function StepContent({ step, form, setForm, updateStepValid }: AdminStepContentP
           value={form.verificationCode}
           onChange={(text: string) => setForm({ ...form, verificationCode: text })}
           setIsStepValid={(valid) => updateStepValid(1, valid)}
+          email={form.email}
         />
       )
 
@@ -80,7 +91,7 @@ function StepContent({ step, form, setForm, updateStepValid }: AdminStepContentP
           setIsStepValid={(valid) => updateStepValid(3, valid)}
         />
       )
-    
+
     case 5:
       return(
         <AdminCodeStep

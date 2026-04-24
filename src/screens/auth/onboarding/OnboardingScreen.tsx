@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import ActionLayout from "../../../components/layout/authLayout/AuthStepComponentLayout/ActionLayout";
 import KeyboardDismiss from "@/components/common/keyboardDismiss/KeyboardDismiss";
 import AuthStepLayout from "@/components/layout/authLayout/AuthStepLayout";
-import { useSignupStepControl } from "../../../hooks/useSignupStepControl";
+import { useStepControl } from "../../../hooks/useStepControl";
 import IntroStep from "./steps/IntroStep";
 import { View } from "react-native";
 import GenreSelectionStep from "./steps/GenreSelectionStep";
@@ -15,7 +15,7 @@ import CompleteStep from "./steps/CompleteStep";
 export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
   const [stepValid, setStepValid] = useState([true, false, false, false, true, true]);
-  const { updateStepValid, handlePrev, handleNext } = useSignupStepControl({ step, maxStep: 4, setStep, setStepValid })
+  const { updateStepValid, goNext: handleNext } = useStepControl({ setStep, setStepValid })
 
   const content = step === 4 ? 
   (
