@@ -12,7 +12,5 @@ export interface HomeBook {
 export interface HomeBookResponse {
   status: string;
   message: string;
-  data: {
-    content: HomeBook[];
-  };
+  data: HomeBook[];
 }
