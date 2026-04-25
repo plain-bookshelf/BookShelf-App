@@ -8,7 +8,7 @@ export const useHomeBooks = (bookFindType: BookFindType) => {
     queryFn: () => getHomeBook(bookFindType),
   });
 
-  const books: HomeBook[] = query?.data?.data?.content ?? [];
+  const books: HomeBook[] = query?.data?.data ?? [];
 
   return { ...query, books };
 };
