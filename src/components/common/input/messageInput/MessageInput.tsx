@@ -13,9 +13,10 @@ interface MessageInputProps {
   onSend: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  disabled?: boolean;
 }
 
-export default function MessageInput({ backgroundColor, placeholder, value, onChangeText, onSend, onFocus, onBlur }: MessageInputProps) {
+export default function MessageInput({ backgroundColor, placeholder, value, onChangeText, onSend, onFocus, onBlur, disabled }: MessageInputProps) {
   
   return (
     <S.Container backgroundColor={backgroundColor}>
@@ -27,7 +28,7 @@ export default function MessageInput({ backgroundColor, placeholder, value, onCh
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      <Pressable onPress={onSend}>
+      <Pressable onPress={onSend} disabled={disabled}>
         <Image source={btn_chatbot_send_default} style={{ width: 24, height: 24 }} />
       </Pressable>
     </S.Container>
