@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { login } from "@/services/api/auth";
-import { postChatSession } from "@/services/ai/chat";
+import { postChatSession } from "@/services/ai/chatbot";
 import useAuthStore from "@/store/useAuthStore";
 import useUserStore from "@/store/useUserStore";
 import type { LoginRequest } from "@/types/auth";
