@@ -11,7 +11,6 @@ export const useChatbot = () => {
     mutationFn: async (question: string) => await postChatbot({ username: username ?? "", session_id: session_id ?? 0, question: question }),
     onSuccess: (data: ChatbotResponse) => {
       console.log("챗봇 응답 성공", data);
-      return data.agent.answer;
     },
     onError: (error: Error) => {
       console.error("챗봇 응답 실패", error);
