@@ -14,3 +14,19 @@ export interface ChatSessionResponse {
   created_at: string;
   updated_at: string;
 }
+
+export interface ChatbotRequest {
+  username: string;
+  session_id: number;
+  question: string;
+}
+
+export interface ChatbotResponse {
+  agent: {
+    answer: string;
+    cover_candidates: string[];
+    intent: string;
+    show_covers: boolean;
+  };
+  message_id: number;
+}
