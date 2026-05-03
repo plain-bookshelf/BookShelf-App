@@ -1,14 +1,30 @@
 import { client, platformType } from "./client";
 import type { LoginRequest } from "@/types/auth";
 import { refreshTokenStorage } from "@/storage/refreshTokenStorage";
+import { getDeviceToken, requestNotificationPermission } from "@/services/device/deviceToken";
 
 const AUTH_BASE = "api/auth";
+
+const getDeviceTokenHeader = async () => {
+  const canUseNotifications = await requestNotificationPermission();
+
+  if (!canUseNotifications) {
+    return {};
+  }
+
+  return {
+    "X-Device-Token": await getDeviceToken(),
+  };
+};
 
 /* 로그인 API */
 export const login = async (params: LoginRequest) => {
   const res = await client.post(
     `${AUTH_BASE}/login${platformType}`,
-    params
+    params,
+    {
+      headers: await getDeviceTokenHeader(),
+    }
   )
   return res.data;
 }
@@ -22,6 +38,7 @@ export const reissue = async () => {
     {},
     {
       headers: {
+        ...(await getDeviceTokenHeader()),
         "x-refresh-token": refreshToken,
         "x-no-retry": "true",
       },
@@ -41,6 +58,7 @@ export const logout = async () => {
     {},
     {
       headers: {
+        ...(await getDeviceTokenHeader()),
         "x-refresh-token": refreshToken,
       },
     }
