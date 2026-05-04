@@ -3,6 +3,8 @@ import Typography from "@/components/common/typography/Typography";
 import { Image, Pressable } from "react-native";
 import btn_isLiked_false from "@/assets/btn_isLiked_false.png";
 import btn_isLiked_true from "@/assets/btn_isLiked_true.png";
+import { CommentLikeResponse } from "@/types/commentLike";
+import { UseMutationResult } from "@tanstack/react-query";
 
 interface CommentProps {
   screen: "bookDetail" | "bookComments";
@@ -10,9 +12,21 @@ interface CommentProps {
   comment: string;
   isLiked: boolean;
   likeCount: number;
+  commentId: number;
+  CommentLikeMutation: UseMutationResult<CommentLikeResponse, unknown, number>;
+  CommentUnlikeMutation: UseMutationResult<CommentLikeResponse, unknown, number>;
 }
 
-export default function Comment({ screen, userName, comment, isLiked, likeCount }: CommentProps) {
+export default function Comment({ screen, userName, comment, isLiked, likeCount, commentId, CommentLikeMutation, CommentUnlikeMutation }: CommentProps) {
+  const handleCommentLike = () => {
+    if (isLiked) {
+      CommentUnlikeMutation.mutate(commentId);
+      return;
+    }
+
+    CommentLikeMutation.mutate(commentId);
+  };
+  
   return (
     <S.Container screen={screen}>
       <S.LeftBox>
@@ -21,7 +35,7 @@ export default function Comment({ screen, userName, comment, isLiked, likeCount 
       </S.LeftBox>
       <S.RightBox>
         {likeCount > 0 && (
-        <Pressable onPress={() => {}}>
+        <Pressable onPress={handleCommentLike}>
           <Typography font="medium16" color="commentLikeCountGray" children={likeCount.toString()} />
         </Pressable>
         )}

@@ -16,3 +16,7 @@ export * from "./useBookDetail";
 export * from "./useProfileChange";
 export * from "./useMyPage";
 export * from "./useChatbot";
+export * from "./useComment";
+export * from "./useBookLike";
+export * from "./useCommentLike";
+export * from "./useCommentWrite";

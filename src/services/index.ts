@@ -5,5 +5,6 @@ export * from "./member";
 export * from "./verification";
 export * from "./home";
 export * from "./bookDetail";
+export * from "./bookLike";
 export * from "./my";
 export * from "./ranking";

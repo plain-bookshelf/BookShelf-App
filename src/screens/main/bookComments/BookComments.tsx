@@ -1,12 +1,13 @@
 import * as S from "./style";
 import { Image, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { BookStackParamList } from "@/navigation/type";
 import btn_go_back_default from "@/assets/btn_previous_main.png";
 import Comment from "@/components/common/comment/Comment";
 import MessageInput from "@/components/common/input/messageInput/MessageInput";
 import { useState } from "react";
+import { useComment, useCommentLike, useCommentWrite } from "@/hooks";
 
 const COMMENT_MOCK_DATA = [
   { userName: "John Doe", comment: "This is a comment", isLiked: false, likeCount: 0 },
@@ -26,9 +27,23 @@ const COMMENT_MOCK_DATA = [
 type BookCommentsNav = NativeStackNavigationProp<BookStackParamList, "BookComments">;
 
 export default function BookComments() {
+  const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
+
+  const { commentData } = useComment(bookId);
+  const comments = commentData?.content;
+
+  const { CommentLikeMutation, CommentUnlikeMutation } = useCommentLike();
+
+  const { CommentWriteMutation } = useCommentWrite();
+  
   const [value, setValue] = useState<string>(""); 
   const [isFocused, setIsFocused] = useState(false);
   const navigation = useNavigation<BookCommentsNav>();
+
+  const handleCommentWrite = () => {
+    CommentWriteMutation.mutate({ bookId, comment: value });
+    setValue("");
+  };
 
   return (
     <>
@@ -40,20 +55,31 @@ export default function BookComments() {
 
       <S.Container>
         <S.Content>
-          {COMMENT_MOCK_DATA.map((item, comment) => (
+          {comments?.map((comment) => (
             <Comment
-              key={comment}
+              key={comment?.comment_id}
               screen="bookComments"
-              userName={item.userName}
-              comment={item.comment}
-              isLiked={item.isLiked}
-              likeCount={item.likeCount}
+              userName={comment?.nickname}
+              comment={comment?.comment}
+              isLiked={comment?.is_liked}
+              likeCount={comment?.like_count}
+              commentId={comment?.comment_id}
+              CommentLikeMutation={CommentLikeMutation}
+              CommentUnlikeMutation={CommentUnlikeMutation}
             />
           ))}
         </S.Content>
       </S.Container>
       <S.MessageInputBox isFocused={isFocused}>
-        <MessageInput backgroundColor="bookCommentsBackgroundGray" placeholder="댓글을 입력해주세요" value={value} onChangeText={setValue} onSend={() => {setValue("")}} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} />
+        <MessageInput
+          backgroundColor="bookCommentsBackgroundGray"
+          placeholder="댓글을 입력해주세요"
+          value={value}
+          onChangeText={setValue}
+          onSend={handleCommentWrite}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
       </S.MessageInputBox>
       {isFocused && <S.backgroundBlur onPress={() => setIsFocused(false)} />}
     </>
