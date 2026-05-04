@@ -11,7 +11,7 @@ import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
-import { useBookDetail } from "@/hooks";
+import { useBookDetail, useBookLike } from "@/hooks";
 import { useComment } from "@/hooks/useComment";
 
 
@@ -32,8 +32,10 @@ export default function BookDetail() {
 
   const navigation = useNavigation<NativeStackNavigationProp<BookStackParamList>>();
   const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
+
   const { bookDetail } = useBookDetail(bookId);
   const bookInfo = bookDetail?.book_info;
+  const { BookLikeMutation, BookUnlikeMutation } = useBookLike();
 
   const { commentData } = useComment(bookId);
   const comments = commentData?.content;
@@ -62,7 +64,10 @@ export default function BookDetail() {
             holSchool={bookDetail?.affiliation_name ?? ""}
             publicationDate={publicationDate ?? ""}
             image={bookInfo?.book_image ? { uri: bookInfo.book_image } : img_test_book_default}
-            isLiked={bookDetail?.is_liked ?? false} />
+            isLiked={bookDetail?.is_liked ?? false}
+            bookId={bookId}
+            BookLikeMutation={BookLikeMutation}
+            BookUnlikeMutation={BookUnlikeMutation} />
           <S.CommentsBox>
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
             <S.CommentList>
