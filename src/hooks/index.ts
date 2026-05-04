@@ -18,3 +18,4 @@ export * from "./useMyPage";
 export * from "./useChatbot";
 export * from "./useComment";
 export * from "./useBookLike";
+export * from "./useCommentLike";

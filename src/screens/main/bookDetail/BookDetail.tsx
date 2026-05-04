@@ -11,7 +11,7 @@ import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
-import { useBookDetail, useBookLike } from "@/hooks";
+import { useBookDetail, useBookLike, useCommentLike } from "@/hooks";
 import { useComment } from "@/hooks/useComment";
 
 
@@ -39,6 +39,8 @@ export default function BookDetail() {
 
   const { commentData } = useComment(bookId);
   const comments = commentData?.content;
+
+  const { CommentLikeMutation, CommentUnlikeMutation } = useCommentLike();
 
   const publicationMonth = bookInfo?.publication_date.split("-")[1][0] === "0" ? bookInfo?.publication_date.split("-")[1][1] : bookInfo?.publication_date.split("-")[1];
   const publicationDay = bookInfo?.publication_date.split("-")[2][0] === "0" ? bookInfo?.publication_date.split("-")[2][1] : bookInfo?.publication_date.split("-")[2];
@@ -72,7 +74,16 @@ export default function BookDetail() {
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
             <S.CommentList>
               {(showCommentPreviewOnly ? comments?.slice(0, 4) : comments)?.map((comment) => (
-                <Comment key={comment?.comment_id} screen="bookDetail" userName={comment?.nickname} comment={comment?.comment} isLiked={false} likeCount={comment?.like_count} />
+                <Comment
+                  key={comment?.comment_id}
+                  screen="bookDetail"
+                  userName={comment?.nickname}
+                  comment={comment?.comment}
+                  isLiked={false}
+                  likeCount={comment?.like_count}
+                  commentId={comment?.comment_id}
+                  CommentLikeMutation={CommentLikeMutation}
+                  CommentUnlikeMutation={CommentUnlikeMutation} />
               ))}
             </S.CommentList>
             {showCommentPreviewOnly && (
