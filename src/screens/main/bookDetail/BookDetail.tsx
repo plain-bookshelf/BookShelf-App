@@ -12,30 +12,10 @@ import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
 import { useBookDetail } from "@/hooks";
+import { useComment } from "@/hooks/useComment";
 
 
 export default function BookDetail() {
-  const COMMENT_MOCK_DATA = [
-    { userName: "John Doe", comment: "This is a comment", isLiked: false, likeCount: 0 },
-    { userName: "Jane Doe", comment: "This is a comment", isLiked: true, likeCount: 2 },
-    { userName: "John Doe", comment: "This is a comment", isLiked: true, likeCount: 5 },
-    { userName: "Jane Doe", comment: "This is a comment", isLiked: false, likeCount: 0 },
-    { userName: "John Doe", comment: "This is a comment", isLiked: false, likeCount: 1 },
-    { userName: "Jane Doe", comment: "This is a comment", isLiked: false, likeCount: 9 },
-  ];
-
-  const BOOK_INFO_MOCK_DATA = {
-    id: 1,
-    status: "borrowed", // borrowed, reserved 열거형으로 처리하면 될듯
-    title: "오늘도 소심한 고양이",
-    story: "ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇddddddddㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ",
-    author: "소심한 고양이",
-    publisher: "블루버드",
-    holSchool: "홍익대학교",
-    publicationDate: "2026.01.01",
-    image: img_test_book_default,
-    isLiked: false,
-  };
 
   const MOCK_BOOKS = [
     { id: 1, image: img_test_book_default },
@@ -55,11 +35,14 @@ export default function BookDetail() {
   const { bookDetail } = useBookDetail(bookId);
   const bookInfo = bookDetail?.book_info;
 
+  const { commentData } = useComment(bookId);
+  const comments = commentData?.content;
+
   const publicationMonth = bookInfo?.publication_date.split("-")[1][0] === "0" ? bookInfo?.publication_date.split("-")[1][1] : bookInfo?.publication_date.split("-")[1];
   const publicationDay = bookInfo?.publication_date.split("-")[2][0] === "0" ? bookInfo?.publication_date.split("-")[2][1] : bookInfo?.publication_date.split("-")[2];
   const publicationDate = `${publicationMonth}월 ${publicationDay}일`;
 
-  const showCommentPreviewOnly = COMMENT_MOCK_DATA.length > 4;
+  const showCommentPreviewOnly = (comments?.length ?? 0) > 4;
 
   return (
     <>
@@ -80,12 +63,11 @@ export default function BookDetail() {
             publicationDate={publicationDate ?? ""}
             image={bookInfo?.book_image ? { uri: bookInfo.book_image } : img_test_book_default}
             isLiked={bookDetail?.is_liked ?? false} />
-          
           <S.CommentsBox>
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
             <S.CommentList>
-              {(showCommentPreviewOnly ? COMMENT_MOCK_DATA.slice(0, 4) : COMMENT_MOCK_DATA).map((comment, index) => (
-                <Comment key={index} screen="bookDetail" userName={comment.userName} comment={comment.comment} isLiked={comment.isLiked} likeCount={comment.likeCount} />
+              {(showCommentPreviewOnly ? comments?.slice(0, 4) : comments)?.map((comment) => (
+                <Comment key={comment?.comment_id} screen="bookDetail" userName={comment?.nickname} comment={comment?.comment} isLiked={false} likeCount={comment?.like_count} />
               ))}
             </S.CommentList>
             {showCommentPreviewOnly && (
@@ -96,11 +78,9 @@ export default function BookDetail() {
                 end={{ x: 0, y: 0.8 }}
               />
             )}
-            {showCommentPreviewOnly && (
-              <S.ShowFullStoryButton onPress={() => navigation.navigate("BookComments", { bookId })}>
-                <Typography font="regular14" color="defaultBlack" children="전체보기" />
-              </S.ShowFullStoryButton>
-            )}
+            <S.ShowFullStoryButton onPress={() => navigation.navigate("BookComments", { bookId })}>
+              <Typography font="regular14" color="defaultBlack" children="전체보기" />
+            </S.ShowFullStoryButton>
           </S.CommentsBox>
 
           <S.RecommandBookListBox>
