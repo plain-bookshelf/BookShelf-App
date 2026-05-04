@@ -53,9 +53,13 @@ export default function BookDetail() {
   const navigation = useNavigation<NativeStackNavigationProp<BookStackParamList>>();
   const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
   const { bookDetail } = useBookDetail(bookId);
-  const bookInfo = bookDetail?.bookInfo;
+  const bookInfo = bookDetail?.book_info;
+
+  const publicationMonth = bookInfo?.publication_date.split("-")[1][0] === "0" ? bookInfo?.publication_date.split("-")[1][1] : bookInfo?.publication_date.split("-")[1];
+  const publicationDay = bookInfo?.publication_date.split("-")[2][0] === "0" ? bookInfo?.publication_date.split("-")[2][1] : bookInfo?.publication_date.split("-")[2];
+  const publicationDate = `${publicationMonth}월 ${publicationDay}일`;
+
   const showCommentPreviewOnly = COMMENT_MOCK_DATA.length > 4;
-  console.log(bookId);
 
   return (
     <>
@@ -72,10 +76,10 @@ export default function BookDetail() {
             story={bookInfo?.introduction ?? ""}
             author={bookInfo?.author ?? ""}
             publisher={bookInfo?.publisher ?? ""}
-            holSchool={bookDetail?.affiliationName ?? ""}
-            publicationDate={bookInfo?.publicationDate ?? ""}
-            image={bookInfo?.bookImage ? { uri: bookInfo.bookImage } : img_test_book_default}
-            isLiked={bookDetail?.isLiked ?? false} />
+            holSchool={bookDetail?.affiliation_name ?? ""}
+            publicationDate={publicationDate ?? ""}
+            image={bookInfo?.book_image ? { uri: bookInfo.book_image } : img_test_book_default}
+            isLiked={bookDetail?.is_liked ?? false} />
           
           <S.CommentsBox>
             <Typography font="medium20" color="defaultBlack" children="리뷰" />
@@ -112,7 +116,7 @@ export default function BookDetail() {
         </S.Content>
       </S.Container>
       <S.ActionButtonBox>
-      {bookDetail?.isEnableRental ? (
+      {bookDetail?.is_enable_rental ? (
         <DefaultButton font='semiBold16' label='대여 요청' onPress={() => {}} isValid={true} />
       ) : (
         <ReserveButton font='semiBold16' label='예약' onPress={() => {}} isValid={true} />

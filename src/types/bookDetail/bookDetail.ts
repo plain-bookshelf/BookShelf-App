@@ -1,17 +1,22 @@
 export interface BookDetail {
-  BookDetailPageResult: {
-    affiliationName: string;
-    bookInfo: {
+  affiliation_name: string;
+  book_info: {
     title: string;
     author: string;
-    publicationDate: string;
+    publication_date: string;
     introduction: string;
-    bookImage: string;
+    book_image: string;
     publisher: string;
   };
-  isEnableRental: boolean;
-  isLiked: boolean;
-  };
+  is_enable_rental: boolean;
+  genres: {
+    book_id: number;
+    genre: {
+      id: number;
+      genre_name: string;
+    };
+  }[];
+  is_liked: boolean;
 }
 
 export interface BookDetailResponse {

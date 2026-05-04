@@ -7,7 +7,7 @@ export const useBookDetail = (bookId: number) => {
     queryFn: () => getBookDetail(bookId),
   });
 
-  const bookDetail = query?.data?.data?.BookDetailPageResult;
+  const bookDetail = query?.data?.data;
 
   return { ...query, bookDetail };
 };
