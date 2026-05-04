@@ -6,7 +6,6 @@ import BookList from "@/components/common/bookList/BookList";
 import btn_next_type_books_arrow_default from "@/assets/btn_next-type-books-arrow-right_default.png"
 import { useState } from "react";
 import { useHomeBooks } from "@/hooks/useHomeBooks";
-import type { HomeBook } from "@/types";
 
 export default function HomeScreen() {
   const { books: popularBooks } = useHomeBooks("POPULAR");
@@ -26,7 +25,7 @@ export default function HomeScreen() {
           {isPopularBooks && <Image source={btn_next_type_books_arrow_default} style={{ width: 28, height: 28 }} />}
         </Pressable>
       </S.TitleBox>
-      <BookList bookList={isPopularBooks ? popularBooks.map((book) => ({ id: book.id, img: book.bookImage })) : recentBooks.map((book) => ({ id: book.id, img: book.bookImage }))} />
+      <BookList bookList={isPopularBooks ? popularBooks.map((book) => ({ id: book.id, img: book.book_image })) : recentBooks.map((book) => ({ id: book.id, img: book.book_image }))} />
     </S.Container>
-  )
+  ) 
 }
