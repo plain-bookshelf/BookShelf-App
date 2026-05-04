@@ -9,12 +9,18 @@ export const BookContainer = styled.View`
   padding-bottom: 24px;
 `
 
-export const BookBox = styled.Pressable`
+export const BookBox = styled.View`
   width: 100%;
   padding: 0px 24px;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-end;
   gap: 16px;
+`
+
+export const BookPressable = styled.Pressable<{ imageHeight: number }>`
+  height: ${({ imageHeight }) => imageHeight}px;
+  justify-content: flex-end;
 `
 
 export const NotFound = styled.View`

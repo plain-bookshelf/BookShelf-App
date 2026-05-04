@@ -1,9 +1,10 @@
-import { Image, Pressable, useWindowDimensions } from "react-native";
+import { Image, useWindowDimensions } from "react-native";
 import * as S from "./style"
 import BookBar from "../bookBar/BookBar";
 import Typography from "../typography/Typography";
 import { MainNav } from "@/navigation/type";
 import { useNavigation } from "@react-navigation/native";
+import img_book_none from "@/assets/img_test-book_default.png";
 
 interface BookListProps {
   id: number;
@@ -16,6 +17,7 @@ export default function BookList({ bookList = [] }: { bookList: BookListProps[] 
 
   /* (전체너비 - 좌우패딩 - gap간격) / 3 */
   const imageWidth = (width - 24 * 2 - 16 * 2) / 3;
+  const imageHeight = imageWidth / 0.7;
 
   const bookGrid: BookListProps[][] = [];
   /* BookList Grid 형태로 변환 로직 */
@@ -38,9 +40,16 @@ export default function BookList({ bookList = [] }: { bookList: BookListProps[] 
             <S.BookBox>
               {rowBooks.map((book) => {
                 return(
-                  <Pressable key={book.id} onPress={() => navigation.navigate("Book", { screen: "BookDetail", params: { bookId: book.id } })}>
-                    <Image source={{ uri: book.img }} resizeMode="contain" style={{ width: imageWidth, aspectRatio: 0.7 }} />
-                  </Pressable>
+                  <S.BookPressable
+                    key={book.id}
+                    imageHeight={imageHeight}
+                    onPress={() => navigation.navigate("Book", { screen: "BookDetail", params: { bookId: book.id } })}
+                  >
+                    {book.img === '' ? 
+                      <Image source={img_book_none} resizeMode="contain" style={{ width: imageWidth, height: imageHeight }} /> : 
+                      <Image source={{ uri: book.img }} style={{ width: imageWidth, height: imageHeight }} />
+                    }
+                  </S.BookPressable>
                 )
               })}
             </S.BookBox>

@@ -3,10 +3,10 @@ export type BookFindType = "POPULAR" | "RECENT";
 export interface HomeBook {
   rank?: number;
   id: number;
-  bookImage: string;
+  book_image: string;
   title: string;
   author: string;
-  genreList: string[];
+  genre_list: string[];
 }
 
 export interface HomeBookResponse {
