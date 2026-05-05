@@ -7,11 +7,11 @@ export const useLendingInfo = () => {
     queryFn: getLendingInfo,
   });
 
-  const lendingInfo = query?.data?.data?.lending_book_list_result;
+  const lendingInfo = query.data?.data;
 
-  const rentalBooks = lendingInfo?.rentalBookInfo;
-  const reservationBooks = lendingInfo?.reservationBookInfo;
-  const overDueBooks = lendingInfo?.overdue_book_info;
+  const rentalBooks = lendingInfo?.rental_book_info;
+  const reservationBooks = lendingInfo?.reservation_book_info;
+  const overDueBooks = lendingInfo?.over_due_book_info;
 
   return { ...query, rentalBooks, reservationBooks, overDueBooks };
 };

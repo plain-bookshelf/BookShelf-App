@@ -44,6 +44,7 @@ export type MainTabParamList = {
   Search: NavigatorScreenParams<SearchStackParamList>;
   AI: NavigatorScreenParams<AIStackParamList>;
   Home: undefined;
+  AdminHome: undefined;
   Ranking: undefined;
   Profile: NavigatorScreenParams<ProfileStackParamList>;
 };

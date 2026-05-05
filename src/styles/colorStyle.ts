@@ -37,6 +37,7 @@ export const colorStyle = {
   bookCommentsBackgroundBlur: "#333333",
   notificationContentGray: "#909090",
   autoCompleteGray: "#8C8C8C",
+  requestGray: "#E4E4E4",
 } as const;
 
 /* props에 따라 색상이 변해야 할 땐 ColorKey 사용 */

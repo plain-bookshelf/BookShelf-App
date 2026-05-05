@@ -1,5 +1,5 @@
 export interface BookInfo {
-  bookAffiliation_id: number;
+  book_affiliation_id: number;
   book_image: string;
   title: string;
 }
@@ -20,10 +20,8 @@ export interface LendingInfoResponse {
   status: string;
   message: string;
   data: {
-    lending_book_list_result: {
-      rentalBookInfo: RentalBookInfo[];
-      reservationBookInfo: ReservationBookInfo[];
-      overdue_book_info: OverDueBookInfo[];
-    };
+    rental_book_info: RentalBookInfo[];
+    reservation_book_info: ReservationBookInfo[];
+    over_due_book_info: OverDueBookInfo[];
   };
 }
