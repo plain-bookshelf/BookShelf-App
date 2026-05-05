@@ -10,8 +10,5 @@ export interface Ranking {
 export interface RankingResponse {
   message: string;
   status: string;
-  data: { 
-    content: Ranking[];
-    is_last_page: boolean;
-  };
+  data: Ranking[];
 }

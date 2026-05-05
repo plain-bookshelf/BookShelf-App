@@ -7,7 +7,7 @@ export const useRanking = () => {
     queryFn: getRanking,
   });
 
-  const ranking = query?.data?.data?.content;
+  const ranking = query?.data?.data;
 
   return { ...query, ranking };
 };
