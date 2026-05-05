@@ -8,3 +8,4 @@ export * from "./bookDetail";
 export * from "./my";
 export * from "./ranking";
 export * from "./search";
+export * from "./lending";

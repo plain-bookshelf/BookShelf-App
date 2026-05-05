@@ -63,7 +63,7 @@ export const RecommandBook = styled.Pressable`
 export const ActionButtonBox = styled.View`
   position: absolute;
   bottom: 52px;
+  gap: 12px;
   padding: 0px 24px;
   width: 100%;
-  height: 52px;
 `
