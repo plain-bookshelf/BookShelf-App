@@ -38,3 +38,12 @@ export interface NotificationResponse {
     is_last_page: boolean;
   };
 }
+
+export interface NotificationConnectResponse {
+  status: string;
+  connected_at: string;
+}
+
+export interface NotificationStreamResponse {
+  notification: NotificationItem;
+}
