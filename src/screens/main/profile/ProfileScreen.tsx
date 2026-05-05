@@ -16,11 +16,27 @@ import { Image, Pressable } from "react-native";
 import type { TextInput } from "react-native";
 import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png";
 import { launchImageLibrary } from "react-native-image-picker";
+import type { Asset } from "react-native-image-picker";
 import { useNickname, useProfileChange, useMyPage } from "@/hooks";
+import type { ProfileImageUrlRequest } from "@/types";
 
 type NicknameMessage = {
   text: string;
   color: "defaultGreen" | "defaultRed";
+};
+
+const getProfileImageMetadata = (asset: Asset): ProfileImageUrlRequest | null => {
+  const { fileName, type, fileSize } = asset;
+
+  if (!fileName || !type || !fileSize) {
+    return null;
+  }
+
+  return {
+    file_name: fileName,
+    content_type: type,
+    file_size: fileSize,
+  };
 };
 
 export default function ProfileScreen() {
@@ -31,7 +47,7 @@ export default function ProfileScreen() {
   const [nicknameInput, setNicknameInput] = useState("");
   const [nicknameMessage, setNicknameMessage] = useState<NicknameMessage | null>(null);
   const clearTokens = useAuthStore((state) => state.clearTokens);
-  const { mutate: profileChange, isPending: isProfileChanging } = useProfileChange();
+  const { mutate: changeProfileImage, isPending: isProfileChanging } = useProfileChange();
   const { ValidNicknameMutation: validNicknameMutation, NicknameChangeMutation: nicknameChangeMutation } = useNickname();
   const { my } = useMyPage();
   const currentNickname = my?.nickname ?? my?.username ?? "";
@@ -62,10 +78,13 @@ export default function ProfileScreen() {
 
     if (result.didCancel || result.errorCode) return;
 
-    const uri = result.assets?.[0]?.uri;
-    if (!uri) return;
+    const imageAsset = result.assets?.[0];
+    if (!imageAsset) return;
 
-    profileChange(uri);
+    const metadata = getProfileImageMetadata(imageAsset);
+    if (!metadata) return;
+
+    changeProfileImage(metadata);
   };
 
   const resetNicknameWithError = (message: string) => {

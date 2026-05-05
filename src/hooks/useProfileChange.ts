@@ -1,16 +1,18 @@
-import { useMutation } from "@tanstack/react-query";
-import { profileChange } from "@/services";
-import useUserStore from "@/store/useUserStore";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { profileChange, ProfileImageUrl } from "@/services";
+import type { ProfileImageUrlRequest } from "@/types";
 
 export const useProfileChange = () => {
-  const updateUser = useUserStore((state) => state.updateUser);
+  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (newProfileImageUrl: string) =>
-      await profileChange(newProfileImageUrl),
+    mutationFn: async (params: ProfileImageUrlRequest) => {
+      const profileImageUrl = await ProfileImageUrl(params);
+      return await profileChange(profileImageUrl.data.image_key);
+    },
 
-    onSuccess: (_data, newProfileImageUrl) => {
-      updateUser({ profile_image: newProfileImageUrl });
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["my"] });
     },
 
     onError: (error) => {

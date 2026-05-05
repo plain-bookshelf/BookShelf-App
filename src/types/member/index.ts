@@ -1,3 +1,3 @@
 export * from "./signup";
-export * from "./profileChange";
+export * from "./profile";
 export * from "./nickname";
