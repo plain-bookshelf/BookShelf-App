@@ -91,7 +91,7 @@ export default function BookDetail() {
                   screen="bookDetail"
                   userName={comment?.nickname}
                   comment={comment?.comment}
-                  isLiked={false}
+                  isLiked={comment?.is_liked}
                   likeCount={comment?.like_count}
                   commentId={comment?.comment_id}
                   CommentLikeMutation={CommentLikeMutation}
