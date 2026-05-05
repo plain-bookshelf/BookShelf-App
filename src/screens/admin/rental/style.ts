@@ -1,15 +1,15 @@
 import { colorStyle } from "@/styles/colorStyle";
 import styled from "@emotion/native";
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
-  justify-content: space-between;
-  padding: 80px 24px 40px;
+  padding: 32px 24px 0px;
   background-color: ${colorStyle.defaultWhite};
 `
 
 export const Content = styled.View`
-  gap: 12px;
+  flex: 1;
+  gap: 8px;
 `
 
 export const LogoutButton = styled.Pressable`

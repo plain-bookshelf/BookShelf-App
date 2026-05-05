@@ -10,7 +10,7 @@ import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
 import BookStack from "@/navigation/stacks/BookStack";
 import NotificationStack from "@/navigation/stacks/NotificationStack";
-import AdminHomeScreen from "@/screens/admin/home/AdminHomeScreen";
+import AdminHomeScreen from "@/screens/admin/rental/AdminHomeScreen";
 import useUserStore from "@/store/useUserStore";
 import { isAdminAuthority } from "@/utils/isAdminAuthority";
 
