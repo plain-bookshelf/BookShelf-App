@@ -5,28 +5,41 @@ import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
 import img_profile_test from "@/assets/img_profile_test.png";
 import icon_logout_default from "@/assets/icon_logout_default.png";
-import icon_edit_profile_default from "@/assets/icon_edit-profile_default.png";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import LogoutModal from "@/components/common/modal/LogoutModal";
 import WithdrawalModal from "@/components/common/modal/WithdrawalModal";
 import type { ProfileNav } from "@/navigation/type";
 import useAuthStore from "@/store/useAuthStore";
-import useUserStore from "@/store/useUserStore";
 import { logout } from "@/services/api/auth";
 import { Image, Pressable } from "react-native";
-import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png"
+import type { TextInput } from "react-native";
+import icon_edit_avatar_default from "@/assets/icon_edit-avatar_default.png";
 import { launchImageLibrary } from "react-native-image-picker";
-import { useProfileChange, useMyPage } from "@/hooks";
+import { useNickname, useProfileChange, useMyPage } from "@/hooks";
+
+type NicknameMessage = {
+  text: string;
+  color: "defaultGreen" | "defaultRed";
+};
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ProfileNav>();
+  const nicknameInputRef = useRef<TextInput>(null);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   const [withdrawModalVisible, setWithdrawModalVisible] = useState(false);
+  const [nicknameInput, setNicknameInput] = useState("");
+  const [nicknameMessage, setNicknameMessage] = useState<NicknameMessage | null>(null);
   const clearTokens = useAuthStore((state) => state.clearTokens);
-  const storedProfileImage = useUserStore((state) => state.user?.profile_image);
   const { mutate: profileChange, isPending: isProfileChanging } = useProfileChange();
+  const { ValidNicknameMutation: validNicknameMutation, NicknameChangeMutation: nicknameChangeMutation } = useNickname();
   const { my } = useMyPage();
+  const currentNickname = my?.nickname ?? my?.username ?? "";
+  const isNicknameChanging = validNicknameMutation.isPending || nicknameChangeMutation.isPending;
+
+  useEffect(() => {
+    setNicknameInput(currentNickname);
+  }, [currentNickname]);
 
   const handleLogout = async () => {
     await clearTokens();
@@ -55,6 +68,43 @@ export default function ProfileScreen() {
     profileChange(uri);
   };
 
+  const resetNicknameWithError = (message: string) => {
+    setNicknameInput(currentNickname);
+    setNicknameMessage({ text: message, color: "defaultRed" });
+  };
+
+  const handleNicknameChange = (text: string) => {
+    setNicknameInput(text);
+    setNicknameMessage(null);
+  };
+
+  const focusNicknameInput = () => {
+    nicknameInputRef.current?.focus();
+  };
+
+  const handleNicknameBlur = async () => {
+    const nextNickname = nicknameInput.trim();
+
+    if (nextNickname === currentNickname) {
+      setNicknameInput(currentNickname);
+      return;
+    }
+
+    if (!nextNickname) {
+      resetNicknameWithError("닉네임을 입력해주세요.");
+      return;
+    }
+
+    try {
+      await validNicknameMutation.mutateAsync(nextNickname);
+      await nicknameChangeMutation.mutateAsync(nextNickname);
+      setNicknameInput(nextNickname);
+      setNicknameMessage({ text: "닉네임이 변경되었습니다.", color: "defaultGreen" });
+    } catch {
+      resetNicknameWithError("닉네임 변경에 실패했습니다.");
+    }
+  };
+
   return(
     <S.Container>
       <S.ProfileCardContainer>
@@ -65,10 +115,23 @@ export default function ProfileScreen() {
           />
           <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24, position: 'absolute', bottom: 0, right: 0 }} />
         </S.ProfileImagBox>
-        <S.ProfileName>
-          <Typography font='bold22' color='defaultBlack' children={my?.username ?? ""} />
+        <S.ProfileName onPress={focusNicknameInput}>
+          <S.ProfileNameInput
+            ref={nicknameInputRef}
+            value={nicknameInput}
+            onChangeText={handleNicknameChange}
+            onBlur={handleNicknameBlur}
+            editable={!isNicknameChanging}
+            textAlign="center"
+            returnKeyType="done"
+          />
           <Image source={icon_edit_avatar_default} style={{ width: 24, height: 24 }} />
         </S.ProfileName>
+        {nicknameMessage && (
+          <S.NicknameMessageBox>
+            <Typography font='medium14' color={nicknameMessage.color} children={nicknameMessage.text} />
+          </S.NicknameMessageBox>
+        )}
       </S.ProfileCardContainer>
 
       {my?.most_little_left_rental_date && my?.most_little_left_rental_title && (
@@ -83,17 +146,17 @@ export default function ProfileScreen() {
       )}
 
       <S.ContentBox>
-      <S.InfoCardContainer>
-        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Borrowed' })}>
-          <InfoCard title='대여 중인 책' value={`${my?.rented_book_count}권`} />
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Reserved' })}>
-          <InfoCard title='예약한 책' value={`${my?.reserved_book_count}권`} />
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Overdue' })}>
-          <InfoCard title='연체된 책' value={`${my?.overdue_book_count}권`} />
-        </Pressable>
-      </S.InfoCardContainer>
+        <S.InfoCardContainer>
+          <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Borrowed' })}>
+            <InfoCard title='대여 중인 책' value={`${my?.rented_book_count}권`} />
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Reserved' })}>
+            <InfoCard title='예약한 책' value={`${my?.reserved_book_count}권`} />
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('MyBooks', { initialTab: 'Overdue' })}>
+            <InfoCard title='연체된 책' value={`${my?.overdue_book_count}권`} />
+          </Pressable>
+        </S.InfoCardContainer>
       </S.ContentBox>
       <S.ContentBox>
         <S.ActionCardBox>
