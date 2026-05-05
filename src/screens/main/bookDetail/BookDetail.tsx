@@ -45,6 +45,7 @@ export default function BookDetail() {
     setCompleteLendingMessage("");
     RentalMutation.mutate(bookId, {
       onSuccess: () => setCompleteLendingMessage("대여 요청이 성공적으로 완료되었어요!"),
+      onError: () => setCompleteLendingMessage("대여 요청에 실패했어요. 잠시 후 다시 시도해 주세요."),
     });
   };
 
@@ -52,6 +53,7 @@ export default function BookDetail() {
     setCompleteLendingMessage("");
     ReservationMutation.mutate(bookId, {
       onSuccess: () => setCompleteLendingMessage("예약이 성공적으로 완료되었어요!"),
+      onError: () => setCompleteLendingMessage("예약 요청에 실패했어요. 잠시 후 다시 시도해 주세요."),
     });
   };
 
