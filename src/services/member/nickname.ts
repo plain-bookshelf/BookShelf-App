@@ -12,7 +12,8 @@ export const validNickname = async (nickname: string): Promise<ValidNicknameResp
 };
 
 export const nickNameChange = async (newNickname: string): Promise<NicknameChangeResponse> => {
-  const res = await client.patch(`${MEMBER_BASE}/nickname-change`, { new_nickname: newNickname });
+  const normalizedNickname = newNickname.trim();
+  const res = await client.patch(`${MEMBER_BASE}/nickname-change`, { new_nickname: normalizedNickname });
   console.log(res.data);
   return res.data;
 };
