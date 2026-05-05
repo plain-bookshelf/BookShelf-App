@@ -10,7 +10,7 @@ export default function ReservedScreen() {
       <S.BookCardList>
         {reservationBooks?.map((book) => (
           <BookCard
-            key={book.bookAffiliation_id}
+            key={book.book_affiliation_id}
             title={book.title}
             info={`${book.rank} 예정`}
             image={{ uri: book.book_image }}

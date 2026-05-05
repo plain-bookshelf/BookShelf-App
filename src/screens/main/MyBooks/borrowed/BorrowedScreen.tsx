@@ -10,7 +10,7 @@ export default function BorrowedScreen() {
       <S.BookCardList>
         {rentalBooks?.map((book) => (
           <BookCard
-            key={book.bookAffiliation_id}
+            key={book.book_affiliation_id}
             title={book.title}
             info={`${book.left_rental_date}일 남음`}
             image={{ uri: book.book_image }}

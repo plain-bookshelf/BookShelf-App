@@ -10,7 +10,7 @@ export default function OverdueScreen() {
       <S.BookCardList>
         {overDueBooks?.map((book) => (
           <BookCard
-            key={book.bookAffiliation_id}
+            key={book.book_affiliation_id}
             title={book.title}
             info={`${book.overdue_date}일 연체됨`}
             image={{ uri: book.book_image }}
