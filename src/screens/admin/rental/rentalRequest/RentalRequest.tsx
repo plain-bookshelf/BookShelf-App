@@ -1,13 +1,20 @@
 import { colorStyle } from "@/styles/colorStyle";
 import * as S from "./style";
 import Typography from "@/components/common/typography/Typography";
+import type { RentalRequestItem } from "@/types";
 
-export default function RentalRequest() {
+interface RentalRequestProps {
+  request: RentalRequestItem;
+}
+
+export default function RentalRequest({ request }: RentalRequestProps) {
+  const bookInfo = `${request.title} (${request.call_number})`;
+
   return (
     <S.Container>
       <S.ContentBox>
-        <Typography font="semiBold16" color="defaultBlack" children="유저 이름" />
-        <Typography font="medium16" color="defaultBlack" children="책 이름" />
+        <Typography font="semiBold16" color="defaultBlack" children={request.nick_name} />
+        <Typography font="medium16" color="defaultBlack" children={bookInfo} />
       </S.ContentBox>
       <S.ButtonBox>
         <S.Button backgroundColor={colorStyle.defaultGreen} onPress={() => {}}>
@@ -18,5 +25,5 @@ export default function RentalRequest() {
         </S.Button>
       </S.ButtonBox>
     </S.Container>
-  )
+  );
 }

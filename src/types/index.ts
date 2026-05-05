@@ -9,3 +9,4 @@ export * from "./my";
 export * from "./ranking";
 export * from "./search";
 export * from "./lending";
+export * from "./manager";

@@ -23,3 +23,4 @@ export * from "./useCommentLike";
 export * from "./useCommentWrite";
 export * from "./useBookSearch";
 export * from "./useLending";
+export * from "./useRentalRequests";
