@@ -6,6 +6,7 @@ export interface ViewMyPageResult {
   rented_book_count: number;
   reserved_book_count: number;
   username: string;
+  nickname?: string;
 }
 
 export interface MyResponse {

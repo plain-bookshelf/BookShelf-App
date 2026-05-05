@@ -14,6 +14,7 @@ export * from "./useFindPasswordStepControl";
 export * from "./useHomeBooks";
 export * from "./useBookDetail";
 export * from "./useProfileChange";
+export * from "./useNickname";
 export * from "./useMyPage";
 export * from "./useChatbot";
 export * from "./useComment";

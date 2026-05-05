@@ -1,5 +1,6 @@
 import styled from "@emotion/native";
 import { colorStyle } from "@/styles/colorStyle";
+import { fontStyle } from "@/styles/fontStyle";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Container = styled(SafeAreaView)`
@@ -31,6 +32,19 @@ export const ProfileName = styled.Pressable`
   align-items: center;
   justify-content: center;
   gap: 4px;
+`
+
+export const ProfileNameInput = styled.TextInput`
+  min-width: 120px;
+  padding: 0px;
+  color: ${colorStyle.defaultBlack};
+  ${fontStyle.bold22};
+`
+
+export const NicknameMessageBox = styled.View`
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
 `
 
 export const TitleBox = styled.View`
