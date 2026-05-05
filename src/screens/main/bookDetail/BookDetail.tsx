@@ -1,3 +1,4 @@
+import { useState } from "react";
 import * as S from "./style";
 import { Image, Pressable } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
@@ -11,24 +12,13 @@ import Typography from "@/components/common/typography/Typography";
 import { colorStyle } from "@/styles/colorStyle";
 import DefaultButton from "@/components/common/button/defaultButton/DefaultButton";
 import ReserveButton from "@/components/common/button/reserveButton/ReserveButton";
-import { useBookDetail, useBookLike, useCommentLike } from "@/hooks";
+import { useBookDetail, useBookLike, useCommentLike, useLending, useRecommandBooks } from "@/hooks";
 import { useComment } from "@/hooks/useComment";
+import CompleteLending from "./components/completeLending/completeLending";
 
 
 export default function BookDetail() {
-
-  const MOCK_BOOKS = [
-    { id: 1, image: img_test_book_default },
-    { id: 2, image: img_test_book_default },
-    { id: 3, image: img_test_book_default },
-    { id: 4, image: img_test_book_default },
-    { id: 5, image: img_test_book_default },
-    { id: 6, image: img_test_book_default },
-    { id: 7, image: img_test_book_default },
-    { id: 8, image: img_test_book_default },
-    { id: 9, image: img_test_book_default },
-    { id: 10, image: img_test_book_default },
-  ];
+  const [completeLendingMessage, setCompleteLendingMessage] = useState("");
 
   const navigation = useNavigation<NativeStackNavigationProp<BookStackParamList>>();
   const { bookId } = useRoute<RouteProp<BookStackParamList, "BookDetail">>().params;
@@ -47,6 +37,26 @@ export default function BookDetail() {
   const publicationDate = `${publicationMonth}월 ${publicationDay}일`;
 
   const showCommentPreviewOnly = (comments?.length ?? 0) > 4;
+
+  const { RentalMutation, ReservationMutation } = useLending();
+  const isLendingPending = RentalMutation.isPending || ReservationMutation.isPending;
+
+  const handleRental = () => {
+    setCompleteLendingMessage("");
+    RentalMutation.mutate(bookId, {
+      onSuccess: () => setCompleteLendingMessage("대여 요청이 성공적으로 완료되었어요!"),
+    });
+  };
+
+  const handleReservation = () => {
+    setCompleteLendingMessage("");
+    ReservationMutation.mutate(bookId, {
+      onSuccess: () => setCompleteLendingMessage("예약이 성공적으로 완료되었어요!"),
+    });
+  };
+
+  const { data: recommandBooks } = useRecommandBooks();
+  const recommandBookList = recommandBooks?.books;
 
   return (
     <>
@@ -102,9 +112,9 @@ export default function BookDetail() {
           <S.RecommandBookListBox>
             <Typography font="medium20" color="defaultBlack" children="추천" />
             <S.RecommandBookList horizontal>
-              {MOCK_BOOKS.map((book) => (
+              {recommandBookList?.map((book) => (
                 <S.RecommandBook key={book.id} onPress={() => navigation.push("BookDetail", { bookId: book.id })}>
-                  <Image source={book.image} style={{ width: 76, height: 110 }} />
+                  <Image source={{ uri: book.img }} style={{ width: 76, height: 110 }} />
                 </S.RecommandBook>
               ))}
             </S.RecommandBookList>
@@ -112,10 +122,16 @@ export default function BookDetail() {
         </S.Content>
       </S.Container>
       <S.ActionButtonBox>
+      {completeLendingMessage && (
+        <CompleteLending
+          message={completeLendingMessage}
+          onClose={() => setCompleteLendingMessage("")}
+        />
+      )}
       {bookDetail?.is_enable_rental ? (
-        <DefaultButton font='semiBold16' label='대여 요청' onPress={() => {}} isValid={true} />
+        <DefaultButton font='semiBold16' label='대여 요청' onPress={handleRental} isValid={!isLendingPending} />
       ) : (
-        <ReserveButton font='semiBold16' label='예약' onPress={() => {}} isValid={true} />
+        <ReserveButton font='semiBold16' label='예약' onPress={handleReservation} isValid={!isLendingPending} />
       )}
       </S.ActionButtonBox>
     </>
