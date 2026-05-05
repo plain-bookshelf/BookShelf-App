@@ -20,7 +20,7 @@ export const profileChange = async (
   imageKey: string,
 ): Promise<ProfileChangeResponse> => {
   const params: ProfileChangeRequest = { image_key: imageKey };
-  const res = await client.patch(`${MEMBER_BASE}/profileImage-change`, params);
+  const res = await client.patch(`${MEMBER_BASE}/profile-image/change`, params);
   console.log(res.data);
   return res.data;
 };
