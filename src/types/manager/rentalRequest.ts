@@ -9,3 +9,9 @@ export interface RentalRequestItem {
 export interface RentalRequestSnapshot {
   requests: RentalRequestItem[];
 }
+
+export interface RentalRequestApprovalResponse {
+  status: string;
+  message: string;
+  data: string;
+}

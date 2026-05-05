@@ -1,11 +1,14 @@
 import EventSource from "react-native-sse";
 import { API_BASE_URL } from "@env";
+import { client } from "../api/client";
+import type { RentalRequestApprovalResponse } from "@/types";
 
 type RentalRequestStreamEvent =
   | "sse-connect"
   | "rental-request-snapshot";
 
 const RENTAL_REQUEST_STREAM_PATH = "manager/rentalRequestCheck";
+const RENTAL_REQUEST_APPROVAL_PATH = "api/manager/approve";
 
 const getStreamUrl = () => {
   const baseUrl = API_BASE_URL.replace(/\/$/, "");
@@ -27,3 +30,13 @@ export const createRentalRequestEventSource = (
     method: "GET",
   });
 };
+
+export const approveRentalRequest = async (
+  bookDetailId: number,
+): Promise<RentalRequestApprovalResponse> => {
+  const res = await client.patch(
+    `${RENTAL_REQUEST_APPROVAL_PATH}/${bookDetailId}`
+  );
+  console.log(res.data);
+  return res.data;
+};  

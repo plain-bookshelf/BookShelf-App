@@ -19,11 +19,12 @@ export const ButtonBox = styled.View`
   gap: 12px;
 `
 
-export const Button = styled.Pressable<{ backgroundColor: string }>`
+export const Button = styled.Pressable<{ backgroundColor: string; disabled?: boolean }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   width: 72px;
   height: 32px;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
+  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
 `;

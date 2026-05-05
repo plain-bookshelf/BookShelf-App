@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { createRentalRequestEventSource } from "@/services";
+import { useMutation } from "@tanstack/react-query";
+import { approveRentalRequest, createRentalRequestEventSource } from "@/services";
 import useAuthStore from "@/store/useAuthStore";
 import type { RentalRequestItem, RentalRequestSnapshot } from "@/types";
 
@@ -9,6 +10,18 @@ export const useRentalRequests = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const lastEventIdRef = useRef<string | null>(null);
+
+  const RentalRequestApprovalMutation = useMutation({
+    mutationFn: async (bookDetailId: number) => await approveRentalRequest(bookDetailId),
+    onSuccess: (_data, bookDetailId) => {
+      setRequests((prevRequests) => (
+        prevRequests.filter((request) => request.book_detail_id !== bookDetailId)
+      ));
+    },
+    onError: (error) => {
+      console.error("대여 요청 승인 실패", error);
+    },
+  });
 
   useEffect(() => {
     if (!accessToken) {
@@ -86,5 +99,6 @@ export const useRentalRequests = () => {
     requests,
     isConnected,
     errorMessage,
+    RentalRequestApprovalMutation,
   };
 };

@@ -5,9 +5,15 @@ import type { RentalRequestItem } from "@/types";
 
 interface RentalRequestProps {
   request: RentalRequestItem;
+  isApprovalPending: boolean;
+  onApprove: (bookDetailId: number) => void;
 }
 
-export default function RentalRequest({ request }: RentalRequestProps) {
+export default function RentalRequest({
+  request,
+  isApprovalPending,
+  onApprove,
+}: RentalRequestProps) {
   const bookInfo = `${request.title} (${request.call_number})`;
 
   return (
@@ -17,7 +23,11 @@ export default function RentalRequest({ request }: RentalRequestProps) {
         <Typography font="medium16" color="defaultBlack" children={bookInfo} />
       </S.ContentBox>
       <S.ButtonBox>
-        <S.Button backgroundColor={colorStyle.defaultGreen} onPress={() => {}}>
+        <S.Button
+          backgroundColor={colorStyle.defaultGreen}
+          disabled={isApprovalPending}
+          onPress={() => onApprove(request.book_detail_id)}
+        >
           <Typography font="medium14" color="defaultWhite" children="대여" />
         </S.Button>
         <S.Button backgroundColor={colorStyle.requestGray} onPress={() => {}}>
