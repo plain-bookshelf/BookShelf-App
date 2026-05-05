@@ -10,6 +10,8 @@ import navigator_ranking_active from "@/assets/navigator_ranking_active.png";
 import navigator_ranking_default from "@/assets/navigator_ranking_default.png";
 import navigator_search_active from "@/assets/navigator_search_active.png";
 import navigator_search_default from "@/assets/navigator_search_default.png";
+import navigator_admin_active from "@/assets/navigator_admin_active.png";
+import navigator_admin_default from "@/assets/navigator_admin_default.png";
 import { colorStyle } from '@/styles/colorStyle';
 
 export default function BottomTab({ state, navigation }: any) {
@@ -40,6 +42,12 @@ export default function BottomTab({ state, navigation }: any) {
           icon = isFocused
             ? navigator_home_active
             : navigator_home_default;
+        }
+
+        if (route.name === 'AdminHome') {
+          icon = isFocused
+            ? navigator_admin_active
+            : navigator_admin_default;
         }
 
         if (route.name === 'Ranking') {

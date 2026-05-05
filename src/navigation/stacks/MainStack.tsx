@@ -10,12 +10,17 @@ import RankingScreen from "@/screens/main/rank/RankingScreen";
 import ProfileStack from "@/navigation/stacks/ProfileStack";
 import BookStack from "@/navigation/stacks/BookStack";
 import NotificationStack from "@/navigation/stacks/NotificationStack";
+import AdminHomeScreen from "@/screens/admin/home/AdminHomeScreen";
+import useUserStore from "@/store/useUserStore";
+import { isAdminAuthority } from "@/utils/isAdminAuthority";
 
 const RootStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 function MainTabs() {
   const header = () => <MainHeader />;
+  const authority = useUserStore((s) => s.user?.authority);
+  const isAdmin = isAdminAuthority(authority);
 
   return (
     <Tab.Navigator
@@ -25,6 +30,7 @@ function MainTabs() {
       <Tab.Screen name="Search" component={SearchStack} options={{ headerShown: false }} />
       <Tab.Screen name="AI" component={AITopTabs} options={{ header }} />
       <Tab.Screen name="Home" component={HomeScreen} options={{ header }} />
+      {isAdmin && <Tab.Screen name="AdminHome" component={AdminHomeScreen} options={{ header }} />}
       <Tab.Screen name="Ranking" component={RankingScreen} options={{ header }} />
       <Tab.Screen name="Profile" component={ProfileStack} options={{ header }} />
     </Tab.Navigator>

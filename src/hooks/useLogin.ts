@@ -11,11 +11,17 @@ export const useLogin = () => {
     mutationFn: async(params: LoginRequest) => await login(params),
 
     onSuccess: async (data: LoginResponse, variables: LoginRequest) => {
-      const { access_token, refresh_token } = data.data;
+      const { access_token, refresh_token, username, nickname, authority, affiliation_name, profile_image } = data.data;
       console.log(data.data);
 
+      useUserStore.getState().setUser({
+        username: username ?? variables.username,
+        nickname,
+        authority,
+        affiliation_name,
+        profile_image,
+      });
       await useAuthStore.getState().setTokens(access_token, refresh_token);
-      useUserStore.getState().setUser({ username: variables.username });
 
       try {
         const chatSession = await postChatSession({ username: variables.username });

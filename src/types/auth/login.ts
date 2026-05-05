@@ -9,5 +9,10 @@ export interface LoginResponse {
   data: {
     access_token: string;
     refresh_token: string;
+    username?: string;
+    nickname?: string;
+    authority?: string;
+    affiliation_name?: string;
+    profile_image?: string;
   };
 }
