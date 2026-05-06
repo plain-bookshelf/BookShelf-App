@@ -84,4 +84,4 @@ ios/GoogleService-Info.plist
 !.yarn/versions
 
 # keystore
-*.keystore
+*.properties
