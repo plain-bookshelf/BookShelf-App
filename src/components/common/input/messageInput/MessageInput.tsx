@@ -17,16 +17,27 @@ interface MessageInputProps {
 }
 
 export default function MessageInput({ backgroundColor, placeholder, value, onChangeText, onSend, onFocus, onBlur, disabled }: MessageInputProps) {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    onFocus?.();
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    onBlur?.();
+  };
   
   return (
-    <S.Container backgroundColor={backgroundColor}>
+    <S.Container backgroundColor={backgroundColor} style={{ top: isFocused ? -300 : 0 }}>
       <S.Input 
         placeholder={placeholder} 
         placeholderTextColor={colorStyle.defaultGray} 
         onChangeText={onChangeText} 
         value={value}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
       <Pressable onPress={onSend} disabled={disabled}>
         <Image source={btn_chatbot_send_default} style={{ width: 24, height: 24 }} />
