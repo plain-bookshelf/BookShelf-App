@@ -5,8 +5,7 @@ export interface ViewMyPageResult {
   profile_image: string;
   rented_book_count: number;
   reserved_book_count: number;
-  username: string;
-  nickname?: string;
+  nickname: string;
 }
 
 export interface MyResponse {

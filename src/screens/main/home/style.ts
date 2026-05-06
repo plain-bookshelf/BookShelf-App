@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const TitleBox = styled.View<{ isPopularBooks: boolean }>`
   flex-direction: row;
-  justify-content: ${({ isPopularBooks }) => isPopularBooks ? "flex-end" : "flex-start"};
+  justify-content: center;
   align-items: center;
   gap: 82px;
   padding: 21px 24px 15px;

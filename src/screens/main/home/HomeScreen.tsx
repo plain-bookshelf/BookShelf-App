@@ -17,11 +17,11 @@ export default function HomeScreen() {
     <S.Container>
       <Image source={banner_event_default} resizeMode="contain" style={{ width: "100%", height: 148 }} />
       <S.TitleBox isPopularBooks={isPopularBooks}>
-        <Pressable onPress={() => setIsPopularBooks(true)}>
+        <Pressable onPress={() => setIsPopularBooks(true)} style={{ width: 28, height: 28 }}>
           {!isPopularBooks && <Image source={btn_next_type_books_arrow_default} style={{ width: 28, height: 28, transform: [{ rotate: "180deg" }] }} />}  
         </Pressable>
         <Typography children={`${isPopularBooks ? "인기순" : "최신순"} 책 100권`} font='semiBold22' color='defaultBlack' />
-        <Pressable onPress={() => setIsPopularBooks(false)}>
+        <Pressable onPress={() => setIsPopularBooks(false)} style={{ width: 28, height: 28 }}>
           {isPopularBooks && <Image source={btn_next_type_books_arrow_default} style={{ width: 28, height: 28 }} />}
         </Pressable>
       </S.TitleBox>
