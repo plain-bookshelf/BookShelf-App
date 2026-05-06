@@ -3,9 +3,16 @@ import { colorStyle } from "@/styles/colorStyle";
 
 interface RankProps {
   rank: 1 | 2 | 3;
+  isCompact: boolean;
+}
+
+interface CompactProps {
+  isCompact: boolean;
 }
 
 export const Container = styled.View`
+  flex: 1;
+  min-width: 0;
   justify-content: center;
   align-items: center;
 `
@@ -14,33 +21,48 @@ export const ProfileBox = styled.View`
   position: relative;
 `
 
-export const ProfileImage = styled.Image<RankProps>(({ rank }) => ({
-  width: rank === 1 ? 96 : rank === 2 ? 80 : 72,
-  height: rank === 1 ? 96 : rank === 2 ? 80 : 72,
-  borderRadius: rank === 1 ? 48 : rank === 2 ? 40 : 36,
-}));
+export const ProfileImage = styled.Image<RankProps>(({ rank, isCompact }) => {
+  const size = isCompact
+    ? rank === 1 ? 80 : rank === 2 ? 68 : 60
+    : rank === 1 ? 96 : rank === 2 ? 80 : 72;
 
-export const Ranking = styled.View<RankProps>(({ rank }) => ({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundColor:
-    rank === 1 ? colorStyle.rankYellow : rank === 2 ? colorStyle.rankGray : colorStyle.rankCopper,
-  width: rank === 1 ? 32 : rank === 2 ? 26 : 24,
-  height: rank === 1 ? 32 : rank === 2 ? 26 : 24,
-  justifyContent: "center",
-  alignItems: "center",
-  borderRadius: rank === 1 ? 16 : rank === 2 ? 13 : 12,
+  return {
+    width: size,
+    height: size,
+    borderRadius: size / 2,
+  };
+});
+
+export const Ranking = styled.View<RankProps>(({ rank, isCompact }) => {
+  const badgeSize = isCompact
+    ? rank === 1 ? 26 : rank === 2 ? 22 : 20
+    : rank === 1 ? 32 : rank === 2 ? 26 : 24;
+
+  return {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    backgroundColor:
+      rank === 1 ? colorStyle.rankYellow : rank === 2 ? colorStyle.rankGray : colorStyle.rankCopper,
+    width: badgeSize,
+    height: badgeSize,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: badgeSize / 2,
+  };
+})
+
+export const ProfileName = styled.View<CompactProps>(({ isCompact }) => ({
+  width: "100%",
+  paddingTop: isCompact ? 10 : 16,
+  paddingBottom: 4,
 }))
 
-export const ProfileName = styled.View`
-  padding: 16px 0px 4px;
-`
-
-export const BookPoint = styled.View`
+export const BookPoint = styled.View<CompactProps>`
+  max-width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 3px 16px;
+  padding: ${({ isCompact }) => isCompact ? "3px 10px" : "3px 16px"};
   border-radius: 8px;
   background-color: ${colorStyle.defaultGreen};
 `

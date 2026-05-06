@@ -1,6 +1,6 @@
 import Typography from "@/components/common/typography/Typography";
 import * as S from "./style"
-import { Image } from "react-native";
+import { useWindowDimensions } from "react-native";
 
 export interface RankUserProps {
   rank: number;
@@ -10,16 +10,24 @@ export interface RankUserProps {
 }
 
 export default function RankUser({ rank, profileImage, profileName, bookPoint }: RankUserProps) {
+  const { width } = useWindowDimensions();
+  const isCompact = width <= 360;
+  const textFont = isCompact ? 'medium16' : 'medium20';
+
   return(
-    <S.Container>
-      <S.LeftBox>
-        <Typography font='semiBold20' color='defaultBlack' children={rank.toString()} />
+    <S.Container isCompact={isCompact}>
+      <S.LeftBox isCompact={isCompact}>
+        <S.RankTextBox>
+          <Typography font={isCompact ? 'semiBold16' : 'semiBold20'} color='defaultBlack' children={rank.toString()} />
+        </S.RankTextBox>
         <S.ProfileBox>
-          <Image source={{ uri: profileImage }} style={{ width: 32, height: 32 }} />
-          <Typography font='medium20' color='defaultBlack' children={profileName} />
+          <S.ProfileImage source={{ uri: profileImage }} />
+          <Typography font={textFont} color='defaultBlack' children={profileName} numberOfLines={1} />
         </S.ProfileBox>
       </S.LeftBox>
-      <Typography font='medium20' color='defaultBlack' children={`${bookPoint.toString()}권`} />
+      <S.BookPointBox>
+        <Typography font={textFont} color='defaultBlack' children={`${bookPoint.toString()}권`} numberOfLines={1} />
+      </S.BookPointBox>
     </S.Container>
   )
 }
