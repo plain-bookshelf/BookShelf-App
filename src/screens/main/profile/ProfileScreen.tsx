@@ -50,7 +50,7 @@ export default function ProfileScreen() {
   const { mutate: changeProfileImage, isPending: isProfileChanging } = useProfileChange();
   const { ValidNicknameMutation: validNicknameMutation, NicknameChangeMutation: nicknameChangeMutation } = useNickname();
   const { my } = useMyPage();
-  const currentNickname = my?.nickname ?? my?.username ?? "";
+  const currentNickname = my?.nickname ?? my?.nickname ?? "";
   const isNicknameChanging = validNicknameMutation.isPending || nicknameChangeMutation.isPending;
 
   useEffect(() => {
