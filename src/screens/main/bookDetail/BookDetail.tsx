@@ -32,9 +32,10 @@ export default function BookDetail() {
 
   const { CommentLikeMutation, CommentUnlikeMutation } = useCommentLike();
 
-  const publicationMonth = bookInfo?.publication_date.split("-")[1][0] === "0" ? bookInfo?.publication_date.split("-")[1][1] : bookInfo?.publication_date.split("-")[1];
-  const publicationDay = bookInfo?.publication_date.split("-")[2][0] === "0" ? bookInfo?.publication_date.split("-")[2][1] : bookInfo?.publication_date.split("-")[2];
-  const publicationDate = `${publicationMonth}월 ${publicationDay}일`;
+  const [, publicationMonth, publicationDay] = bookInfo?.publication_date?.split("-") ?? [];
+  const formattedPublicationMonth = publicationMonth?.replace(/^0/, "");
+  const formattedPublicationDay = publicationDay?.replace(/^0/, "");
+  const publicationDate = formattedPublicationMonth && formattedPublicationDay ? `${formattedPublicationMonth}월 ${formattedPublicationDay}일` : "";
 
   const showCommentPreviewOnly = (comments?.length ?? 0) > 4;
 
@@ -76,7 +77,7 @@ export default function BookDetail() {
             author={bookInfo?.author ?? ""}
             publisher={bookInfo?.publisher ?? ""}
             holSchool={bookDetail?.affiliation_name ?? ""}
-            publicationDate={publicationDate ?? ""}
+            publicationDate={publicationDate}
             image={bookInfo?.book_image ? { uri: bookInfo.book_image } : img_test_book_default}
             isLiked={bookDetail?.is_liked ?? false}
             bookId={bookId}
@@ -91,7 +92,7 @@ export default function BookDetail() {
                   screen="bookDetail"
                   userName={comment?.nickname}
                   comment={comment?.comment}
-                  isLiked={false}
+                  isLiked={comment?.is_liked}
                   likeCount={comment?.like_count}
                   commentId={comment?.comment_id}
                   CommentLikeMutation={CommentLikeMutation}

@@ -52,7 +52,11 @@ export type MainTabParamList = {
 /* 탭에 없는 알림 플로우: 목록 → 상세 */
 export type NotificationStackParamList = {
   Notifications: undefined;
-  NotificationDetail: { notificationId: number };
+  NotificationDetail: {
+    notificationId: number;
+    title?: string;
+    content?: string;
+  };
 };
 
 /* 도서 상세 · 댓글 플로우 */

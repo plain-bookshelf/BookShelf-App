@@ -7,6 +7,7 @@ export const useLending = () => {
   const handleSuccess = (_data: unknown, bookId: number) => {
     queryClient.invalidateQueries({ queryKey: ["bookDetail", bookId] });
     queryClient.invalidateQueries({ queryKey: ["lendingInfo"] });
+    queryClient.invalidateQueries({ queryKey: ["my"] });
   };
 
   const RentalMutation = useMutation({

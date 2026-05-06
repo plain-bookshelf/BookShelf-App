@@ -18,6 +18,8 @@ interface CommentProps {
 }
 
 export default function Comment({ screen, userName, comment, isLiked, likeCount, commentId, CommentLikeMutation, CommentUnlikeMutation }: CommentProps) {
+  const isLikePending = CommentLikeMutation.isPending || CommentUnlikeMutation.isPending;
+
   const handleCommentLike = () => {
     if (isLiked) {
       CommentUnlikeMutation.mutate(commentId);
@@ -33,14 +35,12 @@ export default function Comment({ screen, userName, comment, isLiked, likeCount,
         <Typography font={screen === "bookDetail" ? "semiBold16" : "semiBold18"} color="defaultBlack" children={userName} />
         <Typography font={screen === "bookDetail" ? "regular14" : "regular16"} color="defaultBlack" children={comment} />
       </S.LeftBox>
-      <S.RightBox>
-        {likeCount > 0 && (
-        <Pressable onPress={handleCommentLike}>
+      <Pressable onPress={handleCommentLike} disabled={isLikePending}>
+        <S.RightBox>
           <Typography font="medium16" color="commentLikeCountGray" children={likeCount.toString()} />
-        </Pressable>
-        )}
-        <Image source={isLiked ? btn_isLiked_true : btn_isLiked_false} style={{ width: 20, height: 20 }} />
-      </S.RightBox>
+          <Image source={isLiked ? btn_isLiked_true : btn_isLiked_false} style={{ width: 20, height: 20 }} />
+        </S.RightBox>
+      </Pressable>
     </S.Container>
   )
 }
