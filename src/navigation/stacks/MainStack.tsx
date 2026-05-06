@@ -25,6 +25,7 @@ function MainTabs() {
   return (
     <Tab.Navigator
       tabBar={BottomBar as any}
+      initialRouteName="Home"
       screenOptions={{ headerShown: true }}
     >
       <Tab.Screen name="Search" component={SearchStack} options={{ headerShown: false }} />
